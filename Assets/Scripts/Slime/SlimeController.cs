@@ -1,33 +1,50 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlimeController : MonoBehaviour
 {
+    public static SlimeController Instance;
     [SerializeField] private Attack _slimeATK;
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
+    [SerializeField] private EnemyMini currentTarget;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        StateControl();
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position,_slimeATK.AttackRange);
+        Gizmos.DrawWireSphere(transform.position, _slimeATK.AttackRange);
     }
-   
+
+    public EnemyMini GetCurrentEnemy()
+    {
+        return currentTarget;
+    }
+
+    private void Attack()
+    {
+    }
+
+    private void StateControl()
+    {
+        var enemyPos = currentTarget.transform.position;
+        if (Vector2.Distance(transform.position, enemyPos) <= 0.01f) Debug.Log("Attack");
+    }
+
+
+    public void SetCurrentTarget(EnemyMini newTarget)
+    {
+        currentTarget = newTarget;
+    }
 }
+
 [Serializable]
 public class Attack
 {
@@ -40,19 +57,23 @@ public class Attack
     {
         AttackDamage = set;
     }
+
     public void SetAttackRange(float set)
     {
         AttackRange = set;
     }
+
     public void SetAttackSpeed(float set)
     {
         AttackSpeed = set;
     }
+
     public void SetAttackDamageBonus(float set)
     {
         RangeDamageBonus = set;
     }
 }
+
 [Serializable]
 public class Defense
 {
@@ -60,23 +81,28 @@ public class Defense
     public float Armor;
     public float HealthRegen;
     public float BlockDamage;
+
     public void SetHeath(float set)
     {
         Heath = set;
     }
+
     public void SetArmor(float set)
     {
         Armor = set;
     }
+
     public void SetHeathRegen(float set)
     {
         HealthRegen = set;
     }
+
     public void SetBlockDamage(float set)
     {
         BlockDamage = set;
     }
 }
+
 [Serializable]
 public class Utility
 {
@@ -84,18 +110,22 @@ public class Utility
     public float GoldBonus;
     public float SilverBonus;
     public float GoldPerWave;
+
     public void SetSilverPerWave(float set)
     {
         SilverPerWave = set;
     }
+
     public void SetGoldBonus(float set)
     {
         GoldBonus = set;
     }
+
     public void SetSilverBonus(float set)
     {
         SilverBonus = set;
     }
+
     public void SetGoldPerWave(float set)
     {
         GoldPerWave = set;
@@ -105,5 +135,4 @@ public class Utility
 [Serializable]
 public class Ultimate
 {
-   
 }
