@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 174
+        width: 138
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f9edc3a6987c467595d43423bb1c776
+      internalID: -132610751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 179
+        width: 140
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b954c1f997c431f8858cfc60af5e29
+      internalID: -403801612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_2
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 179
+        width: 140
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b365cf86f174eb58d2ed7fc8806a3f
+      internalID: 1916984987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 150
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1185a7b0e6ecd4bf8a92ead26f0f8746
+      internalID: -169270587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 143
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c223e40d794cf4fd5a676162a7f1e5e8
+      internalID: 1906651256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-512x512-ASTC 4x4-11001_1-089f866b_7
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 0
+        width: 138
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e166ae2ca056e41ba834c47e5848cc88
+      internalID: -1222294245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +264,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_0: -132610751
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_1: -403801612
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_2: 1916984987
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_3: -243332324
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_4: -169270587
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_5: 1906651256
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_6: 54319989
+      sactx-3-512x512-ASTC 4x4-11001_1-089f866b_7: -1222294245
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

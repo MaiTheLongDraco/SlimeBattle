@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 178
+        width: 145
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443a3954b82c64911995585d95dea424
+      internalID: -302016733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 178
+        width: 141
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abae13eb7e34426f940cbb06b23f48b
+      internalID: 1454754204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_2
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 178
+        width: 147
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbc95ea36854469f85ff82b23c2c5eb
+      internalID: 433240811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 147
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d44a793003fb40068497adad565fb63
+      internalID: 994385821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_4
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 143
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb33256b0e5ca4139a2a0f2c31847d96
+      internalID: -2072213663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2-512x512-ASTC 4x4-11001_1-089f866b_5
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 146
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6c2bed61a234b9db160acea1090d50
+      internalID: -2039879864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +264,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_0: -302016733
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_1: 1454754204
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_2: 433240811
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_3: 994385821
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_4: -2072213663
+      sactx-2-512x512-ASTC 4x4-11001_1-089f866b_5: -2039879864
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
