@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private EnemyMini currentEnemy;
+    private float damage;
 
     [SerializeField] private float speed = 0.015f;
 
@@ -17,7 +18,10 @@ public class Bullet : MonoBehaviour
     {
         ShootToEnemy();
     }
-
+    public void SetDamage(float set)
+	{
+        damage = set;
+	}
     private void ShootToEnemy()
     {
         print($"is instance null {EnemySpawner.Instance.IsUnityNull()}");

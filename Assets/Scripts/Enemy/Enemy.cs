@@ -6,4 +6,5 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, slimePos, chaseSpeed);
     }
+    
 }

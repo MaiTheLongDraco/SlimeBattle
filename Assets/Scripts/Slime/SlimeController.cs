@@ -8,10 +8,12 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
+    private SkillController skillController;
 
     private void Start()
     {
         Instance = this;
+        skillController = GetComponent<SkillController>();
     }
 
     private void Update()
@@ -32,11 +34,18 @@ public class SlimeController : MonoBehaviour
     private void Attack()
     {
     }
+    public Attack GetAttackInfo()
+	{
+        return _slimeATK;
+	}
 
     private void StateControl()
     {
         var enemyPos = currentTarget.transform.position;
-        if (Vector2.Distance(transform.position, enemyPos) <= 0.01f) Debug.Log("Attack");
+        if (Vector2.Distance(transform.position, enemyPos) <= _slimeATK.AttackRange)
+		{
+            skillController.StartNormal();
+		}
     }
 
 
