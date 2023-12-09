@@ -21,7 +21,8 @@ public class Bullet : MonoBehaviour
     private void ShootToEnemy()
     {
         print($"is instance null {EnemySpawner.Instance.IsUnityNull()}");
-        currentEnemy = EnemySpawner.Instance.GetRandomEnemy();
+        currentEnemy = SlimeController.Instance.GetCurrentEnemy();
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
     }
+    
 }

@@ -11,6 +11,7 @@ public class SlimeController : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
     }
 
     private void Update()

@@ -13,9 +13,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     [SerializeField] private UnityEvent<EnemyMini> onHaveNewEnemy;
+	private void Awake()
+	{
+        Instance = this;
+	}
 
-    // Start is called before the first frame update
-    private void Start()
+	// Start is called before the first frame update
+	private void Start()
     {
         StartCoroutine(SpawnEnemyWithDelay(0));
     }
@@ -31,7 +35,9 @@ public class EnemySpawner : MonoBehaviour
         var random = Random.Range(0, spawnPoints.Count);
         if (i >= _enemyWaveInfo.Count)
             yield break;
-        SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
+      var enemyNew=  SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
+        onHaveNewEnemy?.Invoke(enemyNew.GetComponent<EnemyMini>());
+
         yield return new WaitForSeconds(_enemyWaveInfo[i].RemainWaveTime);
         i++;
         StartCoroutine(SpawnEnemyWithDelay(i));
@@ -49,12 +55,13 @@ public class EnemySpawner : MonoBehaviour
         return null;
     }
 
-    private void SpawnEnemy(EnemyMini enemy, Transform spawnPos)
+    private GameObject SpawnEnemy(EnemyMini enemy, Transform spawnPos)
     {
         if (enemy == null)
-            return;
-        onHaveNewEnemy?.Invoke(enemy);
-        Instantiate(enemy.gameObject, spawnPos.position, Quaternion.identity);
+            return null;
+        
+      var enemyNew=  Instantiate(enemy.gameObject, spawnPos.position, Quaternion.identity);
+        return enemyNew;
     }
 }
 
