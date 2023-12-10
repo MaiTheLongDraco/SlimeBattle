@@ -58,7 +58,7 @@ public class SlimeController : MonoBehaviour
             skillController.SetState(SlimeState.DEAD);
         }
     }
-
+  
 
     public void SetCurrentTarget(EnemyMini newTarget)
     {

@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillController : MonoBehaviour
 {
     [SerializeField] private NormalSkill normalSkill;
-    [SerializeField] private float spawnNormalInterval;
     [SerializeField] private SlimeState slimeState;
     [SerializeField] private Transform createPos;
     private SlimeController slimeController;
@@ -21,19 +21,45 @@ public class SkillController : MonoBehaviour
     {
         
     }
-    private IEnumerator MakeNormalSkill()
+    [SerializeField] private bool _shouldPause;
+
+    [SerializeField] private bool _shouldShowLog;
+    [SerializeField] private float _interval = 0.1f;
+    private float _lastTime;
+    [SerializeField] private Text timer;
+    [SerializeField] private Text interval;
+    [SerializeField] private Text lastTime;
+    public bool HasPastInterval()
+    {
+        if (Time.time > _interval + _lastTime)
+        {
+            _lastTime += _interval;
+           
+            return true;
+        }
+        SetText(timer, Time.time.ToString());
+        SetText(interval, _interval.ToString());
+        SetText(lastTime, _lastTime.ToString());
+        return false;
+    }
+    private void SetText(Text text,string value)
+	{
+        text.text = value;
+	}
+    private void MakeNormalSkill()
 	{
         if (slimeState == SlimeState.UNATTACK || slimeState == SlimeState.DEAD)
-            yield break;
+            return;
         var normal = Instantiate(normalSkill.GetSkill(), createPos.position, Quaternion.identity);
         var atkDam = slimeController.GetAttackInfo().AttackDamage;
         normal.GetComponent<Bullet>().SetDamage(atkDam);
-        yield return new WaitForSeconds(spawnNormalInterval);
-	}
+    }
     public void StartNormal()
 	{
-        StartCoroutine(MakeNormalSkill());
-	}
+        var hasPass = HasPastInterval();
+        if (hasPass == false) return;
+        MakeNormalSkill();
+    }
     public void SetState(SlimeState newState)
 	{
         slimeState = newState;
