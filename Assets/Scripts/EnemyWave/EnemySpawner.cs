@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
         if (i >= _enemyWaveInfo.Count)
             yield break;
       var enemyNew=  SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
+        if (enemyNew == null) yield break;
         onHaveNewEnemy?.Invoke(enemyNew.GetComponent<EnemyMini>());
 
         yield return new WaitForSeconds(_enemyWaveInfo[i].RemainWaveTime);

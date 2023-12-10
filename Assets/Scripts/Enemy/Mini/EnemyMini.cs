@@ -4,10 +4,10 @@ using UnityEngine;
 public class EnemyMini : Enemy
 {
     [SerializeField] private float chaseTime;
-    [SerializeField] private int heath;
+    [SerializeField] private float heath;
     [SerializeField] private SlimeController slime;
 
-	public int Heath { get => heath; set => heath = value; }
+	public float Heath { get => heath; set => heath = value; }
 
 	private void Awake()
     {
@@ -31,12 +31,13 @@ public class EnemyMini : Enemy
             TriggerDeathState();
 		}
 	}
-    public void SetHeath(int set)
+    public void TakeDamage(float damage)
 	{
-        Heath = set;
+        Heath -= damage;
 	}
 	private void TriggerDeathState()
 	{
         print("dead");
+        //Destroy(this.gameObject);
 	}
 }

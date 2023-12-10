@@ -27,12 +27,16 @@ public class SkillController : MonoBehaviour
             yield break;
         var normal = Instantiate(normalSkill.GetSkill(), createPos.position, Quaternion.identity);
         var atkDam = slimeController.GetAttackInfo().AttackDamage;
-        normalSkill.SetBulletDamage(atkDam);
+        normal.GetComponent<Bullet>().SetDamage(atkDam);
         yield return new WaitForSeconds(spawnNormalInterval);
 	}
     public void StartNormal()
 	{
         StartCoroutine(MakeNormalSkill());
+	}
+    public void SetState(SlimeState newState)
+	{
+        slimeState = newState;
 	}
 }
 [Serializable]

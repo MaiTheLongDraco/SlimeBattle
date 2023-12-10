@@ -8,6 +8,7 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
+    [SerializeField] private float slimeHeath;
     private SkillController skillController;
 
     private void Start()
@@ -23,6 +24,7 @@ public class SlimeController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _slimeATK.AttackRange);
     }
 
@@ -44,8 +46,17 @@ public class SlimeController : MonoBehaviour
         var enemyPos = currentTarget.transform.position;
         if (Vector2.Distance(transform.position, enemyPos) <= _slimeATK.AttackRange)
 		{
+            skillController.SetState(SlimeState.ATTACK);
             skillController.StartNormal();
 		}
+		else
+		{
+            skillController.SetState(SlimeState.UNATTACK);
+		}
+        if(slimeHeath<=0)
+		{
+            skillController.SetState(SlimeState.DEAD);
+        }
     }
 
 
