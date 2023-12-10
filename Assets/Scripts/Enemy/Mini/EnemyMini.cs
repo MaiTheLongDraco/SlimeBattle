@@ -38,6 +38,6 @@ public class EnemyMini : Enemy
 	private void TriggerDeathState()
 	{
         print("dead");
-        //Destroy(this.gameObject);
+		Destroy(this.gameObject);
 	}
 }
