@@ -49,6 +49,7 @@ public class SlimeController : MonoBehaviour
             return;
         }
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
+        if (hittedEnemy == null) { skillController.SetState(SlimeState.UNATTACK);return; }
         currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
 		{

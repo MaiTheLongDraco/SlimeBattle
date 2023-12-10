@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
     {
         print($"is instance null {EnemySpawner.Instance.IsUnityNull()}");
         currentEnemy = SlimeController.Instance.GetCurrentEnemy();
+        if (currentEnemy == null) return;
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
         if(Vector2.Distance(transform.position,currentEnemy.transform.position)<=0.1f)
 		{
