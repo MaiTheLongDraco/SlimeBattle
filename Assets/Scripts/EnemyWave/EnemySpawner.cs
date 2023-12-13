@@ -13,13 +13,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     [SerializeField] private UnityEvent<EnemyMini> onHaveNewEnemy;
-	private void Awake()
-	{
-        Instance = this;
-	}
 
-	// Start is called before the first frame update
-	private void Start()
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    // Start is called before the first frame update
+    private void Start()
     {
         StartCoroutine(SpawnEnemyWithDelay(0));
     }
@@ -35,33 +36,25 @@ public class EnemySpawner : MonoBehaviour
         var random = Random.Range(0, spawnPoints.Count);
         if (i >= _enemyWaveInfo.Count)
             yield break;
-      var enemyNew=  SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
-        if (enemyNew == null) yield break;
-        onHaveNewEnemy?.Invoke(enemyNew.GetComponent<EnemyMini>());
+        for (var j = 0; j < _enemyWaveInfo[i].EnemySpawns.Count; j++)
+        {
+            var delayTime = 0.3f;
+            yield return new WaitForSeconds(delayTime);
+            var enemyNew = SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
+            if (enemyNew == null) yield break;
+        }
 
         yield return new WaitForSeconds(_enemyWaveInfo[i].RemainWaveTime);
         i++;
         StartCoroutine(SpawnEnemyWithDelay(i));
     }
 
-    public EnemyMini GetRandomEnemy()
-    {
-        if (_enemyWaveInfo.Count <= 0) return null;
-        foreach (var enemyWaveInfo in _enemyWaveInfo)
-        {
-            if (enemyWaveInfo == null) continue;
-            return enemyWaveInfo.GetRandomEnemy();
-        }
-
-        return null;
-    }
-
     private GameObject SpawnEnemy(EnemyMini enemy, Transform spawnPos)
     {
         if (enemy == null)
             return null;
-        
-      var enemyNew=  Instantiate(enemy.gameObject, spawnPos.position, Quaternion.identity);
+
+        var enemyNew = Instantiate(enemy.gameObject, spawnPos.position, Quaternion.identity);
         return enemyNew;
     }
 }

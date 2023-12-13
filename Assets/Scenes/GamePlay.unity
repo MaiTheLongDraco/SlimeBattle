@@ -915,6 +915,10 @@ PrefabInstance:
       propertyPath: _slimeATK.AttackRange
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: _slimeATK.AttackDamage
+      value: 147
+      objectReference: {fileID: 0}
     - target: {fileID: 1541424473736010040, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: m_Name
       value: Slime
