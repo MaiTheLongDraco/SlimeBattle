@@ -4,11 +4,17 @@ using UnityEngine;
 public class SlimeController : MonoBehaviour
 {
     public static SlimeController Instance;
-    [SerializeField] private Attack _slimeATK;
+
+    [Header("SlimeInfo")] [SerializeField] private Attack _slimeATK;
+
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
     [SerializeField] private float slimeHeath;
+
+    [Header("Detect range")] [SerializeField]
+    private GameObject detectImage;
+
     private SkillController skillController;
 
 
@@ -16,6 +22,7 @@ public class SlimeController : MonoBehaviour
     {
         Instance = this;
         skillController = GetComponent<SkillController>();
+        ScaleDetectImage();
     }
 
     private void Update()
@@ -27,6 +34,14 @@ public class SlimeController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _slimeATK.AttackRange);
+    }
+
+    [ContextMenu("ScaleDetectImage")]
+    private void ScaleDetectImage()
+    {
+        var currentScale = detectImage.transform.localScale;
+        var detectScale = _slimeATK.AttackRange * 0.62f;
+        detectImage.transform.localScale = new Vector3(currentScale.x * detectScale, currentScale.y * detectScale, 0);
     }
 
     public EnemyMini GetCurrentEnemy()

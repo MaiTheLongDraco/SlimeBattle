@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slimeATK:
-    AttackDamage: 10
+    AttackDamage: 147
     AttackRange: 1
     AttackSpeed: 3
     RangeDamageBonus: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
     SilverBonus: 0
     GoldPerWave: 0
   currentTarget: {fileID: 0}
+  slimeHeath: 1
+  detectImage: {fileID: 0}
 --- !u!114 &7203521794932407817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb71bfc3fbc34174eac12145e68ef7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSkill:
+    skillObject:
+      skill: {fileID: 4541745234962741604, guid: de3796aba0a3f4a86be6d8eff5179e80, type: 3}
+  slimeState: 0
+  createPos: {fileID: 6742362551484045321}
+  _shouldPause: 0
+  _shouldShowLog: 0
+  _interval: 1
+  timer: {fileID: 0}
+  interval: {fileID: 0}
+  lastTime: {fileID: 0}
 --- !u!1 &1646807563289925300
 GameObject:
   m_ObjectHideFlags: 0
