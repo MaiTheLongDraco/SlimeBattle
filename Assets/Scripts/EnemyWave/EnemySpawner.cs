@@ -33,11 +33,11 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemyWithDelay(int index)
     {
         var i = index;
-        var random = Random.Range(0, spawnPoints.Count);
         if (i >= _enemyWaveInfo.Count)
             yield break;
         for (var j = 0; j < _enemyWaveInfo[i].EnemySpawns.Count; j++)
         {
+            var random = Random.Range(0, spawnPoints.Count);
             var delayTime = 0.3f;
             yield return new WaitForSeconds(delayTime);
             var enemyNew = SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);

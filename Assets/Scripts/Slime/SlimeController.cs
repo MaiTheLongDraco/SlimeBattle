@@ -11,6 +11,7 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private float slimeHeath;
     private SkillController skillController;
 
+
     private void Start()
     {
         Instance = this;
@@ -36,10 +37,11 @@ public class SlimeController : MonoBehaviour
     private void Attack()
     {
     }
+
     public Attack GetAttackInfo()
-	{
+    {
         return _slimeATK;
-	}
+    }
 
     private void StateControl()
     {
@@ -48,21 +50,28 @@ public class SlimeController : MonoBehaviour
             skillController.SetState(SlimeState.DEAD);
             return;
         }
+
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
-        if (hittedEnemy == null) { skillController.SetState(SlimeState.UNATTACK);return; }
-        currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
-        if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
-		{
-            skillController.SetState(SlimeState.ATTACK);
-            skillController.StartNormal();
-		}
-		else
-		{
+        if (hittedEnemy == null)
+        {
             skillController.SetState(SlimeState.UNATTACK);
-		}
-       
+            return;
+        }
+
+        currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
+        var passInterval = skillController.HasPastInterval();
+        if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
+        {
+            skillController.SetState(SlimeState.ATTACK);
+            if (!passInterval) return;
+            skillController.StartNormal();
+        }
+        else
+        {
+            skillController.SetState(SlimeState.UNATTACK);
+        }
     }
-  
+
 
     public void SetCurrentTarget(EnemyMini newTarget)
     {
