@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LoadTabData : MonoBehaviour
 {
-    [SerializeField] private List<Button> tabButtons;
+    [SerializeField] private List<TabButton> tabButtons;
+
+    [SerializeField] private List<SubButton> subButtons;
 
     // Start is called before the first frame update
     private void Start()
@@ -16,25 +17,35 @@ public class LoadTabData : MonoBehaviour
     {
     }
 
-    private void HandleLoadTabData()
+    public void HandleLoadTabData()
     {
         foreach (var tab in tabButtons)
-        {
-            var tabType = GetTabType(tab);
-            switch (tabType)
+            switch (tab.TabInfo)
             {
                 case TabInfo.ATTACK:
                 {
+                    SpecifyLoadSubButton(tab);
                     break;
                 }
-                case TabInfo.DEFENCE: break;
-                case TabInfo.UTILITY: break;
+                case TabInfo.DEFENCE:
+                {
+                    SpecifyLoadSubButton(tab);
+                    break;
+                }
+                case TabInfo.UTILITY:
+                {
+                    SpecifyLoadSubButton(tab);
+                    break;
+                }
             }
-        }
     }
 
-    private TabInfo GetTabType(Button button)
+    private void SpecifyLoadSubButton(TabButton tab)
     {
-        return button.GetComponent<TabButton>().TabInfo;
+        foreach (var sub in subButtons)
+            if (sub.SubTabType == tab.TabInfo)
+                sub.gameObject.SetActive(true);
+            else
+                sub.gameObject.SetActive(false);
     }
 }
