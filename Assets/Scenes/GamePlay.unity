@@ -2834,9 +2834,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1155263021}
-        m_TargetAssemblyTypeName: LoadTabData, Assembly-CSharp
-        m_MethodName: HandleLoadTabData
+      - m_Target: {fileID: 580719039}
+        m_TargetAssemblyTypeName: TabButton, Assembly-CSharp
+        m_MethodName: SpecifyLoadSubButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2897,7 +2897,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabInfo: 0
-  gridInfo: {fileID: 49595070}
+  subButtons:
+  - {fileID: 49595075}
+  - {fileID: 1123692856}
+  - {fileID: 189049237}
 --- !u!4 &593509206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4097462026919206759, guid: b5fd0f83a966a45df8d6c3e1566c3785, type: 3}
@@ -5204,9 +5207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1155263021}
-        m_TargetAssemblyTypeName: LoadTabData, Assembly-CSharp
-        m_MethodName: HandleLoadTabData
+      - m_Target: {fileID: 1081006032}
+        m_TargetAssemblyTypeName: TabButton, Assembly-CSharp
+        m_MethodName: SpecifyLoadSubButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5267,7 +5270,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabInfo: 1
-  gridInfo: {fileID: 1123692851}
+  subButtons:
+  - {fileID: 49595075}
+  - {fileID: 1123692856}
+  - {fileID: 189049237}
 --- !u!1 &1082810426
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,9 +7111,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1155263021}
-        m_TargetAssemblyTypeName: LoadTabData, Assembly-CSharp
-        m_MethodName: HandleLoadTabData
+      - m_Target: {fileID: 1519659947}
+        m_TargetAssemblyTypeName: TabButton, Assembly-CSharp
+        m_MethodName: SpecifyLoadSubButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7168,7 +7174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabInfo: 2
-  gridInfo: {fileID: 189049232}
+  subButtons:
+  - {fileID: 49595075}
+  - {fileID: 1123692856}
+  - {fileID: 189049237}
 --- !u!4 &1520142103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4097462028389606182, guid: b5fd0f83a966a45df8d6c3e1566c3785, type: 3}

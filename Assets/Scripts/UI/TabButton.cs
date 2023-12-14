@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TabButton : MonoBehaviour
 {
     [SerializeField] private TabInfo tabInfo;
-
-    [SerializeField] private GameObject gridInfo;
+    [SerializeField] private List<SubButton> subButtons;
 
     public TabInfo TabInfo
     {
@@ -12,9 +12,14 @@ public class TabButton : MonoBehaviour
         set => tabInfo = value;
     }
 
-    public void SetActiveSubButton(bool set)
+    public void SpecifyLoadSubButton()
     {
-        gridInfo.SetActive(set);
+        print($" tab type {TabInfo}");
+        foreach (var sub in subButtons)
+            if (sub.SubTabType == TabInfo)
+                sub.gameObject.SetActive(true);
+            else
+                sub.gameObject.SetActive(false);
     }
 }
 
