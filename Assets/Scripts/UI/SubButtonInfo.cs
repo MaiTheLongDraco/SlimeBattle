@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class SubButtonInfo : ICloneable
 {
-    [SerializeField] private readonly float CurrencyCost;
-    [SerializeField] private readonly Sprite CurrencyIcon;
-    [SerializeField] private readonly int id;
-    [SerializeField] private readonly string slimePropertyName;
-    [SerializeField] private readonly float slimePropertyValue;
+    public float CurrencyCost;
+    public Sprite CurrencyIcon;
+    public int id;
+    public string slimePropertyName;
+    public float slimePropertyValue;
 
     public SubButtonInfo(int id, string slimePropertyName, float slimePropertyValue, Sprite currencyIcon,
         float currencyCost)
@@ -22,5 +23,15 @@ public class SubButtonInfo : ICloneable
     public object Clone()
     {
         return new SubButtonInfo(id, slimePropertyName, slimePropertyValue, CurrencyIcon, CurrencyCost);
+    }
+
+    public void IncreaseCurrencyCost(float addingValue)
+    {
+        CurrencyCost += addingValue;
+    }
+
+    public void IncreasePropertyValue(float addingValue)
+    {
+        slimePropertyValue += addingValue;
     }
 }
