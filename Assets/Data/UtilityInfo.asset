@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec5ac14bdc35b4df5907015ee2bf413b, type: 3}
-  m_Name: AttackInfo
+  m_Name: UtilityInfo
   m_EditorClassIdentifier: 
   ListInfo:
   - CurrencyCost: 6
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 0
-    slimePropertyName: Attack
+    slimePropertyName: Silver per wave
     slimePropertyValue: 163.3
   - CurrencyCost: 8
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 1
-    slimePropertyName: Attack Speed
+    slimePropertyName: Silver Bonus
     slimePropertyValue: 1.5
   - CurrencyCost: 30
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 2
-    slimePropertyName: Range
+    slimePropertyName: Gold Bonus
     slimePropertyValue: 2.6
   - CurrencyCost: 80
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 3
-    slimePropertyName: Range Damage Bound
+    slimePropertyName: Gold per wave
     slimePropertyValue: 2

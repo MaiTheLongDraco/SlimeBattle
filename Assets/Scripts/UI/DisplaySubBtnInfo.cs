@@ -3,6 +3,8 @@ using UnityEngine;
 public class DisplaySubBtnInfo : MonoBehaviour
 {
     [SerializeField] private SlimeTemplate slimeTemplate;
+    [SerializeField] private GameObject buttonPrefab;
+    //[SerializeField]private 
 
     private void Start()
     {
@@ -15,16 +17,16 @@ public class DisplaySubBtnInfo : MonoBehaviour
         for (var i = 0; i < listInfo.Count; i++)
         {
             var cloneValue = (SubButtonInfo)listInfo[i].Clone();
-            TestSetData(cloneValue, "testname");
-            print($"slimePropertyValue : {cloneValue.slimePropertyValue}");
-            print($"slimePropertyName : {cloneValue.slimePropertyName}");
-            print($"CurrencyCost : {cloneValue.CurrencyCost}");
+            var buttonObj = Instantiate(buttonPrefab, this.transform, false);
+            SetValueForButton(cloneValue, buttonObj);
         }
     }
-
-    private void TestSetData(SubButtonInfo testObj, string test)
-    {
-        var listInfo = slimeTemplate.ListInfo[0];
-        listInfo.slimePropertyName = test;
-    }
+    private void SetValueForButton(SubButtonInfo set,GameObject button)
+	{
+        var info=button.GetComponent<SubButtonInfoHandle>();
+        info.SetCurrencyCostTxt(set.CurrencyCost.ToString());
+        info.SetSlimePropertyName(set.slimePropertyName);
+        info.SetSlimePropertyValue(set.slimePropertyValue.ToString());
+        info.SetCurrencyIcon(set.CurrencyIcon);
+	}
 }
