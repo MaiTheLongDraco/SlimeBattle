@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeController : MonoBehaviour
 {
     public static SlimeController Instance;
+    [SerializeField] private List<SlimeTemplate> listData;
 
-    [Header("SlimeInfo")] [SerializeField] private Attack _slimeATK;
-
+    [Header("SlimeInfo")]
+    [SerializeField] private Attack _slimeATK;
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
@@ -17,14 +19,90 @@ public class SlimeController : MonoBehaviour
 
     private SkillController skillController;
 
-
+	private void Awake()
+	{
+        SetOriginData();
+    }
     private void Start()
     {
         Instance = this;
         skillController = GetComponent<SkillController>();
         ScaleDetectImage();
     }
-
+    private void SetOriginData()
+	{
+        foreach(var data in listData)
+		{
+            HandleWithSpecifySkillType(data);
+        }
+	}
+    private void HandleWithSpecifySkillType(SlimeTemplate slimeTemplate)
+	{
+        switch(slimeTemplate.skillType)
+		{
+            case SkillType.ATTACK:
+				{
+                    var slimeInfo = slimeTemplate.ListInfo;
+                    SetATKOrigin(slimeInfo, _slimeATK);
+                }
+                break;
+            case SkillType.DEFEND:
+                {
+                    var slimeInfo = slimeTemplate.ListInfo;
+                    SetDefendOrigin(slimeInfo, _slimeDF);
+                }
+                break;
+            case SkillType.UTILITY:
+                {
+                    var slimeInfo = slimeTemplate.ListInfo;
+                    SetUtilityOrigin(slimeInfo, _slimeUti);
+                }
+                break;
+		}
+	}
+    private void SetATKOrigin(List<SubButtonInfo> originData, Attack attackInfo)
+	{
+        for(int i=0;i<originData.Count;i++)
+		{
+            switch(originData[i].id)
+			{
+                case 0: { ChangeDataValue(originData[i], _slimeATK.AttackDamage); } break;
+                case 1: { ChangeDataValue(originData[i], _slimeATK.AttackSpeed); } break;
+                case 2: { ChangeDataValue(originData[i], _slimeATK.AttackRange); } break;
+                case 3: { ChangeDataValue(originData[i], _slimeATK.RangeDamageBonus); } break;
+			}
+		}
+	}
+    private void SetDefendOrigin(List<SubButtonInfo> originData, Defense defendInfo)
+    {
+        for (int i = 0; i < originData.Count; i++)
+        {
+            switch (originData[i].id)
+            {
+                case 0: { ChangeDataValue(originData[i], defendInfo.Heath); } break;
+                case 1: { ChangeDataValue(originData[i], defendInfo.HealthRegen); } break;
+                case 2: { ChangeDataValue(originData[i], defendInfo.Armor); } break;
+                case 3: { ChangeDataValue(originData[i], defendInfo.BlockDamage); } break;
+            }
+        }
+    }
+    private void SetUtilityOrigin(List<SubButtonInfo> originData, Utility utilityInfo)
+    {
+        for (int i = 0; i < originData.Count; i++)
+        {
+            switch (originData[i].id)
+            {
+                case 0: { ChangeDataValue(originData[i], utilityInfo.SilverPerWave); } break;
+                case 1: { ChangeDataValue(originData[i], utilityInfo.SilverBonus); } break;
+                case 2: { ChangeDataValue(originData[i], utilityInfo.GoldBonus); } break;
+                case 3: { ChangeDataValue(originData[i], utilityInfo.GoldPerWave); } break;
+            }
+        }
+    }
+    private void ChangeDataValue(SubButtonInfo info,float newValue)
+	{
+        info.slimePropertyValue = newValue;
+	}
     private void Update()
     {
         StateControl();
@@ -47,10 +125,6 @@ public class SlimeController : MonoBehaviour
     public EnemyMini GetCurrentEnemy()
     {
         return currentTarget;
-    }
-
-    private void Attack()
-    {
     }
 
     public Attack GetAttackInfo()

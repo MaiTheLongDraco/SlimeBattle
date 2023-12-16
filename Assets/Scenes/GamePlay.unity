@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimeTemplate: {fileID: 11400000, guid: c134a1dfd785a49639c4e526df348be9, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
+  subButton: {fileID: 0}
 --- !u!1 &184555734
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimeTemplate: {fileID: 11400000, guid: b2e68dcde52bb99428d881d12ceb6ae4, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
+  subButton: {fileID: 0}
 --- !u!1 &189788618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,6 +2554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimeTemplate: {fileID: 11400000, guid: e8716ac5ece49e848843f32a55db6056, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
+  subButton: {fileID: 0}
 --- !u!1 &1155263018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,6 +4054,22 @@ PrefabInstance:
       propertyPath: detectImage
       value: 
       objectReference: {fileID: 1035210529}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: listData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: listData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c134a1dfd785a49639c4e526df348be9, type: 2}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: listData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e8716ac5ece49e848843f32a55db6056, type: 2}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: listData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2e68dcde52bb99428d881d12ceb6ae4, type: 2}
     - target: {fileID: 1541424473736010040, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: m_Name
       value: Slime

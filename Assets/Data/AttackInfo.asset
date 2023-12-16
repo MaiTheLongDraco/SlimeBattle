@@ -12,24 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5ac14bdc35b4df5907015ee2bf413b, type: 3}
   m_Name: AttackInfo
   m_EditorClassIdentifier: 
+  skillType: 0
   ListInfo:
   - CurrencyCost: 6
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 0
     slimePropertyName: Attack
-    slimePropertyValue: 163.3
+    slimePropertyValue: 147
   - CurrencyCost: 8
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 1
     slimePropertyName: Attack Speed
-    slimePropertyValue: 1.5
+    slimePropertyValue: 3
   - CurrencyCost: 30
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 2
     slimePropertyName: Range
-    slimePropertyValue: 2.6
+    slimePropertyValue: 1
   - CurrencyCost: 80
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 3
     slimePropertyName: Range Damage Bound
-    slimePropertyValue: 2
+    slimePropertyValue: 0

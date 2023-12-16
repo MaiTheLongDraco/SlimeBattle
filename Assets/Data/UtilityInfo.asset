@@ -12,24 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5ac14bdc35b4df5907015ee2bf413b, type: 3}
   m_Name: UtilityInfo
   m_EditorClassIdentifier: 
+  skillType: 2
   ListInfo:
   - CurrencyCost: 6
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 0
     slimePropertyName: Silver per wave
-    slimePropertyValue: 163.3
+    slimePropertyValue: 0
   - CurrencyCost: 8
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 1
     slimePropertyName: Silver Bonus
-    slimePropertyValue: 1.5
+    slimePropertyValue: 0
   - CurrencyCost: 30
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 2
     slimePropertyName: Gold Bonus
-    slimePropertyValue: 2.6
+    slimePropertyValue: 0
   - CurrencyCost: 80
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 3
     slimePropertyName: Gold per wave
-    slimePropertyValue: 2
+    slimePropertyValue: 0
