@@ -7,6 +7,7 @@ public class SlimeController : MonoBehaviour
     public static SlimeController Instance;
     [SerializeField] private List<SlimeTemplate> listData;
     [SerializeField] private SlimeData rootData;
+    [SerializeField] private SlimeData rootDataClone;
 
     [Header("SlimeInfo")]
     [SerializeField] private Attack _slimeATK;
@@ -36,7 +37,9 @@ public class SlimeController : MonoBehaviour
 		_slimeATK = rootData.SlimeATK;
 		_slimeDF = rootData.SlimeDF;
 		_slimeUti = rootData.SlimeUti;
-	}
+        rootDataClone = rootData.Clone() as SlimeData;
+
+    }
     private void SetOriginData()
 	{
         foreach(var data in listData)
@@ -51,19 +54,19 @@ public class SlimeController : MonoBehaviour
             case SkillType.ATTACK:
 				{
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetATKOrigin(slimeInfo, _slimeATK);
+                    SetATKOrigin(slimeInfo, rootData.SlimeATK);
                 }
                 break;
             case SkillType.DEFEND:
                 {
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetDefendOrigin(slimeInfo, _slimeDF);
+                    SetDefendOrigin(slimeInfo, rootData.SlimeDF);
                 }
                 break;
             case SkillType.UTILITY:
                 {
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetUtilityOrigin(slimeInfo, _slimeUti);
+                    SetUtilityOrigin(slimeInfo, rootData.SlimeUti);
                 }
                 break;
 		}

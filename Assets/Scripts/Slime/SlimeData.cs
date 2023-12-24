@@ -1,13 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "SlimeData", menuName = "SlimeData/DataField")]
-public class SlimeData : ScriptableObject
+public class SlimeData : ScriptableObject, ICloneable
 {
     [SerializeField] private Attack _slimeATK;
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
-
+    public SlimeData(Attack atk, Defense df,Utility uti)
+	{
+        _slimeATK = atk;
+        _slimeDF = df;
+        _slimeUti = uti;
+	}
 	public Attack SlimeATK { get => _slimeATK; set => _slimeATK = value; }
 	public Defense SlimeDF { get => _slimeDF; set => _slimeDF = value; }
 	public Utility SlimeUti { get => _slimeUti; set => _slimeUti = value; }
@@ -81,4 +87,8 @@ public class SlimeData : ScriptableObject
         SlimeUti.GoldPerWave = set;
     }
 
+	public object Clone()
+	{
+        return new SlimeData(_slimeATK, _slimeDF, _slimeUti);
+	}
 }
