@@ -6,6 +6,7 @@ public class SlimeController : MonoBehaviour
 {
     public static SlimeController Instance;
     [SerializeField] private List<SlimeTemplate> listData;
+    [SerializeField] private SlimeData rootData;
 
     [Header("SlimeInfo")]
     [SerializeField] private Attack _slimeATK;
@@ -21,6 +22,7 @@ public class SlimeController : MonoBehaviour
 
 	private void Awake()
 	{
+        SetRootData();
         SetOriginData();
     }
     private void Start()
@@ -29,6 +31,12 @@ public class SlimeController : MonoBehaviour
         skillController = GetComponent<SkillController>();
         ScaleDetectImage();
     }
+    private void  SetRootData()
+	{
+		_slimeATK = rootData.SlimeATK;
+		_slimeDF = rootData.SlimeDF;
+		_slimeUti = rootData.SlimeUti;
+	}
     private void SetOriginData()
 	{
         foreach(var data in listData)
