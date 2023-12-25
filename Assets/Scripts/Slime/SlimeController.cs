@@ -24,7 +24,7 @@ public class SlimeController : MonoBehaviour
 	private void Awake()
 	{
         SetRootData();
-        SetOriginData();
+        SetOriginData(); 
     }
     private void Start()
     {
@@ -34,10 +34,13 @@ public class SlimeController : MonoBehaviour
     }
     private void  SetRootData()
 	{
+		//rootData.SlimeATK = _slimeATK;
+		//rootData.SlimeDF = _slimeDF;
+		//rootData.SlimeUti = _slimeUti;
 		_slimeATK = rootData.SlimeATK;
 		_slimeDF = rootData.SlimeDF;
 		_slimeUti = rootData.SlimeUti;
-        rootDataClone = rootData.Clone() as SlimeData;
+		rootDataClone = rootData.Clone() as SlimeData;
 
     }
     private void SetOriginData()
