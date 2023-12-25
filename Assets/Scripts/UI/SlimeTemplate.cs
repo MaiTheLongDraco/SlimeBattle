@@ -6,6 +6,15 @@ public class SlimeTemplate : ScriptableObject
 {
     public SkillType skillType;
     public List<SubButtonInfo> ListInfo = new();
+    public SlimeTemplate (SkillType skillType, List<SubButtonInfo> subButtonInfos)
+	{
+        this.skillType = skillType;
+        ListInfo = subButtonInfos;
+	}
+    public SlimeTemplate Clone()
+	{
+        return new SlimeTemplate(skillType, ListInfo);
+	}
 }
 public enum SkillType
 {

@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 1367369695973297590}
   - component: {fileID: 1367369695973297591}
   - component: {fileID: 3328325403156766432}
+  - component: {fileID: -6446095241699407942}
   m_Layer: 5
   m_Name: InfoBackground
   m_TagString: Untagged
@@ -612,6 +613,20 @@ MonoBehaviour:
   CurrencyIcon: {fileID: 1367369694248969179}
   slimePropertyName: {fileID: 1367369694581752029}
   slimePropertyValue: {fileID: 1367369694204324402}
+--- !u!114 &-6446095241699407942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367369695973297589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0241e0bf3b934eb419c807c469d9c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButton: {fileID: 1367369694881570213}
+  cloneData: {fileID: 0}
 --- !u!1 &1367369696109328358
 GameObject:
   m_ObjectHideFlags: 0

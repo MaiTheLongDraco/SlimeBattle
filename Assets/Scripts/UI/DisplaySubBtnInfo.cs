@@ -5,10 +5,13 @@ public class DisplaySubBtnInfo : MonoBehaviour
     [SerializeField] private SlimeTemplate slimeTemplate;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private SubButton subButton;
+    [SerializeField] private SlimeTemplate runtimeTemplate;
     //[SerializeField]private 
 
     private void Start()
     {
+        runtimeTemplate = slimeTemplate.Clone();
+        Debug.Log($" runtimeTemplate {slimeTemplate.skillType}");
         subButton = GetComponent<SubButton>();
         DisplayButtonInfo();
     }

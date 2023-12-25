@@ -35,3 +35,18 @@ public class SubButtonInfo : ICloneable
         slimePropertyValue += addingValue;
     }
 }
+public enum DetailSkillValue
+{
+    ATTACK,
+    ATTACK_SPEED,
+    ATTACK_RANGE,
+    RANGE_DAMAGE_BONUS,
+    HEATH,
+    HEATH_REGEN,
+    ARMOR,
+    BLOCK_DAMAGE,
+    SILVER_PER_WAVE,
+    SILVER_BONUS,
+    GOLD_BONUS,
+    GOLD_PER_WAVE
+}

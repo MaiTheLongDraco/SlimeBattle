@@ -81,10 +81,10 @@ public class SlimeController : MonoBehaviour
 		{
             switch(originData[i].id)
 			{
-                case 0: { ChangeDataValue(originData[i], _slimeATK.AttackDamage); } break;
-                case 1: { ChangeDataValue(originData[i], _slimeATK.AttackSpeed); } break;
-                case 2: { ChangeDataValue(originData[i], _slimeATK.AttackRange); } break;
-                case 3: { ChangeDataValue(originData[i], _slimeATK.RangeDamageBonus); } break;
+                case 0: { ChangeDataValue(originData[i], attackInfo.AttackDamage); } break;
+                case 1: { ChangeDataValue(originData[i], attackInfo.AttackSpeed); } break;
+                case 2: { ChangeDataValue(originData[i], attackInfo.AttackRange); } break;
+                case 3: { ChangeDataValue(originData[i], attackInfo.RangeDamageBonus); } break;
 			}
 		}
 	}
