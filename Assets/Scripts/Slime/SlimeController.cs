@@ -41,6 +41,7 @@ public class SlimeController : MonoBehaviour
 		_slimeDF = rootData.SlimeDF;
 		_slimeUti = rootData.SlimeUti;
 		rootDataClone = rootData.Clone() as SlimeData;
+        print($"rootdata Clone atk {rootDataClone.SlimeATK.AttackDamage} - {rootDataClone.SlimeATK.AttackRange} -- {rootDataClone.SlimeATK.AttackSpeed}");
 
     }
     private void SetOriginData()
@@ -57,19 +58,19 @@ public class SlimeController : MonoBehaviour
             case SkillType.ATTACK:
 				{
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetATKOrigin(slimeInfo, rootData.SlimeATK);
+                    SetATKOrigin(slimeInfo, rootDataClone.SlimeATK);
                 }
                 break;
             case SkillType.DEFEND:
                 {
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetDefendOrigin(slimeInfo, rootData.SlimeDF);
+                    SetDefendOrigin(slimeInfo, rootDataClone.SlimeDF);
                 }
                 break;
             case SkillType.UTILITY:
                 {
                     var slimeInfo = slimeTemplate.ListInfo;
-                    SetUtilityOrigin(slimeInfo, rootData.SlimeUti);
+                    SetUtilityOrigin(slimeInfo, rootDataClone.SlimeUti);
                 }
                 break;
 		}
