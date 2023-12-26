@@ -23,13 +23,13 @@ public class SlimeController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         SetRootData();
         SetOriginData();
     }
 
     private void Start()
     {
-        Instance = this;
         skillController = GetComponent<SkillController>();
         ScaleDetectImage();
     }

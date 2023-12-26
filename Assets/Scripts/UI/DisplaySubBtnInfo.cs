@@ -12,7 +12,6 @@ public class DisplaySubBtnInfo : MonoBehaviour
         get => runtimeTemplate;
         set => runtimeTemplate = value;
     }
-    //[SerializeField]private 
 
     private void Start()
     {
@@ -20,6 +19,12 @@ public class DisplaySubBtnInfo : MonoBehaviour
         Debug.Log($" runtimeTemplate {slimeTemplate.skillType}");
         subButton = GetComponent<SubButton>();
         DisplayButtonInfo();
+    }
+
+    //[SerializeField]private 
+    public TabInfo GetTabType()
+    {
+        return subButton.SubTabType;
     }
 
     private void DisplayButtonInfo()

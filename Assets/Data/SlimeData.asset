@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: SlimeData
   m_EditorClassIdentifier: 
   _slimeATK:
-    AttackDamage: 0
-    AttackRange: 0
-    AttackSpeed: 0
-    RangeDamageBonus: 0
+    AttackDamage: 147
+    AttackRange: 1
+    AttackSpeed: 3
+    RangeDamageBonus: 1
   _slimeDF:
-    Heath: 0
-    Armor: 0
-    HealthRegen: 0
-    BlockDamage: 0
+    Heath: 500
+    Armor: 10
+    HealthRegen: 0.4
+    BlockDamage: 5
   _slimeUti:
-    SilverPerWave: 0
-    GoldBonus: 0
-    SilverBonus: 0
-    GoldPerWave: 0
+    SilverPerWave: 1
+    GoldBonus: 1
+    SilverBonus: 1
+    GoldPerWave: 1
