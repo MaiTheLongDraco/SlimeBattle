@@ -9,8 +9,8 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private SlimeData rootData;
     [SerializeField] private SlimeData rootDataClone;
 
-    [Header("SlimeInfo")]
-    [SerializeField] private Attack _slimeATK;
+    [Header("SlimeInfo")] [SerializeField] private Attack _slimeATK;
+
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
@@ -21,103 +21,19 @@ public class SlimeController : MonoBehaviour
 
     private SkillController skillController;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         SetRootData();
-        SetOriginData(); 
+        SetOriginData();
     }
+
     private void Start()
     {
         Instance = this;
         skillController = GetComponent<SkillController>();
         ScaleDetectImage();
     }
-    private void  SetRootData()
-	{
-		//rootData.SlimeATK = _slimeATK;
-		//rootData.SlimeDF = _slimeDF;
-		//rootData.SlimeUti = _slimeUti;
-		_slimeATK = rootData.SlimeATK;
-		_slimeDF = rootData.SlimeDF;
-		_slimeUti = rootData.SlimeUti;
-		rootDataClone = rootData.Clone() as SlimeData;
-        print($"rootdata Clone atk {rootDataClone.SlimeATK.AttackDamage} - {rootDataClone.SlimeATK.AttackRange} -- {rootDataClone.SlimeATK.AttackSpeed}");
 
-    }
-    private void SetOriginData()
-	{
-        foreach(var data in listData)
-		{
-            HandleWithSpecifySkillType(data);
-        }
-	}
-    private void HandleWithSpecifySkillType(SlimeTemplate slimeTemplate)
-	{
-        switch(slimeTemplate.skillType)
-		{
-            case SkillType.ATTACK:
-				{
-                    var slimeInfo = slimeTemplate.ListInfo;
-                    SetATKOrigin(slimeInfo, rootDataClone.SlimeATK);
-                }
-                break;
-            case SkillType.DEFEND:
-                {
-                    var slimeInfo = slimeTemplate.ListInfo;
-                    SetDefendOrigin(slimeInfo, rootDataClone.SlimeDF);
-                }
-                break;
-            case SkillType.UTILITY:
-                {
-                    var slimeInfo = slimeTemplate.ListInfo;
-                    SetUtilityOrigin(slimeInfo, rootDataClone.SlimeUti);
-                }
-                break;
-		}
-	}
-    private void SetATKOrigin(List<SubButtonInfo> originData, Attack attackInfo)
-	{
-        for(int i=0;i<originData.Count;i++)
-		{
-            switch(originData[i].id)
-			{
-                case 0: { ChangeDataValue(originData[i], attackInfo.AttackDamage); } break;
-                case 1: { ChangeDataValue(originData[i], attackInfo.AttackSpeed); } break;
-                case 2: { ChangeDataValue(originData[i], attackInfo.AttackRange); } break;
-                case 3: { ChangeDataValue(originData[i], attackInfo.RangeDamageBonus); } break;
-			}
-		}
-	}
-    private void SetDefendOrigin(List<SubButtonInfo> originData, Defense defendInfo)
-    {
-        for (int i = 0; i < originData.Count; i++)
-        {
-            switch (originData[i].id)
-            {
-                case 0: { ChangeDataValue(originData[i], defendInfo.Heath); } break;
-                case 1: { ChangeDataValue(originData[i], defendInfo.HealthRegen); } break;
-                case 2: { ChangeDataValue(originData[i], defendInfo.Armor); } break;
-                case 3: { ChangeDataValue(originData[i], defendInfo.BlockDamage); } break;
-            }
-        }
-    }
-    private void SetUtilityOrigin(List<SubButtonInfo> originData, Utility utilityInfo)
-    {
-        for (int i = 0; i < originData.Count; i++)
-        {
-            switch (originData[i].id)
-            {
-                case 0: { ChangeDataValue(originData[i], utilityInfo.SilverPerWave); } break;
-                case 1: { ChangeDataValue(originData[i], utilityInfo.SilverBonus); } break;
-                case 2: { ChangeDataValue(originData[i], utilityInfo.GoldBonus); } break;
-                case 3: { ChangeDataValue(originData[i], utilityInfo.GoldPerWave); } break;
-            }
-        }
-    }
-    private void ChangeDataValue(SubButtonInfo info,float newValue)
-	{
-        info.slimePropertyValue = newValue;
-	}
     private void Update()
     {
         StateControl();
@@ -127,6 +43,138 @@ public class SlimeController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _slimeATK.AttackRange);
+    }
+
+    private void SetRootData()
+    {
+        // rootData.SlimeATK = _slimeATK;
+        // rootData.SlimeDF = _slimeDF;
+        // rootData.SlimeUti = _slimeUti;
+        _slimeATK = rootData.SlimeATK;
+        _slimeDF = rootData.SlimeDF;
+        _slimeUti = rootData.SlimeUti;
+        rootDataClone = rootData.Clone() as SlimeData;
+        print(
+            $"rootdata Clone atk {rootDataClone.SlimeATK.AttackDamage} - {rootDataClone.SlimeATK.AttackRange} -- {rootDataClone.SlimeATK.AttackSpeed}");
+    }
+
+    private void SetOriginData()
+    {
+        foreach (var data in listData) HandleWithSpecifySkillType(data);
+    }
+
+    private void HandleWithSpecifySkillType(SlimeTemplate slimeTemplate)
+    {
+        switch (slimeTemplate.skillType)
+        {
+            case SkillType.ATTACK:
+            {
+                var slimeInfo = slimeTemplate.ListInfo;
+                SetATKOrigin(slimeInfo, rootDataClone.SlimeATK);
+            }
+                break;
+            case SkillType.DEFEND:
+            {
+                var slimeInfo = slimeTemplate.ListInfo;
+                SetDefendOrigin(slimeInfo, rootDataClone.SlimeDF);
+            }
+                break;
+            case SkillType.UTILITY:
+            {
+                var slimeInfo = slimeTemplate.ListInfo;
+                SetUtilityOrigin(slimeInfo, rootDataClone.SlimeUti);
+            }
+                break;
+        }
+    }
+
+    private void SetATKOrigin(List<SubButtonInfo> originData, Attack attackInfo)
+    {
+        for (var i = 0; i < originData.Count; i++)
+            switch (originData[i].id)
+            {
+                case 0:
+                {
+                    ChangeDataValue(originData[i], attackInfo.AttackDamage);
+                }
+                    break;
+                case 1:
+                {
+                    ChangeDataValue(originData[i], attackInfo.AttackSpeed);
+                }
+                    break;
+                case 2:
+                {
+                    ChangeDataValue(originData[i], attackInfo.AttackRange);
+                }
+                    break;
+                case 3:
+                {
+                    ChangeDataValue(originData[i], attackInfo.RangeDamageBonus);
+                }
+                    break;
+            }
+    }
+
+    private void SetDefendOrigin(List<SubButtonInfo> originData, Defense defendInfo)
+    {
+        for (var i = 0; i < originData.Count; i++)
+            switch (originData[i].id)
+            {
+                case 0:
+                {
+                    ChangeDataValue(originData[i], defendInfo.Heath);
+                }
+                    break;
+                case 1:
+                {
+                    ChangeDataValue(originData[i], defendInfo.HealthRegen);
+                }
+                    break;
+                case 2:
+                {
+                    ChangeDataValue(originData[i], defendInfo.Armor);
+                }
+                    break;
+                case 3:
+                {
+                    ChangeDataValue(originData[i], defendInfo.BlockDamage);
+                }
+                    break;
+            }
+    }
+
+    private void SetUtilityOrigin(List<SubButtonInfo> originData, Utility utilityInfo)
+    {
+        for (var i = 0; i < originData.Count; i++)
+            switch (originData[i].id)
+            {
+                case 0:
+                {
+                    ChangeDataValue(originData[i], utilityInfo.SilverPerWave);
+                }
+                    break;
+                case 1:
+                {
+                    ChangeDataValue(originData[i], utilityInfo.SilverBonus);
+                }
+                    break;
+                case 2:
+                {
+                    ChangeDataValue(originData[i], utilityInfo.GoldBonus);
+                }
+                    break;
+                case 3:
+                {
+                    ChangeDataValue(originData[i], utilityInfo.GoldPerWave);
+                }
+                    break;
+            }
+    }
+
+    private void ChangeDataValue(SubButtonInfo info, float newValue)
+    {
+        info.slimePropertyValue = newValue;
     }
 
     [ContextMenu("ScaleDetectImage")]

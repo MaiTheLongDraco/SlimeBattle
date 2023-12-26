@@ -494,6 +494,7 @@ MonoBehaviour:
   slimeTemplate: {fileID: 11400000, guid: c134a1dfd785a49639c4e526df348be9, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
+  runtimeTemplate: {fileID: 0}
 --- !u!1 &138020300
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +788,7 @@ MonoBehaviour:
   slimeTemplate: {fileID: 11400000, guid: b2e68dcde52bb99428d881d12ceb6ae4, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
+  runtimeTemplate: {fileID: 0}
 --- !u!1 &189788618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,6 +3363,7 @@ MonoBehaviour:
   slimeTemplate: {fileID: 11400000, guid: e8716ac5ece49e848843f32a55db6056, type: 2}
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
+  runtimeTemplate: {fileID: 0}
 --- !u!1 &1155263018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,7 +3402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -187.80002, y: -100}
+  m_AnchoredPosition: {x: -187.79999, y: -100}
   m_SizeDelta: {x: -375.6, y: 129.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1155263020
@@ -4609,7 +4612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 335.8}
+  m_AnchoredPosition: {x: 0, y: 335.80005}
   m_SizeDelta: {x: 0, y: 671.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620980031
