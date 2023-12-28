@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeData
   m_EditorClassIdentifier: 
   _slimeATK:
-    AttackDamage: 147
+    AttackDamage: 150
     AttackRange: 1
     AttackSpeed: 3
     RangeDamageBonus: 1

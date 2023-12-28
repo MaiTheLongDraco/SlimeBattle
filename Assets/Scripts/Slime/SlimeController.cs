@@ -64,6 +64,7 @@ public class SlimeController : MonoBehaviour
         _slimeATK = RootDataClone.SlimeATK;
         _slimeDF = RootDataClone.SlimeDF;
         _slimeUti = RootDataClone.SlimeUti;
+        ScaleDetectImage();
     }
     private void SetOriginData()
     {
@@ -187,9 +188,8 @@ public class SlimeController : MonoBehaviour
     [ContextMenu("ScaleDetectImage")]
     private void ScaleDetectImage()
     {
-        var currentScale = detectImage.transform.localScale;
-        var detectScale = _slimeATK.AttackRange * 0.62f;
-        detectImage.transform.localScale = new Vector3(currentScale.x * detectScale, currentScale.y * detectScale, 0);
+        var detectScale = _slimeATK.AttackRange * 0.3f;
+        detectImage.transform.localScale = new Vector3( detectScale,  detectScale, 0);
     }
 
     public EnemyMini GetCurrentEnemy()
