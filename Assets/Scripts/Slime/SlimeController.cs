@@ -59,7 +59,12 @@ public class SlimeController : MonoBehaviour
         print(
             $"rootdata Clone atk {RootDataClone.SlimeATK.AttackDamage} - {RootDataClone.SlimeATK.AttackRange} -- {RootDataClone.SlimeATK.AttackSpeed}");
     }
-
+    public void UpdateRuntimeValue()
+	{
+        _slimeATK = RootDataClone.SlimeATK;
+        _slimeDF = RootDataClone.SlimeDF;
+        _slimeUti = RootDataClone.SlimeUti;
+    }
     private void SetOriginData()
     {
         foreach (var data in listData) HandleWithSpecifySkillType(data);

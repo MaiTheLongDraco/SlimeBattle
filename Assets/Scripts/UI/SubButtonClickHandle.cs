@@ -30,7 +30,8 @@ public class SubButtonClickHandle : MonoBehaviour
         parentData.slimePropertyValue += increasingAmount;
         parentData.slimePropertyValue = (float)Math.Round(parentData.slimePropertyValue, 2);
         SpecifySlimeValue(parentData.slimePropertyValue);
-        displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
+		slimeController.UpdateRuntimeValue();
+		displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
     }
 
     private void SpecifySlimeValue(float set)
