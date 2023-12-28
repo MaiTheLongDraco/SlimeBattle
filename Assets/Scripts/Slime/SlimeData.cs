@@ -29,6 +29,7 @@ public class SlimeData : ScriptableObject, ICloneable
 	{
         _slimeUti = set;
 	}
+	#region SetInfo
 	public void SetAttackDamage(float set)
     {
         SlimeATK.AttackDamage = set;
@@ -86,9 +87,68 @@ public class SlimeData : ScriptableObject, ICloneable
     {
         SlimeUti.GoldPerWave = set;
     }
+    #endregion
+    #region IncreaseValue
+    public void IncreaseAttackDamage(float set)
+    {
+        SlimeATK.AttackDamage += set;
+    }
 
-	public object Clone()
+    public void IncreaseAttackRange(float set)
+    {
+        SlimeATK.AttackRange += set;
+    }
+
+    public void IncreaseAttackSpeed(float set)
+    {
+        SlimeATK.AttackSpeed += set;
+    }
+
+    public void IncreaseAttackDamageBonus(float set)
+    {
+        SlimeATK.RangeDamageBonus += set;
+    }
+    public void IncreaseHeath(float set)
+    {
+        SlimeDF.Heath += set;
+    }
+
+    public void IncreaseArmor(float set)
+    {
+        SlimeDF.Armor += set;
+    }
+
+    public void IncreaseHeathRegen(float set)
+    {
+        SlimeDF.HealthRegen += set;
+    }
+
+    public void IncreaseBlockDamage(float set)
+    {
+        SlimeDF.BlockDamage += set;
+    }
+    public void IncreaseSilverPerWave(float set)
+    {
+        SlimeUti.SilverPerWave += set;
+    }
+
+    public void IncreaseGoldBonus(float set)
+    {
+        SlimeUti.GoldBonus += set;
+    }
+
+    public void IncreaseSilverBonus(float set)
+    {
+        SlimeUti.SilverBonus += set;
+    }
+
+    public void IncreaseGoldPerWave(float set)
+    {
+        SlimeUti.GoldPerWave += set;
+    }
+    #endregion
+    public object Clone()
 	{
-        return new SlimeData(_slimeATK, _slimeDF, _slimeUti);
+        return new SlimeData(_slimeATK.Clone()as Attack, _slimeDF.Clone() as Defense, _slimeUti.Clone() as Utility);
 	}
 }

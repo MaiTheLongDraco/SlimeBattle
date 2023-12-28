@@ -21,7 +21,9 @@ public class SlimeController : MonoBehaviour
 
     private SkillController skillController;
 
-    private void Awake()
+	public SlimeData RootDataClone { get => rootDataClone; set => rootDataClone = value; }
+
+	private void Awake()
     {
         Instance = this;
         SetRootData();
@@ -53,9 +55,9 @@ public class SlimeController : MonoBehaviour
         _slimeATK = rootData.SlimeATK;
         _slimeDF = rootData.SlimeDF;
         _slimeUti = rootData.SlimeUti;
-        rootDataClone = rootData.Clone() as SlimeData;
+        RootDataClone = rootData.Clone() as SlimeData;
         print(
-            $"rootdata Clone atk {rootDataClone.SlimeATK.AttackDamage} - {rootDataClone.SlimeATK.AttackRange} -- {rootDataClone.SlimeATK.AttackSpeed}");
+            $"rootdata Clone atk {RootDataClone.SlimeATK.AttackDamage} - {RootDataClone.SlimeATK.AttackRange} -- {RootDataClone.SlimeATK.AttackSpeed}");
     }
 
     private void SetOriginData()
@@ -70,19 +72,19 @@ public class SlimeController : MonoBehaviour
             case SkillType.ATTACK:
             {
                 var slimeInfo = slimeTemplate.ListInfo;
-                SetATKOrigin(slimeInfo, rootDataClone.SlimeATK);
+                SetATKOrigin(slimeInfo, RootDataClone.SlimeATK);
             }
                 break;
             case SkillType.DEFEND:
             {
                 var slimeInfo = slimeTemplate.ListInfo;
-                SetDefendOrigin(slimeInfo, rootDataClone.SlimeDF);
+                SetDefendOrigin(slimeInfo, RootDataClone.SlimeDF);
             }
                 break;
             case SkillType.UTILITY:
             {
                 var slimeInfo = slimeTemplate.ListInfo;
-                SetUtilityOrigin(slimeInfo, rootDataClone.SlimeUti);
+                SetUtilityOrigin(slimeInfo, RootDataClone.SlimeUti);
             }
                 break;
         }
@@ -232,14 +234,22 @@ public class SlimeController : MonoBehaviour
 }
 
 [Serializable]
-public class Attack
+public class Attack:ICloneable
 {
     public float AttackDamage;
     public float AttackRange;
     public float AttackSpeed;
     public float RangeDamageBonus;
 
-    public void SetAttackDamage(float set)
+	public Attack(float attackDamage, float attackRange, float attackSpeed, float rangeDamageBonus)
+	{
+		AttackDamage = attackDamage;
+		AttackRange = attackRange;
+		AttackSpeed = attackSpeed;
+		RangeDamageBonus = rangeDamageBonus;
+	}
+
+	public void SetAttackDamage(float set)
     {
         AttackDamage = set;
     }
@@ -258,17 +268,31 @@ public class Attack
     {
         RangeDamageBonus = set;
     }
+
+	public object Clone()
+	{
+        return new Attack(AttackDamage, AttackRange, AttackSpeed, RangeDamageBonus);
+	}
+	
 }
 
 [Serializable]
-public class Defense
+public class Defense : ICloneable
 {
     public float Heath;
     public float Armor;
     public float HealthRegen;
     public float BlockDamage;
 
-    public void SetHeath(float set)
+	public Defense(float heath, float armor, float healthRegen, float blockDamage)
+	{
+		Heath = heath;
+		Armor = armor;
+		HealthRegen = healthRegen;
+		BlockDamage = blockDamage;
+	}
+
+	public void SetHeath(float set)
     {
         Heath = set;
     }
@@ -287,17 +311,30 @@ public class Defense
     {
         BlockDamage = set;
     }
+
+	public object Clone()
+	{
+        return new Defense(Heath, Armor, HealthRegen, BlockDamage);
+	}
 }
 
 [Serializable]
-public class Utility
+public class Utility:ICloneable
 {
     public float SilverPerWave;
     public float GoldBonus;
     public float SilverBonus;
     public float GoldPerWave;
 
-    public void SetSilverPerWave(float set)
+	public Utility(float silverPerWave, float goldBonus, float silverBonus, float goldPerWave)
+	{
+		SilverPerWave = silverPerWave;
+		GoldBonus = goldBonus;
+		SilverBonus = silverBonus;
+		GoldPerWave = goldPerWave;
+	}
+
+	public void SetSilverPerWave(float set)
     {
         SilverPerWave = set;
     }
@@ -316,6 +353,11 @@ public class Utility
     {
         GoldPerWave = set;
     }
+
+	public object Clone()
+	{
+        return new Utility(SilverPerWave, GoldBonus, SilverBonus, GoldPerWave);
+	}
 }
 
 [Serializable]
