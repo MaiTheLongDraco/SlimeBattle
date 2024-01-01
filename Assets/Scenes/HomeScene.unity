@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyManager: {fileID: 0}
+  runTimeSilver: 100
 --- !u!1 &799857720
 GameObject:
   m_ObjectHideFlags: 0

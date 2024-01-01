@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CurrencyManager currencyManager;
     public static GameManager Instance;
-    // Start is called before the first frame update
-    private void Awake()
+	// Start is called before the first frame update
+	private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         Instance = this;

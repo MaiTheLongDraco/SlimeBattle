@@ -12,11 +12,13 @@ public class SubButtonClickHandle : MonoBehaviour
     [SerializeField] private SubButtonInfoHandle displayInfo;
     [SerializeField] private SlimeController slimeController;
     [SerializeField] private SlimeData rootDataClone;
+    [SerializeField] private GamePlayManager gamePlayManager;
 
     // Start is called before the first frame update
     private void Start()
     {
-        slimeController = SlimeController.Instance;
+		gamePlayManager = GamePlayManager.Instance;
+		slimeController = SlimeController.Instance;
         rootDataClone = slimeController.RootDataClone;
         upgradeButton = GetComponentInChildren<Button>();
         parentInfo = GetComponentInParent<DisplaySubBtnInfo>();
@@ -63,6 +65,7 @@ public class SubButtonClickHandle : MonoBehaviour
 			case 0:
 				{
 					rootDataClone.SetAttackDamage(set);
+					parentData.slimePropertyValue = Mathf.CeilToInt(parentData.slimePropertyValue);
 					print($"new atk dame value {rootDataClone.SlimeATK.AttackDamage}");
 				}
 				break;
@@ -95,6 +98,10 @@ public class SubButtonClickHandle : MonoBehaviour
 			case 0:
 				{
 					rootDataClone.SetHeath(set);
+					gamePlayManager.SetTotalHeathTxt(Mathf.CeilToInt(set));
+					var heathRate = (rootDataClone.SlimeDF.Heath / set);
+					gamePlayManager.SetCurrentHeathTxt(Mathf.CeilToInt(set * heathRate));
+					parentData.slimePropertyValue = Mathf.CeilToInt(parentData.slimePropertyValue);
 					print($"new df heath value {rootDataClone.SlimeDF.Heath}");
 				}
 				break;
@@ -108,6 +115,7 @@ public class SubButtonClickHandle : MonoBehaviour
 			case 2:
 				{
 					rootDataClone.SetArmor(set);
+					parentData.slimePropertyValue = Mathf.CeilToInt(parentData.slimePropertyValue);
 					print($"new df armor range value {rootDataClone.SlimeDF.Armor}");
 
 				}
