@@ -22,8 +22,9 @@ public class SlimeController : MonoBehaviour
     private SkillController skillController;
 
 	public SlimeData RootDataClone { get => rootDataClone; set => rootDataClone = value; }
-
-	private void Awake()
+    [Header("Other Reference")]
+    [SerializeField] private GamePlayManager gamePlayManager;
+    private void Awake()
     {
         Instance = this;
         SetRootData();
@@ -221,6 +222,8 @@ public class SlimeController : MonoBehaviour
         var passInterval = skillController.HasPastInterval();
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
         {
+            _slimeDF.Heath -= 30;
+            gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             skillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
             skillController.StartNormal();
