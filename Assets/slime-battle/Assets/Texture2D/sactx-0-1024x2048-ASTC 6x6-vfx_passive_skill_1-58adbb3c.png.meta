@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,7 +127,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1629
+        width: 248
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb472a73871a2431a92c2876ad099a5f
+      internalID: -963072629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1360
+        width: 364
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b46f7fb2d4c4c9daa6a03ec33dda3e
+      internalID: 2072337723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1129
+        width: 471
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8157de0500a7e48ad9cdb68db4ef975d
+      internalID: 204758858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 897
+        width: 461
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8182ff79e231b42448b5dab903cce3ac
+      internalID: -1250973214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 676
+        width: 473
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b888d3905fbe412bb1ff6e97021a67d
+      internalID: 162755730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 473
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfaf547177a0f401b9fae1a15a6a24b3
+      internalID: 448620977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 473
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea63294749a54d3e9a5c1b5b72a21fc
+      internalID: 2128903584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 483
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d66249491184474818bd0375878d8a
+      internalID: 1927768903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +306,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_0: -963072629
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_1: 2072337723
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_2: 204758858
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_3: -1250973214
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_4: 162755730
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_5: 448620977
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_6: 2128903584
+      sactx-0-1024x2048-ASTC 6x6-vfx_passive_skill_1-58adbb3c_7: 1927768903
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

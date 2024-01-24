@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class SkillController : MonoBehaviour
     [SerializeField] private SlimeState slimeState;
     [SerializeField] private Transform createPos;
     [SerializeField] private bool _shouldPause;
-
+    [SerializeField] private float normalInterval = 3f;
     [SerializeField] private bool _shouldShowLog;
     [SerializeField] private float _interval = 0.1f;
     [SerializeField] private Text timer;
@@ -53,9 +54,23 @@ public class SkillController : MonoBehaviour
     {
         if (slimeState == SlimeState.UNATTACK || slimeState == SlimeState.DEAD)
             return;
-        var normal = Instantiate(normalSkill.GetSkill(), createPos.position, Quaternion.identity);
         var atkDam = slimeController.GetAttackInfo().AttackDamage;
+        var bulletSkill = normalSkill.GetSkillAt(0);
+        CreateNormalSkill(bulletSkill, createPos.position, Quaternion.identity, atkDam);
+        normalInterval -= Time.deltaTime;
+        if (normalInterval <= 0)
+        {
+            var specialSkill = normalSkill.GetSkillAt(1);
+            CreateNormalSkill(specialSkill, createPos.position, Quaternion.identity, atkDam);
+            normalInterval = 3;
+        }
+    }
+
+    private void CreateNormalSkill(SkillObject skillObject, Vector3 position, Quaternion rotation, float atkDam)
+    {
+        var normal = Instantiate(normalSkill.GetSkill(skillObject), position, rotation);
         normal.GetComponent<Bullet>().SetDamage(atkDam);
+        print($" skilltype {normal.GetComponent<Bullet>().GetType()}--- damage {atkDam}");
     }
 
     public void StartNormal()
@@ -72,16 +87,21 @@ public class SkillController : MonoBehaviour
 [Serializable]
 public class NormalSkill
 {
-    public SkillObject skillObject;
+    public List<SkillObject> skillObject;
 
-    public void SetBulletDamage(float damage)
+    public void SetBulletDamage(SkillObject skillObject, float damage)
     {
         skillObject.GetSkillComponet<Bullet>().SetDamage(damage);
     }
 
-    public GameObject GetSkill()
+    public GameObject GetSkill(SkillObject skillObject)
     {
         return skillObject.skill;
+    }
+
+    public SkillObject GetSkillAt(int index)
+    {
+        return skillObject[index];
     }
 }
 
