@@ -39,6 +39,8 @@ public class Bullet : MonoBehaviour
         currentEnemy = SlimeController.Instance.GetCurrentEnemy();
         if (currentEnemy == null) return;
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
+        transform.LookAt(currentEnemy.transform);
+        HandleWithType();
     }
 
     private void HandleWithType()

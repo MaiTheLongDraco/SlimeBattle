@@ -8818,7 +8818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2059444959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9163,7 +9163,7 @@ PrefabInstance:
       objectReference: {fileID: 1879166135}
     - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: normalInterval
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: normalSkill.skillObject.Array.size
