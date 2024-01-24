@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slimeATK:
     AttackDamage: 150
-    AttackRange: 1
+    AttackRange: 3
     AttackSpeed: 3
-    RangeDamageBonus: 1
+    RangeDamageBonus: 3
   _slimeDF:
-    Heath: 500
+    Heath: -1459540
     Armor: 10
     HealthRegen: 0.4
     BlockDamage: 5

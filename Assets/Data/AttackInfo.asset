@@ -18,7 +18,7 @@ MonoBehaviour:
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 0
     slimePropertyName: Attack
-    slimePropertyValue: 147
+    slimePropertyValue: 150
   - CurrencyCost: 8
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 1
@@ -28,9 +28,9 @@ MonoBehaviour:
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 2
     slimePropertyName: Range
-    slimePropertyValue: 1
+    slimePropertyValue: 3
   - CurrencyCost: 80
     CurrencyIcon: {fileID: 21300000, guid: d0359460ed80b4abba2652d2d7c8fcff, type: 3}
     id: 3
     slimePropertyName: Range Damage Bound
-    slimePropertyValue: 0
+    slimePropertyValue: 3
