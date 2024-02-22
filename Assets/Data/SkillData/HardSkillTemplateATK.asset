@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f791fad3db1d284fa9ccb85fb0285f4, type: 3}
+  m_Name: HardSkillTemplateATK
+  m_EditorClassIdentifier: 
+  ListInfo:
+  - skillType: 0
+    buffValue: 5
+    skillIcon: {fileID: 21300000, guid: 61a6a0d56a59e478c9302330b882a8db, type: 3}
+    id: 0
+    describeText: trigger {0}
+    skillName: ahihi
+    skillLevel: 1
+  - skillType: 1
+    buffValue: 5
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 1
+    describeText: trigger {0}
+    skillName: ahihi
+    skillLevel: 1
+  - skillType: 2
+    buffValue: 6
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 2
+    describeText: trigger {1}
+    skillName: ahihi1
+    skillLevel: 2
+  - skillType: 0
+    buffValue: 10
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 3
+    describeText: trigger {2}
+    skillName: ahihi2
+    skillLevel: 1
+  - skillType: 1
+    buffValue: 15
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 4
+    describeText: trigger {3}
+    skillName: ahihi3
+    skillLevel: 1
