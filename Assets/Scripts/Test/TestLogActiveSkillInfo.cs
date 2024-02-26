@@ -6,10 +6,13 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 {
     [SerializeField] private HardSkillTemplate hardSkillTemplate;
     [SerializeField] private List<SkillToPickInfoHolder> SkillToPickInfoHolders;
+	[SerializeField] private SkillReference skillReference;
     // Start is called before the first frame update
     void Start()
     {
-        InitSkillInfo();
+		skillReference = GetComponent<SkillReference>();
+
+		InitSkillInfo();
     }
     private void InitSkillInfo()
 	{
@@ -30,6 +33,7 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 	private void TestLog(int buttonID)
 	{
 		print($"User click on this buttonID {buttonID}");
+		skillReference.HandleWithType(buttonID);
 	}
 
 	// Update is called once per frame
