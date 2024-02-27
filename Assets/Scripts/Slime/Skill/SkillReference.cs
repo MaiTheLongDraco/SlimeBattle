@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SkillReference : MonoBehaviour
 {
@@ -10,24 +11,21 @@ public class SkillReference : MonoBehaviour
     {
         print($"run ini handle with type {id}");
         foreach (var skill in listSkillRef)
-            switch (skill.skillType)
-            {
-                case Skill.ACTIVE_SKILL:
-                {
-                    if (id == (int)skill.SkillID)
-                    {
-                        print($" skill ID {(int)skill.SkillID}");
-                        Instantiate(skill.SkillGO);
-                    }
+            skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
+    }
 
-                    break;
-                }
-                case Skill.PASSIVE_SKILL:
-                {
-                    print(" run into get passive skill");
-                    break;
-                }
-            }
+    private void PassiveSkill()
+    {
+        print(" run into get passive skill");
+    }
+
+    private void ActiveSkill(SkillRefGO skill, int id)
+    {
+        if ((int)skill.SkillID == id)
+        {
+            print($" skill ID {(int)skill.SkillID}");
+            Instantiate(skill.SkillGO);
+        }
     }
 
     private void CreateSkillInstance(GameObject skillGO)
@@ -49,6 +47,23 @@ public class SkillRefGO
     {
         get => skillGO;
         set => skillGO = value;
+    }
+
+    public void HandleSpecificSkillType(UnityAction<SkillRefGO, int> activeCB, UnityAction passiveCB, int id)
+    {
+        switch (skillType)
+        {
+            case Skill.ACTIVE_SKILL:
+            {
+                activeCB.Invoke(this, id);
+                break;
+            }
+            case Skill.PASSIVE_SKILL:
+            {
+                passiveCB.Invoke();
+                break;
+            }
+        }
     }
 }
 
