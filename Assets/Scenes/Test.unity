@@ -322,21 +322,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listSkillRef:
-  - SkillID: 111
+  - skillType: 0
+    SkillID: 111
     skillGO: {fileID: 7157963674285598202, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
-  - SkillID: 115
+  - skillType: 1
+    SkillID: 115
     skillGO: {fileID: 5246473536887699721, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
-  - SkillID: 116
+  - skillType: 0
+    SkillID: 116
     skillGO: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
-  - SkillID: 114
+  - skillType: 1
+    SkillID: 114
     skillGO: {fileID: 606361857829087258, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
-  - SkillID: 112
+  - skillType: 0
+    SkillID: 112
     skillGO: {fileID: 917249886630205364, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
-  - SkillID: 113
-    skillGO: {fileID: 7157963674285598202, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
-  - SkillID: 117
+  - skillType: 0
+    SkillID: 113
+    skillGO: {fileID: 3832248925589524884, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
+  - skillType: 1
+    SkillID: 117
     skillGO: {fileID: 6336168690280834875, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
-  - SkillID: 118
+  - skillType: 1
+    SkillID: 118
     skillGO: {fileID: 3397105159473212712, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
 --- !u!1 &109435658
 GameObject:
