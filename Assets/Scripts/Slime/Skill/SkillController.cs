@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SkillController : MonoBehaviour
@@ -12,13 +13,15 @@ public class SkillController : MonoBehaviour
     [SerializeField] private float normalInterval = 3f;
     [SerializeField] private bool _shouldShowLog;
     [SerializeField] private float _interval = 0.1f;
+    [SerializeField] private float _interval1 = 0.1f;
     [SerializeField] private Text timer;
     [SerializeField] private Text interval;
     [SerializeField] private Text lastTime;
     private float _lastTime;
-
+    private float _lastTime1;
+    [SerializeField] private SkillReference skillReference;
     private SlimeController slimeController;
-
+    [SerializeField] private UnityEvent onPassOneSecond;
     // Start is called before the first frame update
     private void Start()
     {
@@ -28,14 +31,22 @@ public class SkillController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        IvokeOnPassASecond();
     }
-
-    public bool HasPastInterval()
+    public void AddOnPassOoneSecondListener(UnityAction callBack)
+	{
+        onPassOneSecond.AddListener(callBack);
+	}
+	private void OnDisable()
+	{
+        onPassOneSecond.RemoveAllListeners();
+	}
+	public bool HasPastInterval()
     {
         if (Time.time > _interval + _lastTime)
         {
             _lastTime += _interval;
-
+            //onPassOneSecond?.Invoke();
             return true;
         }
 
@@ -43,6 +54,14 @@ public class SkillController : MonoBehaviour
         SetText(interval, _interval.ToString());
         SetText(lastTime, _lastTime.ToString());
         return false;
+    }
+    private void IvokeOnPassASecond()
+	{
+        if (Time.time > _interval1 + _lastTime1)
+        {
+            _lastTime1 += _interval1;
+            onPassOneSecond?.Invoke();
+        }
     }
 
     private void SetText(Text text, string value)
@@ -70,6 +89,7 @@ public class SkillController : MonoBehaviour
     {
         var normal = Instantiate(normalSkill.GetSkill(skillObject), position, rotation);
         normal.GetComponent<Bullet>().SetDamage(atkDam);
+        skillReference.InvokeOnShooting();
         print($" skilltype {normal.GetComponent<Bullet>().GetType()}--- damage {atkDam}");
     }
 

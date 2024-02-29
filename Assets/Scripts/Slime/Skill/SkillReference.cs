@@ -6,14 +6,49 @@ using UnityEngine.Events;
 public class SkillReference : MonoBehaviour
 {
     [SerializeField] private List<SkillRefGO> listSkillRef;
-
+    [SerializeField] private int passTime;
+    [SerializeField] private int defeatNumber;
+    [SerializeField] private int shootingNumber;
+    [SerializeField] private UnityEvent onDefeatEnemy;
+    [SerializeField] private UnityEvent onShooting;
+    [SerializeField] private SkillController skillController; 
+    public static SkillReference Instance;
     public void HandleWithType(int id)
     {
         print($"run ini handle with type {id}");
         foreach (var skill in listSkillRef)
             skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
     }
-
+	private void Awake()
+	{
+        Instance = this;
+	}
+	private void Start()
+	{
+        skillController.AddOnPassOoneSecondListener(IncreasePassTime);
+        onDefeatEnemy.AddListener(IncreaseDefeatNumber);
+        onDefeatEnemy.AddListener(IncreaseShootingNumber);
+	}
+	public void InvokeOnDefeatEnemy()
+	{
+        onDefeatEnemy?.Invoke();
+	}
+    public void InvokeOnShooting()
+    {
+        onShooting?.Invoke();
+    }
+    public void IncreasePassTime()
+	{
+        passTime++;
+	}
+    private void IncreaseDefeatNumber()
+	{
+        defeatNumber++;
+	}
+    private void IncreaseShootingNumber()
+	{
+        shootingNumber++;
+	}
     private void PassiveSkill()
     {
         print(" run into get passive skill");

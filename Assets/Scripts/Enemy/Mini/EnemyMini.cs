@@ -37,6 +37,8 @@ public class EnemyMini : Enemy
 	}
 	private void TriggerDeathState()
 	{
+        base.skillReference = SkillReference.Instance;
+        base.InvokeEnemyDeath();
         print("dead");
 		Destroy(this.gameObject);
 	}

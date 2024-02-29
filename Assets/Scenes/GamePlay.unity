@@ -7475,6 +7475,85 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1709935890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709935891}
+  - component: {fileID: 1709935892}
+  m_Layer: 0
+  m_Name: SkillReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1709935891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709935890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1757778955}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1709935892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709935890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a230d5c1e9c8442a53a576a7e49116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listSkillRef:
+  - skillType: 0
+    SkillID: 111
+    skillGO: {fileID: 7157963674285598202, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
+  - skillType: 1
+    SkillID: 115
+    skillGO: {fileID: 5246473536887699721, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
+  - skillType: 0
+    SkillID: 116
+    skillGO: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
+  - skillType: 1
+    SkillID: 114
+    skillGO: {fileID: 606361857829087258, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
+  - skillType: 0
+    SkillID: 112
+    skillGO: {fileID: 917249886630205364, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
+  - skillType: 0
+    SkillID: 113
+    skillGO: {fileID: 3832248925589524884, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
+  - skillType: 1
+    SkillID: 117
+    skillGO: {fileID: 6336168690280834875, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
+  - skillType: 1
+    SkillID: 118
+    skillGO: {fileID: 3397105159473212712, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
+  passTime: 0
+  defeatNumber: 0
+  shootingNumber: 0
+  onDefeatEnemy:
+    m_PersistentCalls:
+      m_Calls: []
+  onShooting:
+    m_PersistentCalls:
+      m_Calls: []
+  skillController: {fileID: 1934924988}
 --- !u!1 &1717215046
 GameObject:
   m_ObjectHideFlags: 0
@@ -7709,6 +7788,7 @@ Transform:
   - {fileID: 1385201315}
   - {fileID: 2107598132}
   - {fileID: 1026073550}
+  - {fileID: 1709935891}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8396,6 +8476,17 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   gamePlayManager: {fileID: 516625827}
   slimeDataClone: {fileID: 0}
+--- !u!114 &1934924988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+  m_PrefabInstance: {fileID: 282316383120557626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb71bfc3fbc34174eac12145e68ef7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1944613955
 GameObject:
   m_ObjectHideFlags: 0
@@ -9162,9 +9253,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1879166135}
     - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: _interval1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: normalInterval
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: skillReference
+      value: 
+      objectReference: {fileID: 1709935892}
     - target: {fileID: 7203521794932407817, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: normalSkill.skillObject.Array.size
       value: 2
