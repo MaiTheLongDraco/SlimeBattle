@@ -20,6 +20,7 @@ public class SkillController : MonoBehaviour
     private float _lastTime;
     private float _lastTime1;
     [SerializeField] private SkillReference skillReference;
+    [SerializeField] private List<ActiveSkill> skilUnlock;
     private SlimeController slimeController;
     [SerializeField] private UnityEvent onPassOneSecond;
     // Start is called before the first frame update
@@ -27,6 +28,17 @@ public class SkillController : MonoBehaviour
     {
         slimeController = GetComponent<SlimeController>();
     }
+    public void UnLockSkillWithID(int id)
+	{
+        foreach(var skill in skilUnlock)
+		{
+            if(id==(int)skill.SkillID)
+			{
+                skill.ActivateSkill();
+                print($"---unlock skill {skill.SkillID} is {skill.SkillState}");
+			}
+		}
+	}
 
     // Update is called once per frame
     private void Update()
@@ -129,12 +141,21 @@ public class NormalSkill
 public class AdvanceSkill
 {
     public SkillObject skillObject;
+    public void GenerateSkillWithDefaultNumber(UnityAction<int> callBack)
+	{
+        skillObject.CreateSkill(callBack);
+	}
 }
 
 [Serializable]
 public class SkillObject
 {
     public GameObject skill;
+    public int numberOfSkill;
+    public void CreateSkill(UnityAction<int> callBack)
+	{
+        callBack?.Invoke(numberOfSkill);
+	}
 
     public T GetSkillComponet<T>()
     {
@@ -148,4 +169,9 @@ public enum SlimeState
     ATTACK,
     UNATTACK,
     DEAD
+}
+public enum SkillState
+{
+    UNLOCKED,
+    NOT_UNLOCK
 }

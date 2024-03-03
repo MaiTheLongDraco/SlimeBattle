@@ -20,7 +20,7 @@ public class EnemyMini : Enemy
         DetectDead();
     }
 
-    public Vector2 GetSelfPos()
+    public Vector3 GetSelfPos()
     {
         return transform.position;
     }

@@ -22,7 +22,9 @@ public class SlimeController : MonoBehaviour
     private SkillController skillController;
 
 	public SlimeData RootDataClone { get => rootDataClone; set => rootDataClone = value; }
-    [Header("Other Reference")]
+	public SkillController SkillController { get => skillController; set => skillController = value; }
+
+	[Header("Other Reference")]
     [SerializeField] private GamePlayManager gamePlayManager;
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class SlimeController : MonoBehaviour
 
     private void Start()
     {
-        skillController = GetComponent<SkillController>();
+        SkillController = GetComponent<SkillController>();
         ScaleDetectImage();
     }
 
@@ -71,8 +73,8 @@ public class SlimeController : MonoBehaviour
     {
         foreach (var data in listData) HandleWithSpecifySkillType(data);
     }
-
-    private void HandleWithSpecifySkillType(SlimeTemplate slimeTemplate)
+	
+	private void HandleWithSpecifySkillType(SlimeTemplate slimeTemplate)
     {
         switch (slimeTemplate.skillType)
         {
@@ -197,8 +199,9 @@ public class SlimeController : MonoBehaviour
     {
         return currentTarget;
     }
+	
 
-    public Attack GetAttackInfo()
+	public Attack GetAttackInfo()
     {
         return _slimeATK;
     }
@@ -207,30 +210,31 @@ public class SlimeController : MonoBehaviour
     {
         if (slimeHeath <= 0)
         {
-            skillController.SetState(SlimeState.DEAD);
+            SkillController.SetState(SlimeState.DEAD);
             return;
         }
 
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
         if (hittedEnemy == null)
         {
-            skillController.SetState(SlimeState.UNATTACK);
+            SkillController.SetState(SlimeState.UNATTACK);
             return;
         }
 
         currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
-        var passInterval = skillController.HasPastInterval();
+        var passInterval = SkillController.HasPastInterval();
+        if (currentTarget == null) return;
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
         {
             _slimeDF.Heath -= 30;
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
-            skillController.SetState(SlimeState.ATTACK);
+            SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
-            skillController.StartNormal();
+            SkillController.StartNormal();
         }
         else
         {
-            skillController.SetState(SlimeState.UNATTACK);
+            SkillController.SetState(SlimeState.UNATTACK);
         }
     }
 

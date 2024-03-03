@@ -19,7 +19,7 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 		for(int i=0;i<SkillToPickInfoHolders.Count;i++)
 		{
 			SetActiveSkillInfo(hardSkillTemplate.ListInfo[i], i);
-			SkillToPickInfoHolders[i].AddOnClickEvent(TestLog);
+			SkillToPickInfoHolders[i].AddOnClickEvent(UnlockNewSkill);
 		}
 	}
 
@@ -30,7 +30,7 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 		SkillToPickInfoHolders[index].SetSkillNameText(data.skillName);
 		SkillToPickInfoHolders[index].SetSkillIcon(data.skillIcon);
 	}
-	private void TestLog(int buttonID)
+	private void UnlockNewSkill(int buttonID)
 	{
 		print($"User click on this buttonID {buttonID}");
 		skillReference.HandleWithType(buttonID);

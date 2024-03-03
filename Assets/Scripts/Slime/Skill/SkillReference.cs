@@ -13,8 +13,21 @@ public class SkillReference : MonoBehaviour
     [SerializeField] private UnityEvent onShooting;
     [SerializeField] private SkillController skillController; 
     public static SkillReference Instance;
-    public void HandleWithType(int id)
+
+	public int PassTime { get => passTime; set => passTime = value; }
+	public int DefeatNumber { get => defeatNumber; set => defeatNumber = value; }
+	public int ShootingNumber { get => shootingNumber; set => shootingNumber = value; }
+	public SkillController SkillController { get {
+			if (skillController == null)
+			{
+                skillController = SlimeController.Instance.SkillController;
+            }
+            return skillController;
+                } set => skillController = value; }
+
+	public void HandleWithType(int id)
     {
+        UnLockSkillWithID(id);
         print($"run ini handle with type {id}");
         foreach (var skill in listSkillRef)
             skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
@@ -23,9 +36,13 @@ public class SkillReference : MonoBehaviour
 	{
         Instance = this;
 	}
+    private void UnLockSkillWithID(int id)
+	{
+        SkillController.UnLockSkillWithID(id);
+	}
 	private void Start()
 	{
-        skillController.AddOnPassOoneSecondListener(IncreasePassTime);
+        SkillController.AddOnPassOoneSecondListener(IncreasePassTime);
         onDefeatEnemy.AddListener(IncreaseDefeatNumber);
         onDefeatEnemy.AddListener(IncreaseShootingNumber);
 	}
@@ -39,15 +56,15 @@ public class SkillReference : MonoBehaviour
     }
     public void IncreasePassTime()
 	{
-        passTime++;
+        PassTime++;
 	}
     private void IncreaseDefeatNumber()
 	{
-        defeatNumber++;
+        DefeatNumber++;
 	}
     private void IncreaseShootingNumber()
 	{
-        shootingNumber++;
+        ShootingNumber++;
 	}
     private void PassiveSkill()
     {
@@ -69,6 +86,8 @@ public class SkillReference : MonoBehaviour
             return;
         Instantiate(skillGO, SlimeController.Instance.transform.position, Quaternion.identity);
     }
+
+	
 }
 
 [Serializable]
