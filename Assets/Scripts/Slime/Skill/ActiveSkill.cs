@@ -89,5 +89,8 @@ public class ActiveSkill : MonoBehaviour,ISkillInvokation
 		}
 	}
 
-	
+	void ISkillInvokation.DoSkill()
+	{
+		throw new NotImplementedException();
+	}
 }

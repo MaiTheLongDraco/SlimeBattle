@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914765854011238899}
-  - component: {fileID: 5864809687839832333}
   m_Layer: 0
   m_Name: DESTRUCTION_SHOT
   m_TagString: Untagged
@@ -32,19 +31,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5864809687839832333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052105524769608469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fecc15d9c880fc44adaf3264703f933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillReference: {fileID: 0}
-  _interval: 1
-  skillID: 116
-  skillState: 1

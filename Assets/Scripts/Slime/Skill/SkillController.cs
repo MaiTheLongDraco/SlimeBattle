@@ -20,26 +20,15 @@ public class SkillController : MonoBehaviour
     private float _lastTime;
     private float _lastTime1;
     [SerializeField] private SkillReference skillReference;
-    [SerializeField] private List<ActiveSkill> skilUnlock;
     private SlimeController slimeController;
     [SerializeField] private UnityEvent onPassOneSecond;
+    private ISkillInvokation skillInvokation;
+    [SerializeField] private RingShot ringShot;
     // Start is called before the first frame update
     private void Start()
     {
         slimeController = GetComponent<SlimeController>();
     }
-    public void UnLockSkillWithID(int id)
-	{
-        foreach(var skill in skilUnlock)
-		{
-            if(id==(int)skill.SkillID)
-			{
-                skill.ActivateSkill();
-                print($"---unlock skill {skill.SkillID} is {skill.SkillState}");
-			}
-		}
-	}
-
     // Update is called once per frame
     private void Update()
     {
@@ -73,9 +62,16 @@ public class SkillController : MonoBehaviour
         {
             _lastTime1 += _interval1;
             onPassOneSecond?.Invoke();
+            DoSkillThroughInterface(ringShot);
         }
     }
-
+    private void DoSkillThroughInterface(ISkillInvokation skillInvokationNew)
+	{
+        if (skillInvokationNew == null) return;
+        skillInvokation = skillInvokationNew;
+        skillInvokation.DoSkill();
+       
+    }
     private void SetText(Text text, string value)
     {
         text.text = value;
@@ -101,6 +97,7 @@ public class SkillController : MonoBehaviour
     {
         var normal = Instantiate(normalSkill.GetSkill(skillObject), position, rotation);
         normal.GetComponent<Bullet>().SetDamage(atkDam);
+        normal.transform.Translate((slimeController.GetCurrentEnemy().GetSelfPos() - transform.position) * 0.5f * Time.deltaTime);
         skillReference.InvokeOnShooting();
         print($" skilltype {normal.GetComponent<Bullet>().GetType()}--- damage {atkDam}");
     }

@@ -27,7 +27,6 @@ public class SkillReference : MonoBehaviour
 
 	public void HandleWithType(int id)
     {
-        UnLockSkillWithID(id);
         print($"run ini handle with type {id}");
         foreach (var skill in listSkillRef)
             skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
@@ -36,15 +35,12 @@ public class SkillReference : MonoBehaviour
 	{
         Instance = this;
 	}
-    private void UnLockSkillWithID(int id)
-	{
-        SkillController.UnLockSkillWithID(id);
-	}
+    
 	private void Start()
 	{
         SkillController.AddOnPassOoneSecondListener(IncreasePassTime);
         onDefeatEnemy.AddListener(IncreaseDefeatNumber);
-        onDefeatEnemy.AddListener(IncreaseShootingNumber);
+        onShooting.AddListener(IncreaseShootingNumber);
 	}
 	public void InvokeOnDefeatEnemy()
 	{

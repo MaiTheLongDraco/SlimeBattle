@@ -208,29 +208,30 @@ public class SlimeController : MonoBehaviour
 
     private void StateControl()
     {
-        if (slimeHeath <= 0)
-        {
-            SkillController.SetState(SlimeState.DEAD);
-            return;
-        }
+        //if (slimeHeath <= 0)
+        //{
+        //    SkillController.SetState(SlimeState.DEAD);
+        //    return;
+        //}
 
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
-        if (hittedEnemy == null)
-        {
-            SkillController.SetState(SlimeState.UNATTACK);
-            return;
-        }
+		if (hittedEnemy == null)
+		{
+			SkillController.SetState(SlimeState.UNATTACK);
+			return;
+		}
 
-        currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
+		currentTarget = hittedEnemy.gameObject.GetComponent<EnemyMini>();
         var passInterval = SkillController.HasPastInterval();
         if (currentTarget == null) return;
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
         {
-            _slimeDF.Heath -= 30;
+            //_slimeDF.Heath -= 30;
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
             SkillController.StartNormal();
+
         }
         else
         {
