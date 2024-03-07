@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6453610115128892844}
   - component: {fileID: 2361119533263208828}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.02
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemy: {fileID: 0}
   bulletType: 0
-  speed: 0.00001
+  speed: 0.2
   duration: 0
 --- !u!58 &2361119533263208828
 CircleCollider2D:

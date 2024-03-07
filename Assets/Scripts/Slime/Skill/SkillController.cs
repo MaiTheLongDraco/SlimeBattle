@@ -77,34 +77,35 @@ public class SkillController : MonoBehaviour
         text.text = value;
     }
 
-    private void MakeNormalSkill()
+    private void MakeNormalSkill(EnemyMini enemy)
     {
         if (slimeState == SlimeState.UNATTACK || slimeState == SlimeState.DEAD)
             return;
         var atkDam = slimeController.GetAttackInfo().AttackDamage;
         var bulletSkill = normalSkill.GetSkillAt(0);
-        CreateNormalSkill(bulletSkill, createPos.position, Quaternion.identity, atkDam);
+        CreateNormalSkill(bulletSkill, createPos.position, Quaternion.identity, atkDam,enemy);
         normalInterval -= Time.deltaTime;
         if (normalInterval <= 0)
         {
             var specialSkill = normalSkill.GetSkillAt(1);
-            CreateNormalSkill(specialSkill, createPos.position, Quaternion.identity, atkDam);
+            CreateNormalSkill(specialSkill, createPos.position, Quaternion.identity, atkDam, enemy);
             normalInterval = 3;
         }
     }
 
-    private void CreateNormalSkill(SkillObject skillObject, Vector3 position, Quaternion rotation, float atkDam)
+    private void CreateNormalSkill(SkillObject skillObject, Vector3 position, Quaternion rotation, float atkDam, EnemyMini enemy)
     {
         var normal = Instantiate(normalSkill.GetSkill(skillObject), position, rotation);
         normal.GetComponent<Bullet>().SetDamage(atkDam);
-        normal.transform.Translate((slimeController.GetCurrentEnemy().GetSelfPos() - transform.position) * 0.5f * Time.deltaTime);
+        normal.GetComponent<Bullet>().SetCurrentEnemy(enemy);
+        //normal.transform.Translate((slimeController.GetCurrentEnemy().GetSelfPos() - transform.position) * 0.5f * Time.deltaTime);
         skillReference.InvokeOnShooting();
         print($" skilltype {normal.GetComponent<Bullet>().GetType()}--- damage {atkDam}");
     }
 
-    public void StartNormal()
+    public void StartNormal(EnemyMini enemy)
     {
-        MakeNormalSkill();
+        MakeNormalSkill(enemy);
     }
 
     public void SetState(SlimeState newState)

@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-		//ShootToEnemy();
+		ShootToEnemy();
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -33,13 +33,17 @@ public class Bullet : MonoBehaviour
     {
         damage = set;
     }
+    public void SetCurrentEnemy(EnemyMini enemyMini)
+	{
+        currentEnemy = enemyMini;
 
+    }        
     private void ShootToEnemy()
     {
-        currentEnemy = SlimeController.Instance.GetCurrentEnemy();
         if (currentEnemy == null) return;
         var dir = currentEnemy.GetSelfPos() - transform.position;
-        transform.Translate(dir * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
+        //transform.Translate(dir * speed * Time.deltaTime);
         //transform.LookAt(currentEnemy.transform);
         HandleWithType();
     }

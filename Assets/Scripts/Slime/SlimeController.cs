@@ -230,7 +230,7 @@ public class SlimeController : MonoBehaviour
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
-            SkillController.StartNormal();
+            SkillController.StartNormal(currentTarget);
 
         }
         else
