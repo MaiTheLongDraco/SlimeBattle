@@ -24,17 +24,25 @@ public class SkillController : MonoBehaviour
     [SerializeField] private UnityEvent onPassOneSecond;
     private ISkillInvokation skillInvokation;
     [SerializeField] private RingShot ringShot;
-    // Start is called before the first frame update
-    private void Start()
+    public static SkillController Instance;
+	public SlimeState SlimeState { get => slimeState; set => slimeState = value; }
+
+	// Start is called before the first frame update
+	private void Start()
     {
         slimeController = GetComponent<SlimeController>();
+        Instance = this;
     }
     // Update is called once per frame
     private void Update()
     {
         IvokeOnPassASecond();
     }
-    public void AddOnPassOoneSecondListener(UnityAction callBack)
+	private void OnDestroy()
+	{
+        Instance = null;
+	}
+	public void AddOnPassOoneSecondListener(UnityAction callBack)
 	{
         onPassOneSecond.AddListener(callBack);
 	}
@@ -79,7 +87,7 @@ public class SkillController : MonoBehaviour
 
     private void MakeNormalSkill(EnemyMini enemy)
     {
-        if (slimeState == SlimeState.UNATTACK || slimeState == SlimeState.DEAD)
+        if (SlimeState == SlimeState.UNATTACK || SlimeState == SlimeState.DEAD)
             return;
         var atkDam = slimeController.GetAttackInfo().AttackDamage;
         var bulletSkill = normalSkill.GetSkillAt(0);
@@ -89,7 +97,7 @@ public class SkillController : MonoBehaviour
         {
             var specialSkill = normalSkill.GetSkillAt(1);
             CreateNormalSkill(specialSkill, createPos.position, Quaternion.identity, atkDam, enemy);
-            normalInterval = 3;
+            normalInterval = 3; 
         }
     }
 
@@ -110,7 +118,7 @@ public class SkillController : MonoBehaviour
 
     public void SetState(SlimeState newState)
     {
-        slimeState = newState;
+        SlimeState = newState;
     }
 }
 

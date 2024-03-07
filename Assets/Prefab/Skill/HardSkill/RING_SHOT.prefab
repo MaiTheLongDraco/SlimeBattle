@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 1764717459844677855}
   - {fileID: 3860010032975769315}
   bullet: {fileID: 8280051368455560727, guid: c14134d3bbee4a749a34264d5449f220, type: 3}
-  shootSpeed: 0
+  shootSpeed: 1
 --- !u!1 &1049687603215582013
 GameObject:
   m_ObjectHideFlags: 0

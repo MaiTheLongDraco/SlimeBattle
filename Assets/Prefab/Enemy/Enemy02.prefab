@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 469074098503688219}
   - component: {fileID: 1188526990}
   - component: {fileID: 4550631972692850993}
+  - component: {fileID: 2471790083983794093}
   m_Layer: 6
   m_Name: Enemy02
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39031998c03b4a5f8174ede0c5b9402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillReference: {fileID: 0}
   chaseTime: 0.005
   heath: 100
   slime: {fileID: 0}
@@ -149,3 +151,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.45, y: 1.72}
   m_EdgeRadius: 0
+--- !u!50 &2471790083983794093
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471176262271696158}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

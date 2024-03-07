@@ -10,8 +10,10 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 	[SerializeField] private List<Transform> refPos;
 	[SerializeField] private GameObject bullet;
 	[SerializeField] private float shootSpeed;
+	[SerializeField] private float damage;
 	public bool CanTriggerSkill()
 	{
+		if (skillReference.ShootingNumber <= 0) return false;
 		if(skillReference.ShootingNumber%triggerNumber==0)
 		{
 			return true;
@@ -21,6 +23,7 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 
 	public void DoSkill()
 	{
+		if (SkillController.Instance.SlimeState != SlimeState.ATTACK) return;
 		if(CanTriggerSkill())
 		{
 			TriggerRingShot();
@@ -32,7 +35,10 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 		{
 			var bulletObj = Instantiate(bullet, transform.position, Quaternion.identity);
 			var dir = refPos[i].position - transform.position;
-			bulletObj.transform.Translate(dir * shootSpeed * Time.deltaTime);
+			bulletObj.GetComponent<RingShotBullet>().SetTargetPos(dir * 10);
+			bulletObj.GetComponent<RingShotBullet>().SetSpeed(shootSpeed);
+			bulletObj.GetComponent<RingShotBullet>().SetDamage(damage);
+			//bulletObj.transform.position = Vector2.MoveTowards(bulletObj.transform.position, dir * 100, shootSpeed);
 		}
 	}
 
@@ -41,7 +47,6 @@ public class RingShot : MonoBehaviour,ISkillInvokation
     {
 		skillReference = SkillReference.Instance;
 		slimeController = SlimeController.Instance;
-
 	}
 
 }
