@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+	public EnemyType enemyType;
     [SerializeField] protected SkillReference skillReference;
 	private void Start()
 	{
@@ -20,4 +21,10 @@ public class Enemy : MonoBehaviour
 	{
 		skillReference.InvokeOnDefeatEnemy();
 	}
+}
+public enum EnemyType
+{
+	BASIC,
+	BOSS,
+	WIZARD
 }

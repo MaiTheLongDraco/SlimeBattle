@@ -73,6 +73,7 @@ public class SkillController : MonoBehaviour
             onPassOneSecond?.Invoke();
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.ringShot);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.multiShot);
+            ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.destructionShot);
         }
     }
     private void DoSkillThroughInterface(ISkillInvokation skillInvokationNew)
@@ -89,6 +90,10 @@ public class SkillController : MonoBehaviour
     public void SetDataForMultiShot(List<EnemyMini> set)
 	{
         ActiveSkill.multiShot.SetListEnemy(set);
+	}
+    public void SetCurrentEnemyForDestrucionShot(EnemyMini enemy)
+	{
+        ActiveSkill.destructionShot.SetCurrentEnemy(enemy);
 	}
     private void MakeNormalSkill(EnemyMini enemy)
     {
@@ -118,7 +123,9 @@ public class SkillController : MonoBehaviour
 
     public void StartNormal(EnemyMini enemy)
     {
+        if (!enemy) return;
         MakeNormalSkill(enemy);
+        SetCurrentEnemyForDestrucionShot(enemy);
     }
 
     public void SetState(SlimeState newState)
