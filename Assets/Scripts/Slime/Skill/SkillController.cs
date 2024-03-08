@@ -23,9 +23,10 @@ public class SkillController : MonoBehaviour
     private SlimeController slimeController;
     [SerializeField] private UnityEvent onPassOneSecond;
     private ISkillInvokation skillInvokation;
-    [SerializeField] private RingShot ringShot;
+    [SerializeField] private ActiveSkillRef activeSkill;
     public static SkillController Instance;
 	public SlimeState SlimeState { get => slimeState; set => slimeState = value; }
+	public ActiveSkillRef ActiveSkill { get => activeSkill; set => activeSkill = value; }
 
 	// Start is called before the first frame update
 	private void Start()
@@ -70,7 +71,8 @@ public class SkillController : MonoBehaviour
         {
             _lastTime1 += _interval1;
             onPassOneSecond?.Invoke();
-            DoSkillThroughInterface(ringShot);
+            ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.ringShot);
+            ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.multiShot);
         }
     }
     private void DoSkillThroughInterface(ISkillInvokation skillInvokationNew)
@@ -84,7 +86,10 @@ public class SkillController : MonoBehaviour
     {
         text.text = value;
     }
-
+    public void SetDataForMultiShot(List<EnemyMini> set)
+	{
+        ActiveSkill.multiShot.SetListEnemy(set);
+	}
     private void MakeNormalSkill(EnemyMini enemy)
     {
         if (SlimeState == SlimeState.UNATTACK || SlimeState == SlimeState.DEAD)
@@ -150,6 +155,18 @@ public class AdvanceSkill
     public void GenerateSkillWithDefaultNumber(UnityAction<int> callBack)
 	{
         skillObject.CreateSkill(callBack);
+	}
+}
+[Serializable]
+public class ActiveSkillRef
+{
+    public RingShot ringShot;
+    public MultiShot multiShot;
+    public RapidFire rapidFire;
+    public DestructionShot destructionShot;
+    public void InvokeSkillData(UnityAction<ISkillInvokation> setSkillMethod, ISkillInvokation skill)
+	{
+        setSkillMethod?.Invoke(skill);
 	}
 }
 

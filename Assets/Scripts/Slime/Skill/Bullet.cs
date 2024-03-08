@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -38,16 +39,28 @@ public class Bullet : MonoBehaviour
         currentEnemy = enemyMini;
 
     }        
+    public void RemoveDeathEnemy(List<EnemyMini> list)
+	{
+        if(currentEnemy.IsDead())
+        list.Remove(currentEnemy);
+	}
     private void ShootToEnemy()
     {
-        if (currentEnemy == null) return;
+        if (currentEnemy == null)
+		{
+            Destroy(this.gameObject);
+            return;
+		}
         var dir = currentEnemy.GetSelfPos() - transform.position;
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
         //transform.Translate(dir * speed * Time.deltaTime);
         //transform.LookAt(currentEnemy.transform);
         HandleWithType();
     }
-
+    public void SetSpeed(float set)
+	{
+        speed = set;
+	}
     private void HandleWithType()
     {
         switch (bulletType)

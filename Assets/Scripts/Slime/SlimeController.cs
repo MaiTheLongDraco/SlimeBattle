@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SlimeController : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class SlimeController : MonoBehaviour
 
 	public SlimeData RootDataClone { get => rootDataClone; set => rootDataClone = value; }
 	public SkillController SkillController { get => skillController; set => skillController = value; }
+	public Attack SlimeATK { get => _slimeATK; set => _slimeATK = value; }
+	public Defense SlimeDF { get => _slimeDF; set => _slimeDF = value; }
+	public Utility SlimeUti { get => _slimeUti; set => _slimeUti = value; }
 
 	[Header("Other Reference")]
     [SerializeField] private GamePlayManager gamePlayManager;
@@ -208,13 +212,14 @@ public class SlimeController : MonoBehaviour
 
     private void StateControl()
     {
-        //if (slimeHeath <= 0)
-        //{
-        //    SkillController.SetState(SlimeState.DEAD);
-        //    return;
-        //}
-
+		//if (slimeHeath <= 0)
+		//{
+		//	SkillController.SetState(SlimeState.DEAD);
+		//	return;
+		//}
+		CheckRaycastMultiEnemy();
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
+
 		if (hittedEnemy == null)
 		{
 			SkillController.SetState(SlimeState.UNATTACK);
@@ -231,14 +236,47 @@ public class SlimeController : MonoBehaviour
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
             SkillController.StartNormal(currentTarget);
-
         }
         else
         {
             SkillController.SetState(SlimeState.UNATTACK);
         }
     }
+    public void CheckRaycastMultiEnemy()
+	{
+        var hitsEnemy = Physics2D.OverlapCircleAll(transform.position, _slimeATK.AttackRange);
+        if(hitsEnemy.Length>=2)
+		{
+           var listCollie= GetListEnemy(2,hitsEnemy);
+            var listEnemy = new List<EnemyMini>();
+            foreach(var obj in listCollie)
+            {
+                if (obj.tag != "Enemy") continue;
+                listEnemy.Add(obj.GetComponent<EnemyMini>());
+            }
+            skillController.SetDataForMultiShot(listEnemy);
+            if(listEnemy.Count<2)
+			{
+                print("Reset list enemy");
+                skillController.ActiveSkill.multiShot.ResetListEnemy();
+            }
+		}
+		else
+		{
+            skillController.ActiveSkill.multiShot.ResetListEnemy();
+        }
 
+    }
+    private List<T> GetListEnemy<T>(int getNumber, params T[] elements)
+    {
+        List<T> list = new List<T>();
+        for(int i=0; i<getNumber;i++)
+		{
+            var rand = UnityEngine.Random.Range(0, elements.Length);
+            list.Add(elements[rand]);
+        }
+        return list;
+    }
 
     public void SetCurrentTarget(EnemyMini newTarget)
     {

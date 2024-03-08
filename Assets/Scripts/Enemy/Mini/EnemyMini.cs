@@ -13,7 +13,11 @@ public class EnemyMini : Enemy
     {
         slime = FindObjectOfType<SlimeController>();
     }
-
+    public bool IsDead()
+	{
+        if (heath <= 0) return true;
+        return false;
+	}
     private void Update()
     {
         ChaseSlime(slime.transform.position, chaseTime);
