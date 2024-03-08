@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+	protected bool isSlow=false;
 	public EnemyType enemyType;
     [SerializeField] protected SkillReference skillReference;
 	private void Start()

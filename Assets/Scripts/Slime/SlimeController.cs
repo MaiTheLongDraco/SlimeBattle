@@ -197,6 +197,7 @@ public class SlimeController : MonoBehaviour
     {
         var detectScale = _slimeATK.AttackRange * 0.3f;
         detectImage.transform.localScale = new Vector3( detectScale,  detectScale, 0);
+        skillController.ActiveSkill.slowZone.ScaleSlowRange(detectScale);
     }
 
     public EnemyMini GetCurrentEnemy()

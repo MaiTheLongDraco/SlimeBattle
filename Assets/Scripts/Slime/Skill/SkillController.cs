@@ -71,6 +71,7 @@ public class SkillController : MonoBehaviour
         {
             _lastTime1 += _interval1;
             onPassOneSecond?.Invoke();
+            ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.slowZone);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.ringShot);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.multiShot);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.destructionShot);
@@ -83,6 +84,7 @@ public class SkillController : MonoBehaviour
         skillInvokation.DoSkill();
        
     }
+
     private void SetText(Text text, string value)
     {
         text.text = value;
@@ -171,6 +173,7 @@ public class ActiveSkillRef
     public MultiShot multiShot;
     public RapidFire rapidFire;
     public DestructionShot destructionShot;
+    public SlowZone slowZone;
     public void InvokeSkillData(UnityAction<ISkillInvokation> setSkillMethod, ISkillInvokation skill)
 	{
         setSkillMethod?.Invoke(skill);

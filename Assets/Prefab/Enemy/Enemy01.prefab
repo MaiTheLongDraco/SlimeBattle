@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39031998c03b4a5f8174ede0c5b9402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   skillReference: {fileID: 0}
   chaseTime: 0.005
-  heath: 100
+  heath: 1000
   slime: {fileID: 0}
 --- !u!61 &4550631972692850993
 BoxCollider2D:
