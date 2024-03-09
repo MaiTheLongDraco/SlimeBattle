@@ -246,7 +246,15 @@ public class SlimeController : MonoBehaviour
     public void CheckRaycastMultiEnemy()
 	{
         var hitsEnemy = Physics2D.OverlapCircleAll(transform.position, _slimeATK.AttackRange);
-        if(hitsEnemy.Length>=2)
+        if(hitsEnemy.Length>=1)
+		{
+            var random = UnityEngine.Random.Range(0, hitsEnemy.Length - 1);
+            if (hitsEnemy[random].GetComponent<Enemy>() != null)
+			{
+                skillController.ActiveSkill.rapidFire.SetCurrentEnemy(hitsEnemy[random].GetComponent<EnemyMini>());
+            }
+        }
+        if (hitsEnemy.Length>=2)
 		{
            var listCollie= GetListEnemy(2,hitsEnemy);
             var listEnemy = new List<EnemyMini>();

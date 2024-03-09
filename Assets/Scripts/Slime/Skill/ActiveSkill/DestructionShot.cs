@@ -27,7 +27,8 @@ public class DestructionShot : MonoBehaviour,ISkillInvokation
 
 	public bool CanTriggerSkill()
 	{
-		if (currentEnemy.enemyType != EnemyType.BOSS||!currentEnemy) return false;
+		if (!currentEnemy) return false;
+		if (currentEnemy.enemyType != EnemyType.BOSS) return false;
 		return true;
 	}
 	public void SetCurrentEnemy(EnemyMini target)
@@ -50,7 +51,7 @@ public class DestructionShot : MonoBehaviour,ISkillInvokation
 	}
 	private void MoveToEnemy()
 	{
-		if (!canMoveToEnemy) return;
+		if (!canMoveToEnemy||!currentEnemy) return;
 		transform.position = Vector2.MoveTowards(transform.position, currentEnemy.GetSelfPos(), speed);
 		if (Vector2.Distance(transform.position, currentEnemy.GetSelfPos()) <= 0.1f)
 		{

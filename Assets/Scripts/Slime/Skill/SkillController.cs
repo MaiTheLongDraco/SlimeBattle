@@ -74,6 +74,7 @@ public class SkillController : MonoBehaviour
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.slowZone);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.ringShot);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.multiShot);
+            ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.rapidFire);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.destructionShot);
         }
     }

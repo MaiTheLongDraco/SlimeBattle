@@ -86,6 +86,11 @@ public class ActiveSkill : MonoBehaviour,ISkillInvokation
 					print("Increase 30% hp");
 					break;
 				}
+			case SkillID.RAPID_FIRE:
+				{
+					print(" Attack has 35% addition 1 projectile");
+					break;
+				}
 		}
 	}
 

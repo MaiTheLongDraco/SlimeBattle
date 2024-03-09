@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1188526990}
   - component: {fileID: 4550631972692850993}
   - component: {fileID: 3804701549910389767}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Enemy03
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   chaseTime: 0.005
   heath: 1000
   slime: {fileID: 0}
+  checkIsSLow: 0
 --- !u!61 &4550631972692850993
 BoxCollider2D:
   m_ObjectHideFlags: 0
