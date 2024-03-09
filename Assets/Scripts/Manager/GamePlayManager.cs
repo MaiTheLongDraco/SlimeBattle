@@ -27,4 +27,9 @@ public class GamePlayManager : MonoBehaviour
 	{
 		inGameInfoManger.SetRuntimeSilverText(set);
 	}
+	public void IncreaseRuntimeSilver(int addition)
+	{
+		runTimeSilver += addition;
+		SetRuntimeSilverText(runTimeSilver);
+	}
 }

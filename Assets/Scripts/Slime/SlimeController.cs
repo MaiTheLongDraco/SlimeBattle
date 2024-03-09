@@ -66,6 +66,7 @@ public class SlimeController : MonoBehaviour
         print(
             $"rootdata Clone atk {RootDataClone.SlimeATK.AttackDamage} - {RootDataClone.SlimeATK.AttackRange} -- {RootDataClone.SlimeATK.AttackSpeed}");
     }
+    
     public void UpdateRuntimeValue()
 	{
         _slimeATK = RootDataClone.SlimeATK;

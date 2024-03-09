@@ -18,7 +18,7 @@ MonoBehaviour:
     AttackSpeed: 3
     RangeDamageBonus: 3
   _slimeDF:
-    Heath: -1459540
+    Heath: 10000
     Armor: 10
     HealthRegen: 0.4
     BlockDamage: 5

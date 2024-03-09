@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyManager: {fileID: 0}
-  runTimeSilver: 100
 --- !u!1 &799857720
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82985e0b0259b7459b32489b0658cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinAmount: 100
-  gemAmount: 120
+  coinAmount: 1000
+  gemAmount: 12000
 --- !u!4 &1839500355
 Transform:
   m_ObjectHideFlags: 0

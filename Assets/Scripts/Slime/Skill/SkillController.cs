@@ -24,9 +24,11 @@ public class SkillController : MonoBehaviour
     [SerializeField] private UnityEvent onPassOneSecond;
     private ISkillInvokation skillInvokation;
     [SerializeField] private ActiveSkillRef activeSkill;
+    [SerializeField] private PassiveSkillRef passiveSkillRef;
     public static SkillController Instance;
 	public SlimeState SlimeState { get => slimeState; set => slimeState = value; }
 	public ActiveSkillRef ActiveSkill { get => activeSkill; set => activeSkill = value; }
+	public PassiveSkillRef PassiveSkillRef { get => passiveSkillRef; set => passiveSkillRef = value; }
 
 	// Start is called before the first frame update
 	private void Start()
@@ -76,6 +78,7 @@ public class SkillController : MonoBehaviour
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.multiShot);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.rapidFire);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.destructionShot);
+            PassiveSkillRef.InvokeSkillData(DoSkillThroughInterface, PassiveSkillRef.silverGenerator);
         }
     }
     private void DoSkillThroughInterface(ISkillInvokation skillInvokationNew)
@@ -179,6 +182,18 @@ public class ActiveSkillRef
 	{
         setSkillMethod?.Invoke(skill);
 	}
+}
+[Serializable]
+public class PassiveSkillRef
+{
+    public CriticalChance criticalChance;
+    public RangePSSkill range;
+    public SilverGenerator silverGenerator;
+    public HealthPSSkill healthPSSkill;
+    public void InvokeSkillData(UnityAction<ISkillInvokation> setSkillMethod, ISkillInvokation skill)
+    {
+        setSkillMethod?.Invoke(skill);
+    }
 }
 
 [Serializable]
