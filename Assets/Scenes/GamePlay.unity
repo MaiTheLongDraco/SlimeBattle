@@ -495,6 +495,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
   runtimeTemplate: {fileID: 0}
+  listSubButtonClickHandle: []
 --- !u!1001 &77101493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,6 +503,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1951367189}
     m_Modifications:
+    - target: {fileID: 3764205057677289664, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
+      propertyPath: defenseInfo
+      value: 
+      objectReference: {fileID: 1123692857}
     - target: {fileID: 6336168690280834875, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
       propertyPath: m_Name
       value: HEALTH
@@ -859,7 +864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &189049233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -971,6 +976,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
   runtimeTemplate: {fileID: 0}
+  listSubButtonClickHandle: []
 --- !u!1 &189788618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,7 +5943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1123692852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6049,6 +6055,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1367369695973297589, guid: 52a8c719a44694080a1f6e646bbf4694, type: 3}
   subButton: {fileID: 0}
   runtimeTemplate: {fileID: 0}
+  listSubButtonClickHandle: []
 --- !u!1 &1151799989
 GameObject:
   m_ObjectHideFlags: 0

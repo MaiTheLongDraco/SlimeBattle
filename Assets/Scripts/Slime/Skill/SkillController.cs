@@ -79,6 +79,7 @@ public class SkillController : MonoBehaviour
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.rapidFire);
             ActiveSkill.InvokeSkillData(DoSkillThroughInterface, ActiveSkill.destructionShot);
             PassiveSkillRef.InvokeSkillData(DoSkillThroughInterface, PassiveSkillRef.silverGenerator);
+            PassiveSkillRef.InvokeSkillData(DoSkillThroughInterface, PassiveSkillRef.healthPSSkill);
         }
     }
     private void DoSkillThroughInterface(ISkillInvokation skillInvokationNew)

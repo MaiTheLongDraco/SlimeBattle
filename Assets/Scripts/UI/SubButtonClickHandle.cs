@@ -35,8 +35,16 @@ public class SubButtonClickHandle : MonoBehaviour
 		slimeController.UpdateRuntimeValue();
 		displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
     }
+	public void UpgradeSlimeValue(float increasingAmount)
+	{
+		parentData.slimePropertyValue += increasingAmount;
+		parentData.slimePropertyValue = (float)Math.Round(parentData.slimePropertyValue, 2);
+		SpecifySlimeValue(parentData.slimePropertyValue);
+		slimeController.UpdateRuntimeValue();
+		displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
+	}
 
-    private void SpecifySlimeValue(float set)
+	private void SpecifySlimeValue(float set)
     {
         switch (parentInfo.GetTabType())
         {

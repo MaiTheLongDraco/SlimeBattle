@@ -233,7 +233,10 @@ public class SlimeController : MonoBehaviour
         if (currentTarget == null) return;
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
         {
-            //_slimeDF.Heath -= 30;
+            if(Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange/5)
+			{
+                _slimeDF.Heath -= 3;
+            }
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
