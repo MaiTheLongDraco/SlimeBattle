@@ -11,10 +11,15 @@ public class RapidFire : MonoBehaviour,ISkillInvokation,ICritical
     [SerializeField] private float damage;
     [SerializeField] private float initDamage;
     //[SerializeField] private  dropRate;
-    public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
+    [SerializeField] private SkillState state;
+    public SkillState SkillState { get => state; set => state = value; }
+    public void SetState(SkillState set)
+    {
+        state = set;
+    }
 	public bool CanTriggerSkill()
 	{
+        if (state != SkillState.UNLOCKED) return false;
         if (CheckSkillActivation(dropRate)&&currentEnemy!=null) return true;
         return false;
 	}
@@ -44,6 +49,7 @@ public class RapidFire : MonoBehaviour,ISkillInvokation,ICritical
 	void Start()
     {
         damage = SlimeController.Instance.SlimeATK.AttackDamage;
+        SetState(SkillState.NOT_UNLOCK);
     }
 
     // Update is called once per frame

@@ -9,8 +9,16 @@ public class DestructionShot : MonoBehaviour,ISkillInvokation
 	[SerializeField] private Vector3 initialPosition;
 	private SpriteRenderer spriteRenderer;
 	[SerializeField] private bool canMoveToEnemy;
+	[SerializeField] private SkillState state;
+	public SkillState SkillState { get => state; set => state = value; }
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
+
 	void Start()
 	{
+		SetState(SkillState.NOT_UNLOCK);
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		initialPosition = transform.position;
 		gameObject.SetActive(false);
@@ -23,10 +31,10 @@ public class DestructionShot : MonoBehaviour,ISkillInvokation
 	{
 		transform.position = initialPosition;
 	}
-	public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
 	public bool CanTriggerSkill()
 	{
+		if (state != SkillState.UNLOCKED) return false;
 		if (!currentEnemy) return false;
 		if (currentEnemy.enemyType != EnemyType.BOSS) return false;
 		return true;

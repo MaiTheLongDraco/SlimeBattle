@@ -11,12 +11,16 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 	[SerializeField] private GameObject bullet;
 	[SerializeField] private float shootSpeed;
 	[SerializeField] private float damage;
-
-	public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+	[SerializeField] private SkillState state;
+	public SkillState SkillState { get => state; set => state = value; }
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
 
 	public bool CanTriggerSkill()
 	{
-		if (skillReference.ShootingNumber <= 0) return false;
+		if (skillReference.ShootingNumber <= 0||state!=SkillState.UNLOCKED) return false;
 		if(skillReference.ShootingNumber%triggerNumber==0)
 		{
 			return true;
@@ -49,6 +53,7 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 	// Start is called before the first frame update
 	void Start()
     {
+		SetState(SkillState.NOT_UNLOCK);
 		skillReference = SkillReference.Instance;
 		slimeController = SlimeController.Instance;
 	}

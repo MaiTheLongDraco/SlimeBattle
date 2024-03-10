@@ -20,10 +20,15 @@ public class CriticalChance : MonoBehaviour,ISkillInvokation
 			slimeController.IncreaseCritChance(slimeController.CriticalRate * critAddingValue);
 		}
 	}
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
 
 	// Start is called before the first frame update
 	void Start()
     {
+		SetState(SkillState.NOT_UNLOCK);
 		slimeController = SlimeController.Instance;
 
 	}

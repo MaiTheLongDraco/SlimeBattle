@@ -38,13 +38,6 @@ public class ProjectTile : MonoBehaviour
         if (IsOutOfScreenBounds())
         { Destroy(this.gameObject); }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-           
-        }
-    }
     private void Explode()
 	{
         if(Vector2.Distance(transform.position,enemy.transform.position)<0.1f)

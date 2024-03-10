@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 {
+	[SerializeField] private SkillState state;
+	public SkillState SkillState { get => state; set => state = value; }
+
 	[SerializeField] private List<EnemyMini> listEnemy= new List<EnemyMini>();
 	[SerializeField] private int numberOfBullet;
 	[SerializeField] private GameObject multishotBullet;
@@ -11,14 +14,13 @@ public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 	[SerializeField] private float damage;
 	[SerializeField] private float speed;
 
-	public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 	public float Damage { get { damage = SlimeController.Instance.SlimeATK.AttackDamage;
 			return damage;
 		} set => damage = value; }
 
 	public bool CanTriggerSkill()
 	{
-		if (listEnemy.Count<=1) return false;
+		if (listEnemy.Count<=1||state!=SkillState.UNLOCKED) return false;
 		return true;
 	}
 	public void ResetListEnemy()
@@ -89,6 +91,7 @@ public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 	// Start is called before the first frame update
 	void Start()
     {
+		SetState(SkillState.NOT_UNLOCK);
 		damage = SlimeController.Instance.SlimeATK.AttackDamage;
 	}
 	public void SetListEnemy(List<EnemyMini> set)
@@ -107,7 +110,10 @@ public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 		print($"CRIT==== multishot damage {set}");
 		StartCoroutine(SetCriticalATKDamage(set));
 	}
-
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
 	public IEnumerator SetCriticalATKDamage(float set)
 	{
 		initDamage = damage;

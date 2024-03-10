@@ -27,12 +27,12 @@ public class HealthPSSkill : MonoBehaviour,ISkillInvokation
 	void Start()
     {
 		increaseValue = SlimeController.Instance.SlimeDF.Heath*0.3f;
+		SetState(SkillState.NOT_UNLOCK);
 
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
+	
 }

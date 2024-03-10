@@ -26,12 +26,12 @@ public class SilverGenerator : MonoBehaviour,ISkillInvokation
 	// Start is called before the first frame update
 	void Start()
     {
+		SetState(SkillState.NOT_UNLOCK);
 		gamePlayManager = GamePlayManager.Instance;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
 }

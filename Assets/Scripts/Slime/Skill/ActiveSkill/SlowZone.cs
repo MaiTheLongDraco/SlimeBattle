@@ -12,9 +12,14 @@ public class SlowZone : MonoBehaviour,ISkillInvokation
 	// Start is called before the first frame update
 	void Start()
     {
-        slowRange = SlimeController.Instance.SlimeATK.AttackRange;
+		SetState(SkillState.NOT_UNLOCK);
+		slowRange = SlimeController.Instance.SlimeATK.AttackRange;
     }
-    public void SlowEnemy()
+	public void SetState(SkillState set)
+	{
+		skillState = set;
+	}
+	public void SlowEnemy()
 	{
         var hitObj = Physics2D.OverlapCircleAll(transform.position, slowRange);
         foreach(var  enemy in hitObj)

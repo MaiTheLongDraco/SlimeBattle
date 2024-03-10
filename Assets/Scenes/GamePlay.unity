@@ -504,6 +504,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1951367189}
     m_Modifications:
     - target: {fileID: 3764205057677289664, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764205057677289664, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
       propertyPath: defenseInfo
       value: 
       objectReference: {fileID: 1123692857}
@@ -1419,6 +1423,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
     - target: {fileID: -1607757131582283267, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1607757131582283267, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
       propertyPath: dropRate
       value: 0.35
       objectReference: {fileID: 0}
@@ -2046,6 +2054,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
+    - target: {fileID: 2027060513, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7157963674285598202, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
       propertyPath: m_Name
       value: MULTISHOT
@@ -2483,6 +2495,10 @@ PrefabInstance:
     - target: {fileID: 3397105159473212712, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
       propertyPath: m_Name
       value: RANGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608249758402295353, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
+      propertyPath: state
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6608249758402295353, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
       propertyPath: attackInfo
@@ -4313,6 +4329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RING_SHOT
       objectReference: {fileID: 0}
+    - target: {fileID: 3691196674206384288, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4877767483754374946, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5485,6 +5505,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
+    - target: {fileID: 1064891334, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
       propertyPath: m_Name
       value: DESTRUCTION_SHOT
@@ -9105,6 +9129,10 @@ PrefabInstance:
       value: CRITICAL_CHANCE
       objectReference: {fileID: 0}
     - target: {fileID: 8264568178760010976, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264568178760010976, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
       propertyPath: critAddingValue
       value: 0.1
       objectReference: {fileID: 0}
@@ -10474,6 +10502,10 @@ PrefabInstance:
       value: SILVER_GENERATOR
       objectReference: {fileID: 0}
     - target: {fileID: 3120358984939400269, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120358984939400269, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
       propertyPath: additionSilver
       value: 20
       objectReference: {fileID: 0}
@@ -11516,6 +11548,10 @@ PrefabInstance:
     - target: {fileID: 6043336406807021519, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
       propertyPath: m_Name
       value: SlowZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823135981287600729, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
+      propertyPath: skillState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6823135981287600729, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
       propertyPath: scaleFactor

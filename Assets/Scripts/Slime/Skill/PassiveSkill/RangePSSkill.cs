@@ -23,16 +23,14 @@ public class RangePSSkill : MonoBehaviour,ISkillInvokation
 			print($" increase 10% atk range");
 		}
 	}
-
+	public void SetState(SkillState set)
+	{
+		state = set;
+	}
 	// Start is called before the first frame update
 	void Start()
 	{
+		SetState(SkillState.NOT_UNLOCK);
 		increaseValue = SlimeController.Instance.SlimeATK.AttackRange * 0.1f;
 	}
-
-	// Update is called once per frame
-	void Update()
-    {
-        
-    }
 }
