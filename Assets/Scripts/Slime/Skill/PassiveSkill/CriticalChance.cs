@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class CriticalChance : MonoBehaviour,ISkillInvokation
 {
-	public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
+	[SerializeField] private SkillState state;
+	[SerializeField] private SlimeController  slimeController;
+	[SerializeField] private float critAddingValue;
+	public SkillState SkillState { get => state; set => state = value; }
 	public bool CanTriggerSkill()
 	{
-		throw new System.NotImplementedException();
+		if (state != SkillState.UNLOCKED) return false;
+		return true;
 	}
-
 	public void DoSkill()
 	{
-		throw new System.NotImplementedException();
+		if(CanTriggerSkill())
+		{
+			slimeController.IncreaseCritChance(slimeController.CriticalRate * critAddingValue);
+		}
 	}
 
 	// Start is called before the first frame update
 	void Start()
     {
-        
-    }
+		slimeController = SlimeController.Instance;
+
+	}
 
     // Update is called once per frame
     void Update()

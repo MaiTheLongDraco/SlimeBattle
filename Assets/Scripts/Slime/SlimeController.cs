@@ -30,6 +30,8 @@ public class SlimeController : MonoBehaviour, ICritical
 	public Attack SlimeATK { get => _slimeATK; set => _slimeATK = value; }
 	public Defense SlimeDF { get => _slimeDF; set => _slimeDF = value; }
 	public Utility SlimeUti { get => _slimeUti; set => _slimeUti = value; }
+	public float CriticalRate { get => criticalRate; set => criticalRate = value; }
+
 	[Header("Other Reference")]
     [SerializeField] private GamePlayManager gamePlayManager;
     [SerializeField] private UnityEvent<float> onCiritcal;
@@ -39,6 +41,10 @@ public class SlimeController : MonoBehaviour, ICritical
         SetRootData();
         SetOriginData();
     }
+    public void IncreaseCritChance(float adding)
+	{
+        CriticalRate += adding;
+	}        
 
     private void Start()
     {
@@ -246,10 +252,10 @@ public class SlimeController : MonoBehaviour, ICritical
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
             var rand = UnityEngine.Random.value;
-            if(rand<=criticalRate)
+            if(rand<=CriticalRate)
 			{
                 print($"CRIT==== trigger critical with rand{rand}");
-                onCiritcal?.Invoke(SlimeATK.AttackDamage + SlimeATK.AttackDamage * criticalRate);
+                onCiritcal?.Invoke(SlimeATK.AttackDamage + SlimeATK.AttackDamage * CriticalRate);
                 //StartCoroutine(SetCriticalATKDamage())
             }
             SkillController.StartNormal(currentTarget);

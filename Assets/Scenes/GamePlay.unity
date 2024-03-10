@@ -9104,6 +9104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CRITICAL_CHANCE
       objectReference: {fileID: 0}
+    - target: {fileID: 8264568178760010976, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
+      propertyPath: critAddingValue
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8613304279464399435, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
       propertyPath: m_RootOrder
       value: 0
