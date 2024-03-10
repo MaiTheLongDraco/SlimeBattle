@@ -23,6 +23,7 @@ public class SkillController : MonoBehaviour
     private SlimeController slimeController;
     [SerializeField] private UnityEvent onPassOneSecond;
     private ISkillInvokation skillInvokation;
+    private ICritical criticalSkill;
     [SerializeField] private ActiveSkillRef activeSkill;
     [SerializeField] private PassiveSkillRef passiveSkillRef;
     public static SkillController Instance;
@@ -90,7 +91,19 @@ public class SkillController : MonoBehaviour
         skillInvokation.DoSkill();
        
     }
+    public void TriggerCriticalState(float set)
+	{
+        DoCriticalThroughInterface(ActiveSkill.rapidFire, set);
+        DoCriticalThroughInterface(ActiveSkill.multiShot, set);
 
+    }
+    private void DoCriticalThroughInterface(ICritical criticalSkillSet,float critValue)
+    {
+        if (criticalSkill == null) return;
+        criticalSkill = criticalSkillSet;
+        criticalSkill.TriggerCritical(critValue);
+
+    }
     private void SetText(Text text, string value)
     {
         text.text = value;

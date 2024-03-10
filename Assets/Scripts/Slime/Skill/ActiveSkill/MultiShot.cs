@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiShot : MonoBehaviour,ISkillInvokation
+public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 {
 	[SerializeField] private List<EnemyMini> listEnemy= new List<EnemyMini>();
 	[SerializeField] private int numberOfBullet;
 	[SerializeField] private GameObject multishotBullet;
+	[SerializeField] private float initDamage;
 	[SerializeField] private float damage;
 	[SerializeField] private float speed;
 
@@ -100,4 +101,18 @@ public class MultiShot : MonoBehaviour,ISkillInvokation
     {
         
     }
+
+	public void TriggerCritical(float set)
+	{
+		print($"CRIT==== multishot damage {set}");
+		StartCoroutine(SetCriticalATKDamage(set));
+	}
+
+	public IEnumerator SetCriticalATKDamage(float set)
+	{
+		initDamage = damage;
+		damage = set;
+		yield return new WaitForSeconds(1);
+		damage = initDamage;
+	}
 }

@@ -1,9 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SlimeController : MonoBehaviour
+public class SlimeController : MonoBehaviour, ICritical
 {
     public static SlimeController Instance;
     [SerializeField] private List<SlimeTemplate> listData;
@@ -16,6 +17,8 @@ public class SlimeController : MonoBehaviour
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
     [SerializeField] private float slimeHeath;
+    [SerializeField] private float criticalRate;
+    [SerializeField] private float currentDamage;
 
     [Header("Detect range")] [SerializeField]
     private GameObject detectImage;
@@ -27,9 +30,9 @@ public class SlimeController : MonoBehaviour
 	public Attack SlimeATK { get => _slimeATK; set => _slimeATK = value; }
 	public Defense SlimeDF { get => _slimeDF; set => _slimeDF = value; }
 	public Utility SlimeUti { get => _slimeUti; set => _slimeUti = value; }
-
 	[Header("Other Reference")]
     [SerializeField] private GamePlayManager gamePlayManager;
+    [SerializeField] private UnityEvent<float> onCiritcal;
     private void Awake()
     {
         Instance = this;
@@ -41,6 +44,8 @@ public class SlimeController : MonoBehaviour
     {
         SkillController = GetComponent<SkillController>();
         ScaleDetectImage();
+        onCiritcal.AddListener(TriggerCritical);
+        onCiritcal.AddListener(skillController.TriggerCriticalState);
     }
 
     private void Update()
@@ -240,6 +245,13 @@ public class SlimeController : MonoBehaviour
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             SkillController.SetState(SlimeState.ATTACK);
             if (!passInterval) return;
+            var rand = UnityEngine.Random.value;
+            if(rand<=criticalRate)
+			{
+                print($"CRIT==== trigger critical with rand{rand}");
+                onCiritcal?.Invoke(SlimeATK.AttackDamage + SlimeATK.AttackDamage * criticalRate);
+                //StartCoroutine(SetCriticalATKDamage())
+            }
             SkillController.StartNormal(currentTarget);
         }
         else
@@ -247,6 +259,7 @@ public class SlimeController : MonoBehaviour
             SkillController.SetState(SlimeState.UNATTACK);
         }
     }
+
     public void CheckRaycastMultiEnemy()
 	{
         var hitsEnemy = Physics2D.OverlapCircleAll(transform.position, _slimeATK.AttackRange);
@@ -294,6 +307,20 @@ public class SlimeController : MonoBehaviour
     public void SetCurrentTarget(EnemyMini newTarget)
     {
         currentTarget = newTarget;
+    }
+  
+	public IEnumerator SetCriticalATKDamage(float set)
+	{
+            currentDamage = _slimeATK.AttackDamage;
+            _slimeATK.AttackDamage = set;
+            yield return new WaitForSeconds(1);
+            _slimeATK.AttackDamage = currentDamage;
+    }
+
+	public void TriggerCritical(float set)
+	{
+        print($" CRIT==== crit damage invoke {set}");
+        StartCoroutine(SetCriticalATKDamage(set));
     }
 }
 
@@ -424,7 +451,8 @@ public class Utility:ICloneable
 	}
 }
 
-[Serializable]
-public class Ultimate
+public interface ICritical
 {
+    public void TriggerCritical(float set);
+    public IEnumerator SetCriticalATKDamage(float set);
 }

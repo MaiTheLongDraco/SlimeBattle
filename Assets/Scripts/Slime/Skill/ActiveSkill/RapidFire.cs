@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RapidFire : MonoBehaviour,ISkillInvokation
+public class RapidFire : MonoBehaviour,ISkillInvokation,ICritical
 {
 	[SerializeField] private float dropRate;
 	[SerializeField] private ProjectTile projectTile;
 	[SerializeField] private EnemyMini currentEnemy;
     [SerializeField] private float shootSpeed;
     [SerializeField] private float damage;
+    [SerializeField] private float initDamage;
     //[SerializeField] private  dropRate;
     public SkillState SkillState { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
@@ -49,5 +50,19 @@ public class RapidFire : MonoBehaviour,ISkillInvokation
     void Update()
     {
         
+    }
+
+	public void TriggerCritical(float set)
+	{
+        print($"CRIT==== rapid fire damage {set}");
+        StartCoroutine(SetCriticalATKDamage(set));
+	}
+
+	public IEnumerator SetCriticalATKDamage(float set)
+	{
+        initDamage = damage;
+        damage = set;
+        yield return new WaitForSeconds(1);
+        damage = initDamage;
     }
 }

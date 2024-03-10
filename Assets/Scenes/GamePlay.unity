@@ -2484,6 +2484,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RANGE
       objectReference: {fileID: 0}
+    - target: {fileID: 6608249758402295353, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
+      propertyPath: attackInfo
+      value: 
+      objectReference: {fileID: 49595076}
     - target: {fileID: 6703840820343148608, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -10880,6 +10884,34 @@ PrefabInstance:
       propertyPath: listData.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: b2e68dcde52bb99428d881d12ceb6ae4, type: 2}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1632406333}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerCriticalState
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: onCiritcal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1541424473736010040, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: m_Name
       value: Slime

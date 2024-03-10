@@ -49,6 +49,7 @@ public class EnemyMini : Enemy
 	}
     public void TakeDamage(float damage)
 	{
+        print($" CRIT==== enemy {gameObject.name} get damage {damage}");
         Heath -= damage;
 	}
 	private void TriggerDeathState()
