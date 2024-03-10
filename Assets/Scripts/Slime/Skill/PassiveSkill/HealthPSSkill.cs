@@ -26,7 +26,7 @@ public class HealthPSSkill : MonoBehaviour,ISkillInvokation
 	// Start is called before the first frame update
 	void Start()
     {
-		increaseValue = SlimeController.Instance.SlimeDF.Heath*0.03f;
+		increaseValue = SlimeController.Instance.SlimeDF.Heath*0.3f;
 
 	}
 

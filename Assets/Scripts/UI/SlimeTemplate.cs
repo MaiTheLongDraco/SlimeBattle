@@ -15,10 +15,7 @@ public class SlimeTemplate : ScriptableObject
 	{
         return new SlimeTemplate(skillType, ListInfo);
 	}
-    private void SetSubButtonInfo()
-	{
-
-	}
+   
 }
 public enum SkillType
 {
