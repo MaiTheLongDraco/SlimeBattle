@@ -10861,6 +10861,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1035210529}
     - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
+      propertyPath: criticalRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632406331, guid: aaf6062b7e61b41c58995116d254e127, type: 3}
       propertyPath: gamePlayManager
       value: 
       objectReference: {fileID: 516625827}
