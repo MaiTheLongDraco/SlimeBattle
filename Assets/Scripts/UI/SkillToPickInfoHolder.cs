@@ -36,7 +36,6 @@ public class SkillToPickInfoHolder : MonoBehaviour
 	private void CloseTroopSkillUI()
 	{
 		gamePlayManager.SetActiveTroopSkillUI(false);
-		gamePlayManager.
 		gamePlayManager.ResumeGameplay();
 	}	
 	public void SetSkillNameText(string set)
