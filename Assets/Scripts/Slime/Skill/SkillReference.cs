@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class SkillReference : MonoBehaviour
 {
     [SerializeField] private List<SkillRefGO> listSkillRef;
+    [SerializeField] private List<SkillTroop> listSkillTroop;
     [SerializeField] private int passTime;
     [SerializeField] private int defeatNumber;
     [SerializeField] private int shootingNumber;
@@ -31,6 +32,37 @@ public class SkillReference : MonoBehaviour
         foreach (var skill in listSkillRef)
             skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
     }
+    public void HandleWithTypeSkillTroop(SkillID id)
+    {
+        print($"run ini handle with type {id}");
+        foreach (var skill in listSkillTroop)
+		{
+            switch(id)			{
+                case SkillID.MULTISHOT:
+					{
+						ActivateSkill(id, skill,SkillController.ActiveSkill.multiShot);
+						break;
+					}
+				case SkillID.RING_SHOT: {
+                        ActivateSkill(id, skill, SkillController.ActiveSkill.ringShot);
+                        break; }
+                case SkillID.RAPID_FIRE: { ActivateSkill(id, skill, SkillController.ActiveSkill.rapidFire); break; }
+                case SkillID.SILVER_GENERATOR: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.silverGenerator); break; }
+                case SkillID.CRITICAL_CHANCE: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.criticalChance); break; }
+                case SkillID.DESTRUCTION_SHOT: { ActivateSkill(id, skill, SkillController.ActiveSkill.destructionShot); break; }
+                case SkillID.RANGE: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.range); break; }
+                case SkillID.SLOW_ZONE: { ActivateSkill(id, skill, SkillController.ActiveSkill.slowZone); break; }
+                case SkillID.HEALTH: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.healthPSSkill); break; }
+			}
+		}
+    }
+
+	private void ActivateSkill(SkillID id, SkillTroop skill,ISkillInvokation skillToActive)
+	{
+		skill.SetSkillInvoke(skillToActive);
+		skill.ActivateSkillWithID(id);
+	}
+
 	private void Awake()
 	{
         Instance = this;
@@ -116,7 +148,24 @@ public class SkillRefGO
         }
     }
 }
+[Serializable]
+public class SkillTroop
+{
+    public SkillID SkillID;
+    public ISkillInvokation skillInvokation;
+    public void SetSkillInvoke(ISkillInvokation skill)
+	{
+        skillInvokation = skill;
+	}
+    public void ActivateSkillWithID(SkillID skillID)
+	{
+        if(SkillID==skillID)
+		{
+            skillInvokation.SetState(SkillState.UNLOCKED);
+        }
+	}
 
+}
 public enum SkillID
 {
     MULTISHOT = 111,

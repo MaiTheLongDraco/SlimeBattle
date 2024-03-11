@@ -12,8 +12,8 @@ public class SkillToPickInfoHolder : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI levelText;
 	[SerializeField] private TextMeshProUGUI describeText;
 	[SerializeField] private Button interactButton;
-	[SerializeField] private UnityAction<int> onClick;
-	[SerializeField] private int id;
+	[SerializeField] private UnityAction<SkillID> onClick;
+	[SerializeField] private SkillID id;
 	public SkillToPickInfoHolder(Sprite skillIcon,string skillName,int levelValue,string describeText)
 	{
 		this.skillIcon.sprite = skillIcon;
@@ -42,9 +42,13 @@ public class SkillToPickInfoHolder : MonoBehaviour
 	{
 		describeText.text = set;
 	}
-	public void AddOnClickEvent(UnityAction<int> callBack)
+	public void AddOnClickEvent(UnityAction<SkillID> callBack)
 	{
 		onClick += callBack;
+	}
+	public void SetSkillID(SkillID skillID)
+	{
+		id = skillID;
 	}
 	
 }

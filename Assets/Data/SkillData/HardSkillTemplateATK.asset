@@ -16,35 +16,56 @@ MonoBehaviour:
   - skillType: 0
     buffValue: 5
     skillIcon: {fileID: 21300000, guid: 61a6a0d56a59e478c9302330b882a8db, type: 3}
-    id: 0
+    id: 111
     describeText: trigger {0}
     skillName: ahihi
     skillLevel: 1
   - skillType: 1
     buffValue: 5
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
-    id: 1
+    id: 113
     describeText: trigger {0}
     skillName: ahihi
     skillLevel: 1
   - skillType: 2
     buffValue: 6
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
-    id: 2
+    id: 115
     describeText: trigger {1}
     skillName: ahihi1
     skillLevel: 2
   - skillType: 0
     buffValue: 10
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
-    id: 3
+    id: 116
     describeText: trigger {2}
     skillName: ahihi2
     skillLevel: 1
   - skillType: 1
     buffValue: 15
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
-    id: 4
+    id: 119
+    describeText: trigger {3}
+    skillName: ahihi3
+    skillLevel: 1
+  - skillType: 1
+    buffValue: 15
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 114
+    describeText: trigger {3}
+    skillName: ahihi3
+    skillLevel: 1
+  - skillType: 1
+    buffValue: 15
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 118
+    describeText: trigger {3}
+    skillName: ahihi3
+    skillLevel: 1
+  - skillType: 1
+    buffValue: 15
+    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    id: 117
     describeText: trigger {3}
     skillName: ahihi3
     skillLevel: 1

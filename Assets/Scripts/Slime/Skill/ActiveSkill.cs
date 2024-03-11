@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class ActiveSkill : MonoBehaviour,ISkillInvokation
+public class ActiveSkill : MonoBehaviour
 {
 	[SerializeField] private SkillReference skillReference;
     [SerializeField] private float _interval = 0.1f;
@@ -92,10 +90,5 @@ public class ActiveSkill : MonoBehaviour,ISkillInvokation
 					break;
 				}
 		}
-	}
-
-	void ISkillInvokation.DoSkill()
-	{
-		throw new NotImplementedException();
 	}
 }

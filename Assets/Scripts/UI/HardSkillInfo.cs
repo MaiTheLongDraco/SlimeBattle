@@ -8,12 +8,12 @@ public class HardSkillInfo : ICloneable
     public SkillType skillType;
     public float buffValue;
 public Sprite skillIcon;
-public int id;
+public SkillID id;
 public string describeText;
     public string skillName;
     public int skillLevel;
 
-public HardSkillInfo(int id, string describeText, float buffValue, Sprite skillIcon,
+public HardSkillInfo(SkillID id, string describeText, float buffValue, Sprite skillIcon,
     int skillLevel,string skillName)
 {
     this.id = id;
