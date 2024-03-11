@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad7bb8fa0936254d8ed0523a737edd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 1
+  gamePlayManager: {fileID: 0}
+  additionSilver: 20

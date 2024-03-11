@@ -15,57 +15,65 @@ MonoBehaviour:
   ListInfo:
   - skillType: 0
     buffValue: 5
-    skillIcon: {fileID: 21300000, guid: 61a6a0d56a59e478c9302330b882a8db, type: 3}
+    skillIcon: {fileID: 21300000, guid: df7fa19d6d6964f459e0b2f37d9b9867, type: 3}
     id: 111
-    describeText: trigger {0}
-    skillName: ahihi
+    describeText: Multishot for 2 target. sub-projectile deal damage by 30% damage
+    skillName: Mutil Shot
     skillLevel: 1
-  - skillType: 1
+  - skillType: 0
     buffValue: 5
-    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    skillIcon: {fileID: 21300000, guid: 0487eca8ad9f84d40acd9518da35698e, type: 3}
     id: 113
-    describeText: trigger {0}
-    skillName: ahihi
+    describeText: Attack has 35% addition 1 projectile
+    skillName: Rapid Fire
     skillLevel: 1
-  - skillType: 2
+  - skillType: 0
     buffValue: 6
-    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    skillIcon: {fileID: 21300000, guid: f3a1f9482d0e84c92a59f414a9e949ec, type: 3}
     id: 115
-    describeText: trigger {1}
-    skillName: ahihi1
+    describeText: Increase 30% critical chance
+    skillName: Critical Chance
     skillLevel: 2
   - skillType: 0
     buffValue: 10
-    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    skillIcon: {fileID: 21300000, guid: 07b498a7d1a474d3fa5c2a36b00a9e1d, type: 3}
     id: 116
-    describeText: trigger {2}
-    skillName: ahihi2
+    describeText: Fire one big energy shot a boss dropping its 10% maximum heath
+    skillName: Destruction Shot
     skillLevel: 1
   - skillType: 1
     buffValue: 15
-    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    skillIcon: {fileID: 21300000, guid: 766ef805a6b9a4cd9a71b306fc1f230f, type: 3}
     id: 119
-    describeText: trigger {3}
-    skillName: ahihi3
+    describeText: Slow enemies in attack range. Deacrease 50% movespeed of enemy
+    skillName: Slow Zone
     skillLevel: 1
-  - skillType: 1
+  - skillType: 2
     buffValue: 15
-    skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
+    skillIcon: {fileID: 21300000, guid: d0ae5241475084553837df61c4793cc5, type: 3}
     id: 114
-    describeText: trigger {3}
-    skillName: ahihi3
+    describeText: Automatic earns 20 silver each second in battle , afftected by
+      other bonus effects
+    skillName: Silver Generator
     skillLevel: 1
   - skillType: 1
     buffValue: 15
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
     id: 118
-    describeText: trigger {3}
-    skillName: ahihi3
+    describeText: Increase 10% range
+    skillName: Range
     skillLevel: 1
   - skillType: 1
     buffValue: 15
     skillIcon: {fileID: 21300000, guid: 1dd27480bc12f41b2b3a3e3da8eb84bf, type: 3}
     id: 117
-    describeText: trigger {3}
-    skillName: ahihi3
+    describeText: Inscrease 10% health
+    skillName: Heath
+    skillLevel: 1
+  - skillType: 0
+    buffValue: 15
+    skillIcon: {fileID: 21300000, guid: 7515323ed180c4152a231dbdce7b4efb, type: 3}
+    id: 112
+    describeText: Shooting every 19 times will spread 13 project tile around
+    skillName: Ring Shot
     skillLevel: 1
