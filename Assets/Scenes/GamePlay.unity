@@ -4860,7 +4860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1035210530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5041,6 +5041,10 @@ PrefabInstance:
     - target: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
       propertyPath: m_Name
       value: DESTRUCTION_SHOT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914765854011238899, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
       propertyPath: m_RootOrder
@@ -8308,7 +8312,7 @@ MonoBehaviour:
   passTime: 0
   defeatNumber: 0
   shootingNumber: 0
-  activeTroopTime: 10
+  activeTroopTime: 1
   onDefeatEnemy:
     m_PersistentCalls:
       m_Calls: []

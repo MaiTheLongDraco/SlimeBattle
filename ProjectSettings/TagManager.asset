@@ -39,9 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Slime
     uniqueID: 995993923
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

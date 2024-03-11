@@ -6,6 +6,7 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 {
     [SerializeField] private HardSkillTemplate hardSkillTemplate;
     [SerializeField] private List<SkillToPickInfoHolder> SkillToPickInfoHolders;
+    [SerializeField] private List<HardSkillInfo> hardSkillHasGenerate;
 	[SerializeField] private SkillReference skillReference;
 	[SerializeField] private GameObject skillToPickPrefab;
 	[SerializeField] private int numberOfCreate;
@@ -21,7 +22,10 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 	{
 		for(int i=0;i<SkillToPickInfoHolders.Count;i++)
 		{
-			SetActiveSkillInfo(hardSkillTemplate.ListInfo[i], i);
+			var rand = Random.Range(0, hardSkillTemplate.ListInfo.Count);
+			if (hardSkillHasGenerate.Contains(hardSkillTemplate.ListInfo[rand])) continue;
+			hardSkillHasGenerate.Add(hardSkillTemplate.ListInfo[rand]);
+			SetActiveSkillInfo(hardSkillTemplate.ListInfo[rand], i);
 			SkillToPickInfoHolders[i].AddOnClickEvent(UnlockNewSkill);
 		}
 	}

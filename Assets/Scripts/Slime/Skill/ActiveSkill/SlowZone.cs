@@ -7,14 +7,17 @@ public class SlowZone : MonoBehaviour,ISkillInvokation
     [SerializeField] private float slowRange;
 	[SerializeField] private SkillState skillState;
 	[SerializeField] private float scaleFactor;
+	[SerializeField] private SpriteRenderer sprite;
 	public SkillState SkillState { get => skillState; set => skillState=value; }
 
 	// Start is called before the first frame update
 	void Start()
     {
+		sprite = GetComponent<SpriteRenderer>();
 		SetState(SkillState.NOT_UNLOCK);
 		slowRange = SlimeController.Instance.SlimeATK.AttackRange;
-    }
+		sprite.enabled = false;
+	}
 	public void SetState(SkillState set)
 	{
 		skillState = set;
@@ -46,6 +49,7 @@ public class SlowZone : MonoBehaviour,ISkillInvokation
 	{
 		if(CanTriggerSkill())
 		{
+			sprite.enabled = true;
 			SlowEnemy();
 		}
 	}
