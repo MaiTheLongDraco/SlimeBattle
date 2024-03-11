@@ -7,6 +7,7 @@ public class EnemyMini : Enemy
     [SerializeField] private float heath;
     [SerializeField] private SlimeController slime;
     [SerializeField] private bool checkIsSLow;
+    [SerializeField] private bool isPause=false;
 
 	public float Heath { get => heath; set => heath = value; }
 
@@ -21,9 +22,14 @@ public class EnemyMini : Enemy
 	}
     private void Update()
     {
+        if (isPause) return;
         ChaseSlime(slime.transform.position, chaseTime);
         DetectDead();
     }
+    public void SetIsPause(bool set)
+	{
+        isPause = set;
+	}
     public bool IsSlow() => isSlow;
     public void SlowDown()
 	{

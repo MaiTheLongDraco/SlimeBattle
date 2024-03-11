@@ -7,12 +7,21 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] private int runTimeSilver;
     public int RunTimeSilver { get => runTimeSilver; set => runTimeSilver = value; }
 	public InGameInfoManger InGameInfoManger { get => inGameInfoManger; set => inGameInfoManger = value; }
+	public GameObject TroopSkillObj { get => troopSkillObj; set => troopSkillObj = value; }
+
+	[SerializeField] private GameObject troopSkillObj;
 
 	[SerializeField] private InGameInfoManger inGameInfoManger;
     public static GamePlayManager Instance;
+    public  EnemySpawner enemySpawner;
 	private void Awake()
 	{
         Instance = this;
+	}
+
+	private void Start()
+	{
+		enemySpawner = EnemySpawner.Instance;
 	}
 	public void SetTotalHeathTxt(float set)
 	{
@@ -21,7 +30,6 @@ public class GamePlayManager : MonoBehaviour
 	public void SetCurrentHeathTxt(float set)
 	{
 		inGameInfoManger.SetCurrentHeathTxt(set);
-
 	}
 	public void SetRuntimeSilverText(int set)
 	{
@@ -31,5 +39,19 @@ public class GamePlayManager : MonoBehaviour
 	{
 		runTimeSilver += addition;
 		SetRuntimeSilverText(runTimeSilver);
+	}
+	public void SetActiveTroopSkillUI(bool set)
+	{
+		TroopSkillObj.SetActive(set);
+	}
+	public void PauseGame()
+	{
+		enemySpawner.InvokeOnPauseGame();
+		Time.timeScale = 0f;
+	}
+	public void ResumeGameplay()
+	{
+		enemySpawner.InvokeOnContinueGame();
+		Time.timeScale = 1f;
 	}
 }

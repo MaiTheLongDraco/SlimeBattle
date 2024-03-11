@@ -11,25 +11,29 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemyWaveInfo> _enemyWaveInfo;
     [SerializeField] private float delaySpawnTime;
     [SerializeField] private List<Transform> spawnPoints;
-
+    [SerializeField] private List<EnemyMini> listActiveEnemy;
     [SerializeField] private UnityEvent<EnemyMini> onHaveNewEnemy;
+    [SerializeField] private UnityEvent onPauseGame;
+    [SerializeField] private UnityEvent onContiueGame;
 
     private void Awake()
     {
+        listActiveEnemy.Clear();
         Instance = this;
     }
-
+    public void InvokeOnPauseGame()
+	{
+        onPauseGame?.Invoke();
+	}
+    public void InvokeOnContinueGame()
+    {
+        onContiueGame?.Invoke();
+    }
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(SpawnEnemyWithDelay(0));
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
     private IEnumerator SpawnEnemyWithDelay(int index)
     {
         var i = index;
@@ -48,15 +52,39 @@ public class EnemySpawner : MonoBehaviour
         i++;
         StartCoroutine(SpawnEnemyWithDelay(i));
     }
-
+    public void MakeEnemyPause()
+	{
+        foreach(var enemy in listActiveEnemy)
+		{
+            if (!enemy) {
+                continue; }
+            enemy.SetIsPause(true);
+		}
+	}
+    public void MakeEnemyContinue()
+    {
+        foreach (var enemy in listActiveEnemy)
+        {
+            if (!enemy)
+            {
+                continue;
+            }
+            enemy.SetIsPause(false);
+        }
+    }
     private GameObject SpawnEnemy(EnemyMini enemy, Transform spawnPos)
     {
         if (enemy == null)
             return null;
 
         var enemyNew = Instantiate(enemy.gameObject, spawnPos.position, Quaternion.identity);
+        listActiveEnemy.Add(enemyNew.GetComponent<EnemyMini>());
         return enemyNew;
     }
+	private void OnDisable()
+	{
+        Instance = null;
+	}
 }
 
 [Serializable]

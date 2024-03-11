@@ -14,6 +14,7 @@ public class SkillToPickInfoHolder : MonoBehaviour
 	[SerializeField] private Button interactButton;
 	[SerializeField] private UnityAction<SkillID> onClick;
 	[SerializeField] private SkillID id;
+	[SerializeField] private GamePlayManager gamePlayManager;
 	public SkillToPickInfoHolder(Sprite skillIcon,string skillName,int levelValue,string describeText)
 	{
 		this.skillIcon.sprite = skillIcon;
@@ -25,11 +26,18 @@ public class SkillToPickInfoHolder : MonoBehaviour
 	{
 		interactButton = GetComponent<Button>();
 		interactButton.onClick.AddListener(() => onClick(id));
+		interactButton.onClick.AddListener(CloseTroopSkillUI);
+		gamePlayManager = GamePlayManager.Instance;
 	}
 	public void SetSkillIcon(Sprite sprite)
 	{
 		skillIcon.sprite = sprite;
 	}
+	private void CloseTroopSkillUI()
+	{
+		gamePlayManager.SetActiveTroopSkillUI(false);
+		gamePlayManager.ResumeGameplay();
+	}	
 	public void SetSkillNameText(string set)
 	{
 		skillNameTxt.text = set;

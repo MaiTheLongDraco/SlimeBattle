@@ -10,8 +10,10 @@ public class SkillReference : MonoBehaviour
     [SerializeField] private int passTime;
     [SerializeField] private int defeatNumber;
     [SerializeField] private int shootingNumber;
+    [SerializeField] private int activeTroopTime;
     [SerializeField] private UnityEvent onDefeatEnemy;
     [SerializeField] private UnityEvent onShooting;
+    [SerializeField] private UnityEvent onTriggerActiveTroopTime;
     [SerializeField] private SkillController skillController; 
     public static SkillReference Instance;
 
@@ -89,6 +91,10 @@ public class SkillReference : MonoBehaviour
     private void IncreaseDefeatNumber()
 	{
         DefeatNumber++;
+        if(DefeatNumber % activeTroopTime==0)
+		{
+            onTriggerActiveTroopTime?.Invoke();
+		}
 	}
     private void IncreaseShootingNumber()
 	{
