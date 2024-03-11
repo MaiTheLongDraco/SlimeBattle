@@ -12,6 +12,7 @@ public class GamePlayManager : MonoBehaviour
 	[SerializeField] private GameObject troopSkillObj;
 
 	[SerializeField] private InGameInfoManger inGameInfoManger;
+	[SerializeField] private TestLogActiveSkillInfo troopViewHandler;
     public static GamePlayManager Instance;
     public  EnemySpawner enemySpawner;
 	private void Awake()
@@ -51,6 +52,7 @@ public class GamePlayManager : MonoBehaviour
 	}
 	public void ResumeGameplay()
 	{
+		troopViewHandler.ReGenerateSkill();
 		enemySpawner.InvokeOnContinueGame();
 		Time.timeScale = 1f;
 	}

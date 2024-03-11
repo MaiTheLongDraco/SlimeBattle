@@ -29,6 +29,17 @@ public class TestLogActiveSkillInfo : MonoBehaviour
 			SkillToPickInfoHolders[i].AddOnClickEvent(UnlockNewSkill);
 		}
 	}
+	public void ReGenerateSkill()
+	{
+		for(int i=0;i<SkillToPickInfoHolders.Count;i++)
+		{
+			Destroy(SkillToPickInfoHolders[i].gameObject);
+		}
+		SkillToPickInfoHolders.Clear();
+		hardSkillHasGenerate.Clear();
+		GenerateListSkillToPick();
+		InitSkillInfo();
+	}	
 	private void GenerateListSkillToPick()
 	{
 		for(int i=0;i<numberOfCreate;i++)

@@ -644,6 +644,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97045013}
   m_CullTransparentMesh: 1
+--- !u!114 &107755177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7330564132340342821, guid: f6e1bcc0b0f4e4b4095c5242c3c1f65e, type: 3}
+  m_PrefabInstance: {fileID: 797185263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4c6046c9ad1d54e9351228662adcca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &138020300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +1939,7 @@ MonoBehaviour:
   runTimeSilver: 100
   troopSkillObj: {fileID: 1047312377}
   inGameInfoManger: {fileID: 1930724356}
+  troopViewHandler: {fileID: 107755177}
   enemySpawner: {fileID: 0}
 --- !u!4 &516625828
 Transform:
