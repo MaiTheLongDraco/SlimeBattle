@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GamePlayManager : MonoBehaviour
 	[SerializeField] private TestLogActiveSkillInfo troopViewHandler;
     public static GamePlayManager Instance;
     public  EnemySpawner enemySpawner;
+	[SerializeField] private UnityEvent onWin;
+	[SerializeField] private UnityEvent onLose;
 	private void Awake()
 	{
         Instance = this;
@@ -55,5 +58,13 @@ public class GamePlayManager : MonoBehaviour
 		troopViewHandler.ReGenerateSkill();
 		enemySpawner.InvokeOnContinueGame();
 		Time.timeScale = 1f;
+	}
+	public void InvokeOnWinGame()
+	{
+		onWin?.Invoke();
+	}
+	public void InvokeOnLoseGame()
+	{
+		onLose?.Invoke();
 	}
 }

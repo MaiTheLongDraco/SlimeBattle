@@ -15,12 +15,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private UnityEvent<EnemyMini> onHaveNewEnemy;
     [SerializeField] private UnityEvent onPauseGame;
     [SerializeField] private UnityEvent onContiueGame;
-
+    [SerializeField] private GamePlayManager gamePlayManager;
     private void Awake()
     {
         listActiveEnemy.Clear();
         Instance = this;
     }
+    
     public void InvokeOnPauseGame()
 	{
         onPauseGame?.Invoke();
@@ -32,13 +33,17 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        gamePlayManager = GamePlayManager.Instance;
         StartCoroutine(SpawnEnemyWithDelay(0));
     }
     private IEnumerator SpawnEnemyWithDelay(int index)
     {
         var i = index;
         if (i >= _enemyWaveInfo.Count)
+		{
+            gamePlayManager.InvokeOnWinGame();
             yield break;
+		}
         for (var j = 0; j < _enemyWaveInfo[i].EnemySpawns.Count; j++)
         {
             var random = Random.Range(0, spawnPoints.Count);
