@@ -124,10 +124,11 @@ MonoBehaviour:
   enemyType: 0
   skillReference: {fileID: 0}
   chaseTime: 0.005
-  heath: 1000
+  heath: 100
   slime: {fileID: 0}
   checkIsSLow: 0
   isPause: 0
+  damagePopUp: {fileID: 7625767477269138655, guid: 9b47a828e602f6a48ad652832b7a136f, type: 3}
 --- !u!61 &4550631972692850993
 BoxCollider2D:
   m_ObjectHideFlags: 0

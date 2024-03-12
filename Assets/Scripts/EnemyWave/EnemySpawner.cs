@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         var i = index;
         if (i >= _enemyWaveInfo.Count)
 		{
-            gamePlayManager.InvokeOnWinGame();
+            //gamePlayManager.InvokeOnWinGame();
             yield break;
 		}
         for (var j = 0; j < _enemyWaveInfo[i].EnemySpawns.Count; j++)

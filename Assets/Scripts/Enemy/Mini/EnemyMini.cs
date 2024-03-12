@@ -8,8 +8,8 @@ public class EnemyMini : Enemy
     [SerializeField] private SlimeController slime;
     [SerializeField] private bool checkIsSLow;
     [SerializeField] private bool isPause=false;
-
-	public float Heath { get => heath; set => heath = value; }
+    [SerializeField] private GameObject damagePopUp;
+    public float Heath { get => heath; set => heath = value; }
 
 	private void Awake()
     {
@@ -53,10 +53,17 @@ public class EnemyMini : Enemy
             TriggerDeathState();
 		}
 	}
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isSecondDamage=false)
 	{
         print($" CRIT==== enemy {gameObject.name} get damage {damage}");
         Heath -= damage;
+        if(isSecondDamage)
+		{
+            var popUpnew = Instantiate(damagePopUp, transform.position + Vector3.up / 2+Vector3.right/2, Quaternion.identity);
+            popUpnew.GetComponent<DamagePopUp>().SetText((int)damage);
+        }
+		var popUp = Instantiate(damagePopUp, transform.position + Vector3.up / 2, Quaternion.identity);
+		popUp.GetComponent<DamagePopUp>().SetText((int)damage);
 	}
 	private void TriggerDeathState()
 	{

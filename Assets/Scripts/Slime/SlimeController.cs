@@ -16,7 +16,6 @@ public class SlimeController : MonoBehaviour, ICritical
     [SerializeField] private Defense _slimeDF;
     [SerializeField] private Utility _slimeUti;
     [SerializeField] private EnemyMini currentTarget;
-    [SerializeField] private float slimeHeath;
     [SerializeField] private float criticalRate;
     [SerializeField] private float currentDamage;
 
@@ -225,11 +224,12 @@ public class SlimeController : MonoBehaviour, ICritical
 
     private void StateControl()
     {
-		//if (slimeHeath <= 0)
-		//{
-		//	SkillController.SetState(SlimeState.DEAD);
-		//	return;
-		//}
+		if (_slimeDF.Heath <= 0)
+		{
+			SkillController.SetState(SlimeState.DEAD);
+            gamePlayManager.InvokeOnLoseGame();
+			return;
+		}
 		CheckRaycastMultiEnemy();
         var hittedEnemy = Physics2D.OverlapCircle(transform.position, _slimeATK.AttackRange);
 
@@ -246,7 +246,8 @@ public class SlimeController : MonoBehaviour, ICritical
         {
             if(Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange/5)
 			{
-                _slimeDF.Heath -= 3;
+                RootDataClone.SlimeDF.Heath -= 3;
+                UpdateRuntimeValue();
             }
             gamePlayManager.SetCurrentHeathTxt(_slimeDF.Heath);
             SkillController.SetState(SlimeState.ATTACK);
@@ -255,7 +256,7 @@ public class SlimeController : MonoBehaviour, ICritical
             if(rand<=CriticalRate)
 			{
                 print($"CRIT==== trigger critical with rand{rand}");
-                onCiritcal?.Invoke(SlimeATK.AttackDamage + SlimeATK.AttackDamage * CriticalRate);
+                onCiritcal?.Invoke(rootDataClone.SlimeATK.AttackDamage + rootDataClone.SlimeATK.AttackDamage * CriticalRate);
                 //StartCoroutine(SetCriticalATKDamage())
             }
             SkillController.StartNormal(currentTarget);

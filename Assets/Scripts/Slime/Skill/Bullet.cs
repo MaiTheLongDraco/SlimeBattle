@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 0.015f;
     [SerializeField] private float duration;
     private float damage;
+    public bool isSecondDam;
 
     // Start is called before the first frame update
     private void Awake()
@@ -70,7 +71,16 @@ public class Bullet : MonoBehaviour
                 if (Vector2.Distance(transform.position, currentEnemy.transform.position) <= 0.1f)
                 {
                     print($"make damage to {currentEnemy.name}");
+                        if(isSecondDam)
+						{
+                            currentEnemy.TakeDamage(damage,isSecondDam);
+                            isSecondDam = false;
+						}
+						else
+						{
+
                     currentEnemy.TakeDamage(damage);
+						}
                     Destroy(gameObject);
                 }
 

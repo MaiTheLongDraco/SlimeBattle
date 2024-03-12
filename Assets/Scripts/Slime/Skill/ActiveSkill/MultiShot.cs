@@ -62,8 +62,9 @@ public class MultiShot : MonoBehaviour,ISkillInvokation,ICritical
 					var secondBullet = Instantiate(multishotBullet, transform.position, Quaternion.identity);
 					secondBullet.GetComponent<Bullet>().SetCurrentEnemy(target);
 					secondBullet.GetComponent<Bullet>().SetSpeed(speed);
-					secondBullet.GetComponent<Bullet>().SetDamage(damage*0.03f);
+					secondBullet.GetComponent<Bullet>().SetDamage(damage*0.3f);
 					secondBullet.GetComponent<Bullet>().RemoveDeathEnemy(listEnemy);
+					secondBullet.GetComponent<Bullet>().isSecondDam=true;
 					RemoveDeathEnemyFromList();
 					//secondBullet.transform.position = Vector2.MoveTowards(secondBullet.transform.position, target.transform.position, speed);
 					//if (Vector2.Distance(secondBullet.transform.position, target.transform.position) < 0.1f)

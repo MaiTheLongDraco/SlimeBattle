@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GamePlayManager : MonoBehaviour
 	public GameObject TroopSkillObj { get => troopSkillObj; set => troopSkillObj = value; }
 
 	[SerializeField] private GameObject troopSkillObj;
+	[SerializeField] private GameObject winPanel;
+	[SerializeField] private GameObject losePanel;
 
 	[SerializeField] private InGameInfoManger inGameInfoManger;
 	[SerializeField] private TestLogActiveSkillInfo troopViewHandler;
@@ -26,6 +29,12 @@ public class GamePlayManager : MonoBehaviour
 	private void Start()
 	{
 		enemySpawner = EnemySpawner.Instance;
+		onWin.AddListener(() => SetAcitveGO(winPanel, true));
+		onLose.AddListener(() => SetAcitveGO(losePanel, true));
+	}
+	public void SetAcitveGO(GameObject obj, bool set)
+	{
+		obj.SetActive(set);
 	}
 	public void SetTotalHeathTxt(float set)
 	{
@@ -66,5 +75,13 @@ public class GamePlayManager : MonoBehaviour
 	public void InvokeOnLoseGame()
 	{
 		onLose?.Invoke();
+	}
+	public void LoadGameSceneAsync(string name)
+	{
+		SceneManager.LoadSceneAsync(name);
+	}
+	public void ReloadCurrentScene()
+	{
+		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
 	}
 }
