@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc0f59f38d289b409d0bd370fc82095, type: 3}
+  m_Name: DefensePP
+  m_EditorClassIdentifier: 
+  skillType: 1
+  tabName: Defend Tab
+  ListInfo:
+  - CurrencyCost: 10000
+    CurrencyIcon: {fileID: 21300000, guid: e32e86e3e13574e8c942594a0c52091d, type: 3}
+    PropertiesIcon: {fileID: 21300000, guid: 962313824a6854b54b3a188c76873e74, type: 3}
+    id: 0
+    slimePropertyName: Health
+    slimePropertyValue: 4017
+  - CurrencyCost: 25000
+    CurrencyIcon: {fileID: 21300000, guid: e32e86e3e13574e8c942594a0c52091d, type: 3}
+    PropertiesIcon: {fileID: 21300000, guid: 6373f89ef1833478ba237f460f7c5ce2, type: 3}
+    id: 1
+    slimePropertyName: Health Regen
+    slimePropertyValue: 422
+  - CurrencyCost: 15000
+    CurrencyIcon: {fileID: 21300000, guid: e32e86e3e13574e8c942594a0c52091d, type: 3}
+    PropertiesIcon: {fileID: 21300000, guid: 93dd212c0705947ff8e6668f0dd714c2, type: 3}
+    id: 2
+    slimePropertyName: Armor
+    slimePropertyValue: 20
+  - CurrencyCost: 7000
+    CurrencyIcon: {fileID: 21300000, guid: e32e86e3e13574e8c942594a0c52091d, type: 3}
+    PropertiesIcon: {fileID: 21300000, guid: 4c63df8049ed44718a408c6d454f47c8, type: 3}
+    id: 3
+    slimePropertyName: Block Damage
+    slimePropertyValue: 60
