@@ -17,9 +17,9 @@ public class DailyDealGridItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buyButton.onClick.AddListener(() => onclick(shopItemType));
         buyButton.onClick.AddListener(DecreaseGemAmount);
         buyButton.onClick.AddListener(IncreaseCurrencyAmount);
+        buyButton.onClick.AddListener(() => onclick(shopItemType));
     }
     public void SetItemName(string name)
 	{

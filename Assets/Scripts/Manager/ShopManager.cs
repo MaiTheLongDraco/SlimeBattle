@@ -30,33 +30,33 @@ public class ShopManager : MonoBehaviour
             dailyDealGridItems[i].SetItemType(dailyDealData.dailyDealItems[i].itemType);
             dailyDealGridItems[i].SetButtonID(i);
             dailyDealGridItems[i].AddBtnListener(SpecifiData);
-            UpdateButtonState(currencyManager.GemAmount);
-        }
+			UpdateButtonState();
+		}
 	}
-    private void UpdateButtonState(int compareNumber)
+    private void UpdateButtonState()
 	{
         foreach(var item in dailyDealGridItems)
 		{
-            if(item.GetCostFromText()<=compareNumber)
+            if(item.GetCostFromText()>currencyManager.GemAmount)
 			{
-                item.buyButton.interactable = true;
+                item.buyButton.interactable = false;
 			}
 			else
 			{
-                item.buyButton.interactable = false;
+                item.buyButton.interactable = true;
 			}
 		}
 	}
     private void SpecifiData(ShopItemType id)
 	{
         print($"btn id {id}");
-        switch(id)
-		{
-            case ShopItemType.GEM: {  
-                    break; }
-            case ShopItemType.STAMINA: {  break; }
-            case ShopItemType.GOLD: {  break; }
-		}
-        UpdateButtonState(currencyManager.GemAmount);
+  //      switch(id)
+		//{
+  //          case ShopItemType.GEM: {  
+  //                  break; }
+  //          case ShopItemType.STAMINA: {  break; }
+  //          case ShopItemType.GOLD: {  break; }
+		//}
+        UpdateButtonState();
     }
 }
