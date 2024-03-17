@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 2536447362383406385}
   - component: {fileID: 2774305555094227802}
   - component: {fileID: 3200349258957712224}
+  - component: {fileID: 295597218798843577}
   m_Layer: 5
   m_Name: DailyDealGridItem
   m_TagString: Untagged
@@ -469,6 +470,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &295597218798843577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660820597339403354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06819c59df66814bb5f87cd83169ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemName: {fileID: 1447488887478043825}
+  ItemIcon: {fileID: 373750660687950682}
+  ItemAmount: {fileID: 2937481667916786595}
+  ItemCost: {fileID: 7372994428773036747}
+  buyButton: {fileID: 291141774760276717}
+  btnID: 0
 --- !u!1 &4889577890341291105
 GameObject:
   m_ObjectHideFlags: 0
