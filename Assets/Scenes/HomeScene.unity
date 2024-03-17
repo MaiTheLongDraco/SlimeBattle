@@ -5013,8 +5013,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2004418100}
   - {fileID: 1713772233}
+  - {fileID: 2004418100}
   - {fileID: 50423562}
   m_Father: {fileID: 1469225445}
   m_RootOrder: 0
@@ -5745,7 +5745,7 @@ RectTransform:
   - {fileID: 43520228}
   - {fileID: 1921361495}
   m_Father: {fileID: 1423093939}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -6145,7 +6145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 1000
-  gemAmount: 1
+  gemAmount: 0
   staminaAmount: 10
   staminaText: {fileID: 686997497}
   coinText: {fileID: 463336113}
@@ -6800,7 +6800,7 @@ RectTransform:
   - {fileID: 311495005}
   - {fileID: 809542189}
   m_Father: {fileID: 1423093939}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}

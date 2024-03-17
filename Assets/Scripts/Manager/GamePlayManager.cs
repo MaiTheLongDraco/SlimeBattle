@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GamePlayManager : MonoBehaviour
 	[SerializeField] private GameObject troopSkillObj;
 	[SerializeField] private GameObject winPanel;
 	[SerializeField] private GameObject losePanel;
+	[SerializeField] private Image progressBar;
 
 	[SerializeField] private InGameInfoManger inGameInfoManger;
 	[SerializeField] private TestLogActiveSkillInfo troopViewHandler;
@@ -32,6 +34,10 @@ public class GamePlayManager : MonoBehaviour
 		onWin.AddListener(() => SetAcitveGO(winPanel, true));
 		onLose.AddListener(() => SetAcitveGO(losePanel, true));
 	}
+	public void SetProgressBarFillAmount(float value)
+	{
+		progressBar.fillAmount = value;
+	}	
 	public void SetAcitveGO(GameObject obj, bool set)
 	{
 		obj.SetActive(set);

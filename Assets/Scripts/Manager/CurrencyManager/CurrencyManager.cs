@@ -23,6 +23,9 @@ public class CurrencyManager : MonoBehaviour
 	void Start()
 	{
 		DontDestroyOnLoad(this.gameObject);
+        coinAmount = Utilities.GetGoldData();
+        gemAmount = Utilities.GetGemData();
+        staminaAmount = Utilities.GetStaminaData();
 		UpdateText();
 	}
     public bool IsEnoughCoin(int amount)
@@ -94,5 +97,9 @@ public class CurrencyManager : MonoBehaviour
     {
         staminaAmount = set;
     }
-       
+	private void OnDestroy()
+	{
+        Utilities.SaveAllData();
+	}
+
 }

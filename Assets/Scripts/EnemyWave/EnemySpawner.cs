@@ -50,9 +50,10 @@ public class EnemySpawner : MonoBehaviour
             var delayTime = 0.3f;
             yield return new WaitForSeconds(delayTime);
             var enemyNew = SpawnEnemy(_enemyWaveInfo[i].GetRandomEnemy(), spawnPoints[random]);
-            if (enemyNew == null) yield break;
+            print($"progress bar fill amount {(float)((float)_enemyWaveInfo[i].WaveIndex /(float) _enemyWaveInfo[_enemyWaveInfo.Count - 1].WaveIndex)}");
+			gamePlayManager.SetProgressBarFillAmount((float)_enemyWaveInfo[i].WaveIndex / (float)_enemyWaveInfo[_enemyWaveInfo.Count - 1].WaveIndex);
+			if (enemyNew == null) yield break;
         }
-
         yield return new WaitForSeconds(_enemyWaveInfo[i].RemainWaveTime);
         i++;
         StartCoroutine(SpawnEnemyWithDelay(i));
