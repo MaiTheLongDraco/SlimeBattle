@@ -20,7 +20,8 @@ public class HealthPSSkill : MonoBehaviour,ISkillInvokation
 		if(CanTriggerSkill())
 		{
 			defenseInfo.UpdateValueWithId0(increaseValue);
-		}	
+			SetState(SkillState.NOT_UNLOCK);
+		}
 	}
 
 	// Start is called before the first frame update

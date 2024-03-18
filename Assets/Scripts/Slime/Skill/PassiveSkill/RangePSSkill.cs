@@ -20,6 +20,7 @@ public class RangePSSkill : MonoBehaviour,ISkillInvokation
 		if (CanTriggerSkill())
 		{
 			attackInfo.UpdateValueWithId2(increaseValue);
+			SetState(SkillState.NOT_UNLOCK);
 			print($" increase 10% atk range");
 		}
 	}

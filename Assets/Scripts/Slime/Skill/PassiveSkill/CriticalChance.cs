@@ -18,6 +18,7 @@ public class CriticalChance : MonoBehaviour,ISkillInvokation
 		if(CanTriggerSkill())
 		{
 			slimeController.IncreaseCritChance(slimeController.CriticalRate * critAddingValue);
+			SetState(SkillState.NOT_UNLOCK);
 		}
 	}
 	public void SetState(SkillState set)
