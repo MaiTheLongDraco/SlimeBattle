@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 2
   m_Sprite: {fileID: 1191743543, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,9 +123,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d0cf5dc29eb482482d0a25f3af59d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listData:
+  - {fileID: 11400000, guid: c134a1dfd785a49639c4e526df348be9, type: 2}
+  - {fileID: 11400000, guid: e8716ac5ece49e848843f32a55db6056, type: 2}
+  - {fileID: 11400000, guid: b2e68dcde52bb99428d881d12ceb6ae4, type: 2}
+  rootData: {fileID: 11400000, guid: 47add78517749cf488bce82b614093ff, type: 2}
+  rootDataClone: {fileID: 0}
   _slimeATK:
     AttackDamage: 147
-    AttackRange: 1
+    AttackRange: 3
     AttackSpeed: 3
     RangeDamageBonus: 0
   _slimeDF:
@@ -139,8 +145,13 @@ MonoBehaviour:
     SilverBonus: 0
     GoldPerWave: 0
   currentTarget: {fileID: 0}
-  slimeHeath: 1
+  criticalRate: 0.1
+  currentDamage: 0
   detectImage: {fileID: 0}
+  gamePlayManager: {fileID: 0}
+  onCiritcal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7203521794932407817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,15 +166,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSkill:
     skillObject:
-      skill: {fileID: 4541745234962741604, guid: de3796aba0a3f4a86be6d8eff5179e80, type: 3}
+    - skill: {fileID: 8280051368455560727, guid: c14134d3bbee4a749a34264d5449f220, type: 3}
+      numberOfSkill: 0
+    - skill: {fileID: 392536058015085681, guid: e693bad01fe344636a1189ed67731ed6, type: 3}
+      numberOfSkill: 0
   slimeState: 0
   createPos: {fileID: 6742362551484045321}
   _shouldPause: 0
+  normalInterval: 3
   _shouldShowLog: 0
   _interval: 1
+  _interval1: 1
   timer: {fileID: 0}
   interval: {fileID: 0}
   lastTime: {fileID: 0}
+  skillReference: {fileID: 0}
+  onPassOneSecond:
+    m_PersistentCalls:
+      m_Calls: []
+  activeSkill:
+    ringShot: {fileID: 0}
+    multiShot: {fileID: 0}
+    rapidFire: {fileID: 0}
+    destructionShot: {fileID: 0}
+    slowZone: {fileID: 0}
+  passiveSkillRef:
+    criticalChance: {fileID: 0}
+    range: {fileID: 0}
+    silverGenerator: {fileID: 0}
+    healthPSSkill: {fileID: 0}
 --- !u!1 &1646807563289925300
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +266,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 4
   m_Sprite: {fileID: 824007681, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -385,7 +416,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 4
   m_Sprite: {fileID: -1168011498, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -469,7 +500,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2102461205, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -618,7 +649,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 5
   m_Sprite: {fileID: 1919684193, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -735,7 +766,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 307457507, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -819,7 +850,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 5
   m_Sprite: {fileID: -2114138185, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -903,7 +934,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 995993923
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 4
   m_Sprite: {fileID: 2005437014, guid: 73c00ee303fef45a582d72898fe00b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
