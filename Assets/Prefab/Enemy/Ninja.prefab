@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4550631972692850993}
   - component: {fileID: 3804701549910389767}
   m_Layer: 3
-  m_Name: Boss
+  m_Name: Ninja
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,9 +96,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8471176262271696158}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5c5128a0e170b4e778b707008cc6ed42, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8dc0206ca47e34e42a78c56dc45ba457, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   checkIsSLow: 0
   isPause: 0
   damagePopUp: {fileID: 7625767477269138655, guid: 9b47a828e602f6a48ad652832b7a136f, type: 3}
+  anim: {fileID: 0}
 --- !u!61 &4550631972692850993
 BoxCollider2D:
   m_ObjectHideFlags: 0

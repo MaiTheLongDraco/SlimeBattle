@@ -246,6 +246,7 @@ public class SlimeController : MonoBehaviour, ICritical
         {
             if(Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange/5)
 			{
+                currentTarget.SetAnim("Attack");
                 RootDataClone.SlimeDF.Heath -= 3;
                 UpdateRuntimeValue();
             }

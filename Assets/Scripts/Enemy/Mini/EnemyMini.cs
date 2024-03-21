@@ -9,11 +9,13 @@ public class EnemyMini : Enemy
     [SerializeField] private bool checkIsSLow;
     [SerializeField] private bool isPause=false;
     [SerializeField] private GameObject damagePopUp;
+    [SerializeField] private Animator anim;
     public float Heath { get => heath; set => heath = value; }
 
 	private void Awake()
     {
         slime = FindObjectOfType<SlimeController>();
+        anim = GetComponent<Animator>();
     }
     public bool IsDead()
 	{
@@ -46,10 +48,16 @@ public class EnemyMini : Enemy
     {
         return transform.position;
     }
+    public void SetAnim(string animName)
+	{
+        anim.SetTrigger(animName);
+	}
+
     private void DetectDead()
 	{
         if(Heath<=0)
 		{
+            SetAnim("Death");
             TriggerDeathState();
 		}
 	}
