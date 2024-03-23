@@ -58,7 +58,8 @@ public class EnemyMini : Enemy
         if(Heath<=0)
 		{
             SetAnim("Death");
-            TriggerDeathState();
+            Invoke("TriggerDeathState", 1f);
+           // TriggerDeathState();
 		}
 	}
     public void TakeDamage(float damage, bool isSecondDamage=false)

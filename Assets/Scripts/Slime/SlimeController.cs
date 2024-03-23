@@ -236,7 +236,8 @@ public class SlimeController : MonoBehaviour, ICritical
 
 		if (hittedEnemy == null)
 		{
-			SkillController.SetState(SlimeState.UNATTACK);
+            animator.SetTrigger("Idle");
+            SkillController.SetState(SlimeState.UNATTACK);
 			return;
 		}
 
