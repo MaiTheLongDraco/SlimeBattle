@@ -34,6 +34,7 @@ public class SlimeController : MonoBehaviour, ICritical
 	[Header("Other Reference")]
     [SerializeField] private GamePlayManager gamePlayManager;
     [SerializeField] private UnityEvent<float> onCiritcal;
+    [SerializeField] private Animator animator;
     private void Awake()
     {
         Instance = this;
@@ -244,7 +245,9 @@ public class SlimeController : MonoBehaviour, ICritical
         if (currentTarget == null) return;
         if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange)
         {
-            if(Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange/5)
+            RotateSlime(currentTarget.transform);
+            animator.SetTrigger("Attack");
+            if (Vector2.Distance(transform.position, currentTarget.transform.position) <= _slimeATK.AttackRange/5)
 			{
                 currentTarget.SetAnim("Attack");
                 RootDataClone.SlimeDF.Heath -= 3;
@@ -264,6 +267,7 @@ public class SlimeController : MonoBehaviour, ICritical
         }
         else
         {
+            animator.SetTrigger("Idle");
             SkillController.SetState(SlimeState.UNATTACK);
         }
     }
@@ -276,6 +280,7 @@ public class SlimeController : MonoBehaviour, ICritical
             var random = UnityEngine.Random.Range(0, hitsEnemy.Length - 1);
             if (hitsEnemy[random].GetComponent<Enemy>() != null)
 			{
+                RotateSlime(hitsEnemy[random].transform);
                 skillController.ActiveSkill.rapidFire.SetCurrentEnemy(hitsEnemy[random].GetComponent<EnemyMini>());
             }
         }
@@ -330,6 +335,17 @@ public class SlimeController : MonoBehaviour, ICritical
         print($" CRIT==== crit damage invoke {set}");
         StartCoroutine(SetCriticalATKDamage(set));
     }
+    private void RotateSlime(Transform enemytran)
+	{
+        if(transform.position.x>enemytran.position.x)
+		{
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,180,transform.rotation.z)); 
+		}
+		else
+		{
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,0, transform.rotation.z));
+        }
+    }        
 }
 
 [Serializable]
