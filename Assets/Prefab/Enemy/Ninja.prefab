@@ -124,7 +124,7 @@ MonoBehaviour:
   enemyType: 1
   skillReference: {fileID: 0}
   chaseTime: 0.002
-  heath: 30000
+  heath: 1000
   slime: {fileID: 0}
   checkIsSLow: 0
   isPause: 0
