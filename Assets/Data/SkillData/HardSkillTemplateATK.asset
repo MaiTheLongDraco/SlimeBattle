@@ -33,7 +33,7 @@ MonoBehaviour:
     id: 115
     describeText: Increase 30% critical chance
     skillName: Critical Chance
-    skillLevel: 2
+    skillLevel: 1
   - skillType: 0
     buffValue: 10
     skillIcon: {fileID: 21300000, guid: 07b498a7d1a474d3fa5c2a36b00a9e1d, type: 3}

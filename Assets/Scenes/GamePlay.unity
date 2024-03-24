@@ -3474,6 +3474,10 @@ PrefabInstance:
       value: TestLogSkillInfo
       objectReference: {fileID: 0}
     - target: {fileID: 7330564132340342875, guid: f6e1bcc0b0f4e4b4095c5242c3c1f65e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330564132340342875, guid: f6e1bcc0b0f4e4b4095c5242c3c1f65e, type: 3}
       propertyPath: listSkillTroop.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -8924,7 +8928,7 @@ MonoBehaviour:
   passTime: 0
   defeatNumber: 0
   shootingNumber: 0
-  activeTroopTime: 5
+  activeTroopTime: 1
   onDefeatEnemy:
     m_PersistentCalls:
       m_Calls: []

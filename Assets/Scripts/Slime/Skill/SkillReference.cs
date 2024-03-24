@@ -7,6 +7,7 @@ public class SkillReference : MonoBehaviour
 {
     [SerializeField] private List<SkillRefGO> listSkillRef;
     [SerializeField] private List<SkillTroop> listSkillTroop;
+    [SerializeField] private List<ISkillInvokation> activatedSkill;
     [SerializeField] private int passTime;
     [SerializeField] private int defeatNumber;
     [SerializeField] private int shootingNumber;
@@ -63,6 +64,9 @@ public class SkillReference : MonoBehaviour
 	{
 		skill.SetSkillInvoke(skillToActive);
 		skill.ActivateSkillWithID(id);
+        if (activatedSkill.Contains(skillToActive)) return;
+        activatedSkill.Add(skillToActive);
+        print($" add this {skillToActive.GetType().ToString()} to list activated skill");
 	}
 
 	private void Awake()
@@ -72,6 +76,7 @@ public class SkillReference : MonoBehaviour
     
 	private void Start()
 	{
+        activatedSkill = new List<ISkillInvokation>();
         SkillController.AddOnPassOoneSecondListener(IncreasePassTime);
         onDefeatEnemy.AddListener(IncreaseDefeatNumber);
         onShooting.AddListener(IncreaseShootingNumber);
@@ -170,7 +175,6 @@ public class SkillTroop
             skillInvokation.SetState(SkillState.UNLOCKED);
         }
 	}
-
 }
 public enum SkillID
 {

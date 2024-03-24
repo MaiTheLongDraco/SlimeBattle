@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestLogActiveSkillInfo : MonoBehaviour
 {
     [SerializeField] private HardSkillTemplate hardSkillTemplate;
+    [SerializeField] private HardSkillTemplate hardSkillTemplateClone;
     [SerializeField] private List<SkillToPickInfoHolder> SkillToPickInfoHolders;
     [SerializeField] private List<HardSkillInfo> hardSkillHasGenerate;
 	[SerializeField] private SkillReference skillReference;
@@ -15,6 +16,7 @@ public class TestLogActiveSkillInfo : MonoBehaviour
     void Start()
     {
 		skillReference = GetComponent<SkillReference>();
+		hardSkillTemplateClone = hardSkillTemplate.Clone();
 		GenerateListSkillToPick();
 		InitSkillInfo();
     }
