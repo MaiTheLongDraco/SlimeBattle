@@ -21,6 +21,14 @@ public class EnemySpawner : MonoBehaviour
         listActiveEnemy.Clear();
         Instance = this;
     }
+    public void DecreaseListActive(EnemyMini enemy)
+	{
+        listActiveEnemy.Remove(enemy);
+        if(listActiveEnemy.Count<=0)
+		{
+            gamePlayManager.InvokeOnWinGame();
+		}
+	}
     
     public void InvokeOnPauseGame()
 	{

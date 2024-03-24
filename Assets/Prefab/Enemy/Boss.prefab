@@ -617,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474338081234336841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 100, y: 20, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -713,11 +713,13 @@ MonoBehaviour:
   skillReference: {fileID: 0}
   chaseTime: 0.008
   heath: 10000
+  totalHeath: 0
   slime: {fileID: 0}
   checkIsSLow: 0
   isPause: 0
   damagePopUp: {fileID: 7625767477269138655, guid: 9b47a828e602f6a48ad652832b7a136f, type: 3}
   anim: {fileID: 0}
+  healthBar: {fileID: 7773197946507884509}
 --- !u!1 &2866082567618683440
 GameObject:
   m_ObjectHideFlags: 0

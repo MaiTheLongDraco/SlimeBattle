@@ -60,7 +60,7 @@ public class EnemyMini : Enemy
         if(Heath<=0)
 		{
             SetAnim("Death");
-            Invoke("TriggerDeathState", 1f);
+            Invoke("TriggerDeathState", 3f);
            // TriggerDeathState();
 		}
 	}
@@ -80,6 +80,7 @@ public class EnemyMini : Enemy
 	{
         base.skillReference = SkillReference.Instance;
         base.InvokeEnemyDeath();
+        EnemySpawner.Instance.DecreaseListActive(this);
         print("dead");
 		Destroy(this.gameObject);
 	}
