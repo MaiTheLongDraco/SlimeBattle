@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class EnemyMini : Enemy
 {
-    [SerializeField] private float chaseTime;
-    [SerializeField] private float heath;
-    [SerializeField] private SlimeController slime;
-    [SerializeField] private bool checkIsSLow;
-    [SerializeField] private bool isPause=false;
-    [SerializeField] private GameObject damagePopUp;
-    [SerializeField] private Animator anim;
+    [SerializeField] protected float chaseTime;
+    [SerializeField] protected float heath;
+    [SerializeField] protected float totalHeath;
+    [SerializeField] protected SlimeController slime;
+    [SerializeField] protected bool checkIsSLow;
+    [SerializeField] protected bool isPause=false;
+    [SerializeField] protected GameObject damagePopUp;
+    [SerializeField] protected Animator anim;
     public float Heath { get => heath; set => heath = value; }
 
 	private void Awake()
     {
         slime = FindObjectOfType<SlimeController>();
         anim = GetComponent<Animator>();
+        totalHeath = heath;
     }
     public bool IsDead()
 	{
@@ -53,7 +55,7 @@ public class EnemyMini : Enemy
         anim.SetTrigger(animName);
 	}
 
-    private void DetectDead()
+    protected void DetectDead()
 	{
         if(Heath<=0)
 		{
@@ -62,7 +64,7 @@ public class EnemyMini : Enemy
            // TriggerDeathState();
 		}
 	}
-    public void TakeDamage(float damage, bool isSecondDamage=false)
+    public  void TakeDamage(float damage, bool isSecondDamage=false)
 	{
         print($" CRIT==== enemy {gameObject.name} get damage {damage}");
         Heath -= damage;
@@ -74,7 +76,7 @@ public class EnemyMini : Enemy
 		var popUp = Instantiate(damagePopUp, transform.position + Vector3.up / 2, Quaternion.identity);
 		popUp.GetComponent<DamagePopUp>().SetText((int)damage);
 	}
-	private void TriggerDeathState()
+    protected void TriggerDeathState()
 	{
         base.skillReference = SkillReference.Instance;
         base.InvokeEnemyDeath();
