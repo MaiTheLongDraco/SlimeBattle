@@ -38,26 +38,37 @@ public class SkillReference : MonoBehaviour
     public void HandleWithTypeSkillTroop(SkillID id)
     {
         print($"run ini handle with type {id}");
-        foreach (var skill in listSkillTroop)
-		{
             switch(id)			{
                 case SkillID.MULTISHOT:
 					{
-						ActivateSkill(id, skill,SkillController.ActiveSkill.multiShot);
+						TriggerActivate(id,SkillController.ActiveSkill.multiShot);
 						break;
 					}
 				case SkillID.RING_SHOT: {
-                        ActivateSkill(id, skill, SkillController.ActiveSkill.ringShot);
+                        TriggerActivate(id, SkillController.ActiveSkill.ringShot);
                         break; }
-                case SkillID.RAPID_FIRE: { ActivateSkill(id, skill, SkillController.ActiveSkill.rapidFire); break; }
-                case SkillID.SILVER_GENERATOR: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.silverGenerator); break; }
-                case SkillID.CRITICAL_CHANCE: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.criticalChance); break; }
-                case SkillID.DESTRUCTION_SHOT: { ActivateSkill(id, skill, SkillController.ActiveSkill.destructionShot); break; }
-                case SkillID.RANGE: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.range); break; }
-                case SkillID.SLOW_ZONE: { ActivateSkill(id, skill, SkillController.ActiveSkill.slowZone); break; }
-                case SkillID.HEALTH: { ActivateSkill(id, skill, SkillController.PassiveSkillRef.healthPSSkill); break; }
+                case SkillID.RAPID_FIRE: { TriggerActivate(id, SkillController.ActiveSkill.rapidFire); break; }
+                case SkillID.SILVER_GENERATOR: { TriggerActivate(id, SkillController.PassiveSkillRef.silverGenerator); break; }
+                case SkillID.CRITICAL_CHANCE: { TriggerActivate(id, SkillController.PassiveSkillRef.criticalChance); break; }
+                case SkillID.DESTRUCTION_SHOT: { TriggerActivate(id, SkillController.ActiveSkill.destructionShot); break; }
+                case SkillID.RANGE: { TriggerActivate(id, SkillController.PassiveSkillRef.range); break; }
+                case SkillID.SLOW_ZONE: { TriggerActivate(id, SkillController.ActiveSkill.slowZone); break; }
+                case SkillID.HEALTH: { TriggerActivate(id, SkillController.PassiveSkillRef.healthPSSkill); break; }
 			}
+		
+    }
+
+	private void TriggerActivate(SkillID id,ISkillInvokation skillInvokation)
+	{
+        if (activatedSkill.Contains(skillInvokation))
+        {
+            skillInvokation.UpgradeSkill();
+        }
+        foreach (var skill1 in listSkillTroop)
+		{
+			ActivateSkill(id, skill1, skillInvokation);
 		}
+        
     }
 
 	private void ActivateSkill(SkillID id, SkillTroop skill,ISkillInvokation skillToActive)
@@ -65,7 +76,6 @@ public class SkillReference : MonoBehaviour
 		skill.SetSkillInvoke(skillToActive);
 		skill.ActivateSkillWithID(id);
         if (activatedSkill.Contains(skillToActive)) {
-            skillToActive.UpgradeSkill();
             return;
         } 
         activatedSkill.Add(skillToActive);
@@ -182,6 +192,10 @@ public class SkillTroop
             skillInvokation.SetState(SkillState.UNLOCKED);
         }
 	}
+    public void UpgradeSkill()
+	{
+        skillInvokation.UpgradeSkill();
+    }
 }
 public enum SkillID
 {
