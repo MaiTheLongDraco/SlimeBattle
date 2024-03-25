@@ -8,4 +8,5 @@ public interface ISkillInvokation
 	public SkillState SkillState { get; set; }
 	public void DoSkill();
 	public bool CanTriggerSkill();
+	public void UpgradeSkill();
 }

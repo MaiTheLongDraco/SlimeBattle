@@ -70,4 +70,9 @@ public class DestructionShot : MonoBehaviour,ISkillInvokation
 			canMoveToEnemy = false;
 		}
 	}
+
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
 }

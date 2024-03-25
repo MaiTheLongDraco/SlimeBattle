@@ -34,4 +34,9 @@ public class SilverGenerator : MonoBehaviour,ISkillInvokation
 	{
 		state = set;
 	}
+
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
 }

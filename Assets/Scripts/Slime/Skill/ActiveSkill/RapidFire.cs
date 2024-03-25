@@ -71,4 +71,9 @@ public class RapidFire : MonoBehaviour,ISkillInvokation,ICritical
         yield return new WaitForSeconds(1);
         damage = initDamage;
     }
+
+	public void UpgradeSkill()
+	{
+        print($"====== upgrading {name} skill =====");
+    }
 }

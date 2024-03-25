@@ -35,5 +35,9 @@ public class HealthPSSkill : MonoBehaviour,ISkillInvokation
 	{
 		state = set;
 	}
-	
+
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
 }

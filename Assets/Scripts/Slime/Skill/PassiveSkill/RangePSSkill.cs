@@ -28,6 +28,12 @@ public class RangePSSkill : MonoBehaviour,ISkillInvokation
 	{
 		state = set;
 	}
+
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
+
 	// Start is called before the first frame update
 	void Start()
 	{

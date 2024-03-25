@@ -58,4 +58,8 @@ public class RingShot : MonoBehaviour,ISkillInvokation
 		slimeController = SlimeController.Instance;
 	}
 
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
 }

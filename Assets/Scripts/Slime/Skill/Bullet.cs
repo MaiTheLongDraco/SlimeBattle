@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         if (bulletType == BulletType.SPECIAL) other.GetComponent<EnemyMini>().TakeDamage(damage);
     }
 
-    public BulletType GetType()
+    public new BulletType GetType()
     {
         return bulletType;
     }

@@ -64,9 +64,16 @@ public class SkillReference : MonoBehaviour
 	{
 		skill.SetSkillInvoke(skillToActive);
 		skill.ActivateSkillWithID(id);
-        if (activatedSkill.Contains(skillToActive)) return;
+        if (activatedSkill.Contains(skillToActive)) {
+            skillToActive.UpgradeSkill();
+            return;
+        } 
         activatedSkill.Add(skillToActive);
         print($" add this {skillToActive.GetType().ToString()} to list activated skill");
+        foreach(var skillAT in activatedSkill)
+		{
+            print($" {skillAT.GetType()} in list activated");
+		}
 	}
 
 	private void Awake()

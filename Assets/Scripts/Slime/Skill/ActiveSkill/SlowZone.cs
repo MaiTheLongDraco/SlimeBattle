@@ -64,4 +64,9 @@ public class SlowZone : MonoBehaviour,ISkillInvokation
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, slowRange);
 	}
+
+	public void UpgradeSkill()
+	{
+		print($"====== upgrading {name} skill =====");
+	}
 }
