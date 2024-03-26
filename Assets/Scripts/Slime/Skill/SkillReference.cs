@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class SkillReference : MonoBehaviour
 {
+    public static SkillReference Instance;
     [SerializeField] private List<SkillRefGO> listSkillRef;
     [SerializeField] private List<SkillTroop> listSkillTroop;
-    [SerializeField] private List<ISkillInvokation> activatedSkill;
     [SerializeField] private int passTime;
     [SerializeField] private int defeatNumber;
     [SerializeField] private int shootingNumber;
@@ -15,113 +15,159 @@ public class SkillReference : MonoBehaviour
     [SerializeField] private UnityEvent onDefeatEnemy;
     [SerializeField] private UnityEvent onShooting;
     [SerializeField] private UnityEvent onTriggerActiveTroopTime;
-    [SerializeField] private SkillController skillController; 
-    public static SkillReference Instance;
+    [SerializeField] private SkillController skillController;
+    [SerializeField] private TestLogActiveSkillInfo testLogActiveSkillInfo;
+    [SerializeField] private List<ISkillInvokation> activatedSkill;
 
-	public int PassTime { get => passTime; set => passTime = value; }
-	public int DefeatNumber { get => defeatNumber; set => defeatNumber = value; }
-	public int ShootingNumber { get => shootingNumber; set => shootingNumber = value; }
-	public SkillController SkillController { get {
-			if (skillController == null)
-			{
-                skillController = SlimeController.Instance.SkillController;
-            }
+    public int PassTime
+    {
+        get => passTime;
+        set => passTime = value;
+    }
+
+    public int DefeatNumber
+    {
+        get => defeatNumber;
+        set => defeatNumber = value;
+    }
+
+    public int ShootingNumber
+    {
+        get => shootingNumber;
+        set => shootingNumber = value;
+    }
+
+    public SkillController SkillController
+    {
+        get
+        {
+            if (skillController == null) skillController = SlimeController.Instance.SkillController;
             return skillController;
-                } set => skillController = value; }
+        }
+        set => skillController = value;
+    }
 
-	public void HandleWithType(int id)
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        activatedSkill = new List<ISkillInvokation>();
+        SkillController.AddOnPassOoneSecondListener(IncreasePassTime);
+        onDefeatEnemy.AddListener(IncreaseDefeatNumber);
+        onShooting.AddListener(IncreaseShootingNumber);
+    }
+
+    public void HandleWithType(int id)
     {
         print($"run ini handle with type {id}");
         foreach (var skill in listSkillRef)
             skill.HandleSpecificSkillType(ActiveSkill, PassiveSkill, id);
     }
+
     public void HandleWithTypeSkillTroop(SkillID id)
     {
         print($"run ini handle with type {id}");
-            switch(id)			{
-                case SkillID.MULTISHOT:
-					{
-						TriggerActivate(id,SkillController.ActiveSkill.multiShot);
-						break;
-					}
-				case SkillID.RING_SHOT: {
-                        TriggerActivate(id, SkillController.ActiveSkill.ringShot);
-                        break; }
-                case SkillID.RAPID_FIRE: { TriggerActivate(id, SkillController.ActiveSkill.rapidFire); break; }
-                case SkillID.SILVER_GENERATOR: { TriggerActivate(id, SkillController.PassiveSkillRef.silverGenerator); break; }
-                case SkillID.CRITICAL_CHANCE: { TriggerActivate(id, SkillController.PassiveSkillRef.criticalChance); break; }
-                case SkillID.DESTRUCTION_SHOT: { TriggerActivate(id, SkillController.ActiveSkill.destructionShot); break; }
-                case SkillID.RANGE: { TriggerActivate(id, SkillController.PassiveSkillRef.range); break; }
-                case SkillID.SLOW_ZONE: { TriggerActivate(id, SkillController.ActiveSkill.slowZone); break; }
-                case SkillID.HEALTH: { TriggerActivate(id, SkillController.PassiveSkillRef.healthPSSkill); break; }
-			}
-		
+        switch (id)
+        {
+            case SkillID.MULTISHOT:
+            {
+                TriggerActivate(id, SkillController.ActiveSkill.multiShot);
+                break;
+            }
+            case SkillID.RING_SHOT:
+            {
+                TriggerActivate(id, SkillController.ActiveSkill.ringShot);
+                break;
+            }
+            case SkillID.RAPID_FIRE:
+            {
+                TriggerActivate(id, SkillController.ActiveSkill.rapidFire);
+                break;
+            }
+            case SkillID.SILVER_GENERATOR:
+            {
+                TriggerActivate(id, SkillController.PassiveSkillRef.silverGenerator);
+                break;
+            }
+            case SkillID.CRITICAL_CHANCE:
+            {
+                TriggerActivate(id, SkillController.PassiveSkillRef.criticalChance);
+                break;
+            }
+            case SkillID.DESTRUCTION_SHOT:
+            {
+                TriggerActivate(id, SkillController.ActiveSkill.destructionShot);
+                break;
+            }
+            case SkillID.RANGE:
+            {
+                TriggerActivate(id, SkillController.PassiveSkillRef.range);
+                break;
+            }
+            case SkillID.SLOW_ZONE:
+            {
+                TriggerActivate(id, SkillController.ActiveSkill.slowZone);
+                break;
+            }
+            case SkillID.HEALTH:
+            {
+                TriggerActivate(id, SkillController.PassiveSkillRef.healthPSSkill);
+                break;
+            }
+        }
     }
 
-	private void TriggerActivate(SkillID id,ISkillInvokation skillInvokation)
-	{
+    private void TriggerActivate(SkillID id, ISkillInvokation skillInvokation)
+    {
         if (activatedSkill.Contains(skillInvokation))
         {
             skillInvokation.UpgradeSkill();
+            testLogActiveSkillInfo.UpdateRuntimeData(id);
         }
-        foreach (var skill1 in listSkillTroop)
-		{
-			ActivateSkill(id, skill1, skillInvokation);
-		}
-        
+
+        foreach (var skill1 in listSkillTroop) ActivateSkill(id, skill1, skillInvokation);
     }
 
-	private void ActivateSkill(SkillID id, SkillTroop skill,ISkillInvokation skillToActive)
-	{
-		skill.SetSkillInvoke(skillToActive);
-		skill.ActivateSkillWithID(id);
-        if (activatedSkill.Contains(skillToActive)) {
-            return;
-        } 
+    private void ActivateSkill(SkillID id, SkillTroop skill, ISkillInvokation skillToActive)
+    {
+        skill.SetSkillInvoke(skillToActive);
+        skill.ActivateSkillWithID(id);
+        if (activatedSkill.Contains(skillToActive)) return;
         activatedSkill.Add(skillToActive);
-        print($" add this {skillToActive.GetType().ToString()} to list activated skill");
-        foreach(var skillAT in activatedSkill)
-		{
-            print($" {skillAT.GetType()} in list activated");
-		}
-	}
+        testLogActiveSkillInfo.UpdateRuntimeData(id);
+        print($" add this {skillToActive.GetType()} to list activated skill");
+        foreach (var skillAT in activatedSkill) print($" {skillAT.GetType()} in list activated");
+    }
 
-	private void Awake()
-	{
-        Instance = this;
-	}
-    
-	private void Start()
-	{
-        activatedSkill = new List<ISkillInvokation>();
-        SkillController.AddOnPassOoneSecondListener(IncreasePassTime);
-        onDefeatEnemy.AddListener(IncreaseDefeatNumber);
-        onShooting.AddListener(IncreaseShootingNumber);
-	}
-	public void InvokeOnDefeatEnemy()
-	{
+    public void InvokeOnDefeatEnemy()
+    {
         onDefeatEnemy?.Invoke();
-	}
+    }
+
     public void InvokeOnShooting()
     {
         onShooting?.Invoke();
     }
+
     public void IncreasePassTime()
-	{
+    {
         PassTime++;
-	}
+    }
+
     private void IncreaseDefeatNumber()
-	{
+    {
         DefeatNumber++;
-        if(DefeatNumber % activeTroopTime==0)
-		{
-            onTriggerActiveTroopTime?.Invoke();
-		}
-	}
+        if (DefeatNumber % activeTroopTime == 0) onTriggerActiveTroopTime?.Invoke();
+    }
+
     private void IncreaseShootingNumber()
-	{
+    {
         ShootingNumber++;
-	}
+    }
+
     private void PassiveSkill()
     {
         print(" run into get passive skill");
@@ -142,8 +188,6 @@ public class SkillReference : MonoBehaviour
             return;
         Instantiate(skillGO, SlimeController.Instance.transform.position, Quaternion.identity);
     }
-
-	
 }
 
 [Serializable]
@@ -176,27 +220,29 @@ public class SkillRefGO
         }
     }
 }
+
 [Serializable]
 public class SkillTroop
 {
     public SkillID SkillID;
     public ISkillInvokation skillInvokation;
+
     public void SetSkillInvoke(ISkillInvokation skill)
-	{
+    {
         skillInvokation = skill;
-	}
+    }
+
     public void ActivateSkillWithID(SkillID skillID)
-	{
-        if(SkillID==skillID)
-		{
-            skillInvokation.SetState(SkillState.UNLOCKED);
-        }
-	}
+    {
+        if (SkillID == skillID) skillInvokation.SetState(SkillState.UNLOCKED);
+    }
+
     public void UpgradeSkill()
-	{
+    {
         skillInvokation.UpgradeSkill();
     }
 }
+
 public enum SkillID
 {
     MULTISHOT = 111,

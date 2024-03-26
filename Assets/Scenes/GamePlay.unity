@@ -2903,6 +2903,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7330564132340342875, guid: f6e1bcc0b0f4e4b4095c5242c3c1f65e, type: 3}
+      propertyPath: testLogActiveSkillInfo
+      value: 
+      objectReference: {fileID: 107755177}
+    - target: {fileID: 7330564132340342875, guid: f6e1bcc0b0f4e4b4095c5242c3c1f65e, type: 3}
       propertyPath: listSkillTroop.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -7119,6 +7123,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   skillController: {fileID: 1632406333}
+  testLogActiveSkillInfo: {fileID: 107755177}
 --- !u!1 &1717215046
 GameObject:
   m_ObjectHideFlags: 0
