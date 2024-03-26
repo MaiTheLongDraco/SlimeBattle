@@ -1,42 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SilverGenerator : MonoBehaviour,ISkillInvokation
+public class SilverGenerator : MonoBehaviour, ISkillInvokation
 {
-	[SerializeField] private SkillState state;
-	[SerializeField] private GamePlayManager gamePlayManager;
-	[SerializeField] private int additionSilver;
-	public SkillState SkillState { get => state; set => state = value; }
+    [SerializeField] private SkillState state;
+    [SerializeField] private GamePlayManager gamePlayManager;
+    [SerializeField] private int additionSilver;
+    [SerializeField] private int upgradeFactor;
 
-	public bool CanTriggerSkill()
-	{
-		if (state != SkillState.UNLOCKED) return false;
-		return true;
-	}
-
-	public void DoSkill()
-	{
-		if(CanTriggerSkill())
-		{
-			gamePlayManager.IncreaseRuntimeSilver(additionSilver);
-		}
-	}
-
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    private void Start()
     {
-		SetState(SkillState.NOT_UNLOCK);
-		gamePlayManager = GamePlayManager.Instance;
-	}
+        SetState(SkillState.NOT_UNLOCK);
+        gamePlayManager = GamePlayManager.Instance;
+    }
 
-	public void SetState(SkillState set)
-	{
-		state = set;
-	}
+    public SkillState SkillState
+    {
+        get => state;
+        set => state = value;
+    }
 
-	public void UpgradeSkill()
-	{
-		print($"====== upgrading {name} skill =====");
-	}
+    public bool CanTriggerSkill()
+    {
+        if (state != SkillState.UNLOCKED) return false;
+        return true;
+    }
+
+    public void DoSkill()
+    {
+        if (CanTriggerSkill()) gamePlayManager.IncreaseRuntimeSilver(additionSilver);
+    }
+
+    public void SetState(SkillState set)
+    {
+        state = set;
+    }
+
+    public void UpgradeSkill()
+    {
+        additionSilver += upgradeFactor;
+        print($"====== upgrading {name} skill =====");
+    }
 }

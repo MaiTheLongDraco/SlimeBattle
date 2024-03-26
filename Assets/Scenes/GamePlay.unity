@@ -507,6 +507,14 @@ PrefabInstance:
       propertyPath: defenseInfo
       value: 
       objectReference: {fileID: 1123692857}
+    - target: {fileID: 3764205057677289664, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
+      propertyPath: increaseValue
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764205057677289664, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
+      propertyPath: upgradeFactor
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6336168690280834875, guid: b0c6265bb58d28240a1c2e610d3cf44d, type: 3}
       propertyPath: m_Name
       value: HEALTH
@@ -973,6 +981,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
+    - target: {fileID: -1607757131582283267, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
+      propertyPath: upgradeFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3802155674570294700, guid: bd80ac0fa0fb86b4f964232f47d3889f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1487,6 +1499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
+    - target: {fileID: 2027060513, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
+      propertyPath: upgradeFactor
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7157963674285598202, guid: cd67ae538f8cd1643b496466a99a1776, type: 3}
       propertyPath: m_Name
       value: MULTISHOT
@@ -1837,6 +1853,14 @@ PrefabInstance:
       propertyPath: attackInfo
       value: 
       objectReference: {fileID: 49595076}
+    - target: {fileID: 6608249758402295353, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
+      propertyPath: increaseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608249758402295353, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
+      propertyPath: upgradeFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6703840820343148608, guid: e047dde285b07e346816ffe1ae754b36, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3482,6 +3506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RING_SHOT
       objectReference: {fileID: 0}
+    - target: {fileID: 3691196674206384288, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
+      propertyPath: upgradeFactor
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4877767483754374946, guid: ca26ff3742ec1d940a8ce96991d93b52, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4360,6 +4388,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 483057994}
     m_Modifications:
+    - target: {fileID: 1064891334, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
+      propertyPath: attackFactor
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064891334, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
+      propertyPath: upgradingFactor
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1052105524769608469, guid: 90566394aa4eb8e46ad524d98b192e57, type: 3}
       propertyPath: m_Name
       value: DESTRUCTION_SHOT
@@ -7284,6 +7320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CRITICAL_CHANCE
       objectReference: {fileID: 0}
+    - target: {fileID: 8264568178760010976, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
+      propertyPath: upgradeFactor
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8613304279464399435, guid: 6b9e92a0031b60a49a6de899cc3e381b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8129,6 +8169,10 @@ PrefabInstance:
     - target: {fileID: 606361857829087258, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
       propertyPath: m_Name
       value: SILVER_GENERATOR
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120358984939400269, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
+      propertyPath: upgradeFactor
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4921504752637189718, guid: 09fe5bf26c947d14493ad343cfa01fc1, type: 3}
       propertyPath: m_RootOrder
@@ -9644,6 +9688,14 @@ PrefabInstance:
     - target: {fileID: 6043336406807021519, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
       propertyPath: m_Name
       value: SlowZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823135981287600729, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
+      propertyPath: slowFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823135981287600729, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
+      propertyPath: addingSlowFactor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8087aa75aeb201848ad4fcbed1f3c1fb, type: 3}
