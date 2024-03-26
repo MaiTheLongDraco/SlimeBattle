@@ -28,20 +28,46 @@ public class SubButtonClickHandle : MonoBehaviour
 
     public void UpgradeSlimeValue()
     {
-        var increasingAmount = parentData.slimePropertyValue * UpgradeRate / 2;
+		if (!CheckCanUpgrade()) return;
+		var increasingAmount = parentData.slimePropertyValue * UpgradeRate / 2;
         parentData.slimePropertyValue += increasingAmount;
         parentData.slimePropertyValue = (float)Math.Round(parentData.slimePropertyValue, 2);
         SpecifySlimeValue(parentData.slimePropertyValue);
 		slimeController.UpdateRuntimeValue();
 		displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
-    }
+		gamePlayManager.RunTimeSilver -= (int)parentData.CurrencyCost;
+		gamePlayManager.SetRuntimeSilverText(gamePlayManager.RunTimeSilver);
+		parentData.CurrencyCost += parentData.CurrencyCost / 3;
+		displayInfo.SetCurrencyCostTxt(parentData.CurrencyCost.ToString());
+	}
 	public void UpgradeSlimeValue(float increasingAmount)
 	{
+		if (!CheckCanUpgrade()) return;
 		parentData.slimePropertyValue += increasingAmount;
 		parentData.slimePropertyValue = (float)Math.Round(parentData.slimePropertyValue, 2);
 		SpecifySlimeValue(parentData.slimePropertyValue);
 		slimeController.UpdateRuntimeValue();
 		displayInfo.SetSlimePropertyValue(parentData.slimePropertyValue.ToString());
+		gamePlayManager.RunTimeSilver -= (int)parentData.CurrencyCost;
+		gamePlayManager.SetRuntimeSilverText(gamePlayManager.RunTimeSilver);
+		parentData.CurrencyCost += parentData.CurrencyCost / 3;
+		displayInfo.SetCurrencyCostTxt(parentData.CurrencyCost.ToString());
+	}
+	private void Update()
+	{
+		CheckCanUpgrade();
+	}
+	private bool CheckCanUpgrade()
+	{
+		if (gamePlayManager.RunTimeSilver >= parentData.CurrencyCost)
+		{ 
+			upgradeButton.interactable = true;
+			return true; } 
+		else
+		{
+			upgradeButton.interactable = false;
+			return false;
+		}
 	}
 
 	private void SpecifySlimeValue(float set)

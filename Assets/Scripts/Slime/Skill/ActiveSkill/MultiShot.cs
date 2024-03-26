@@ -58,7 +58,7 @@ public class MultiShot : MonoBehaviour, ISkillInvokation, ICritical
 
     public bool CanTriggerSkill()
     {
-        if (listEnemy.Count <= 1 || state != SkillState.UNLOCKED) return false;
+        if (listEnemy.Count >= 1 && state != SkillState.UNLOCKED) return false;
         return true;
     }
 
@@ -67,7 +67,10 @@ public class MultiShot : MonoBehaviour, ISkillInvokation, ICritical
         if (CanTriggerSkill())
         {
             print(" trigger multishot");
-            for (var i = 0; i < numberOfBullet; i++) CreateBullet(i, listEnemy[i]);
+            for (var i = 0; i < numberOfBullet; i++)
+            {
+                print($"multishot i value {i}");
+                CreateBullet(i, listEnemy[i]); }
         }
     }
 

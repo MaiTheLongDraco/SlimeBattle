@@ -27,7 +27,11 @@ public class TestLogActiveSkillInfo : MonoBehaviour
         for (var i = 0; i < SkillToPickInfoHolders.Count; i++)
         {
             var rand = Random.Range(0, hardSkillTemplateClone.ListInfo.Count);
-            if (hardSkillHasGenerate.Contains(hardSkillTemplateClone.ListInfo[rand])) continue;
+            print($" skill random value {rand}");
+            if (hardSkillHasGenerate.Contains(hardSkillTemplateClone.ListInfo[rand])) {
+                ReGenerateSkill();
+                continue;
+            };
             hardSkillHasGenerate.Add(hardSkillTemplateClone.ListInfo[rand]);
             SetActiveSkillInfo(hardSkillTemplateClone.ListInfo[rand], i);
             SkillToPickInfoHolders[i].AddOnClickEvent(UnlockNewSkill);
